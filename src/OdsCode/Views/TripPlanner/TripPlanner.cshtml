@@ -1,0 +1,27 @@
+﻿@model IEnumerable<OdsCode.Models.Trip>
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+
+<!--Section: Contact v.1-->
+<section class="section m-b-4">
+
+    <!--Section heading-->
+    <h1 class="section-heading">@ViewBag.Title</h1>
+    <!--Section sescription-->
+    <p class="section-description m-b-5">Write us a message in the form below.</p>
+
+    @foreach (var item in Model)
+    {
+        <h1>@item.Name</h1>
+    }
+
+</section>
+
+<!--/Section: Contact v.1-->

@@ -1,0 +1,39 @@
+{
+  "name": "MDBPro",
+  "description": "Material Design Bootstrap 4",
+  "main": "mdb.js",
+  "keywords": [
+    "Material",
+    "Design",
+    "Bootstrap",
+    "4",
+    "Pro"
+  ],
+  "authors": [
+    "mmatiasn@gmail.com"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Mmatiasn/MDBPro",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "tether": "^1.3.7",
+    "bootstrap": "^4.0.0"
+  },
+  "version": "1.0.0",
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.0",
+    "commit": "aa9009693b2c54887fc307ae78613dff4b767195"
+  },
+  "_source": "https://github.com/Mmatiasn/MDBPro.git",
+  "_target": "^1.0.0",
+  "_originalSource": "MDBPro"
+}

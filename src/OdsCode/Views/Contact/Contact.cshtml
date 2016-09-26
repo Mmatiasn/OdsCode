@@ -1,0 +1,126 @@
+﻿@model OdsCode.ViewModels.ContactViewModel
+
+@{ 
+    ViewBag.Title = "Contact";
+}
+
+@section scripts {
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+
+<!--Section: Contact v.1-->
+<section class="section m-b-4">
+
+    <!--Section heading-->
+    <h1 class="section-heading">@ViewBag.Title</h1>
+    <!--Section sescription-->
+    <p class="section-description m-b-5">Write us a message in the form below.</p>
+
+    <div class="row">
+
+        <!--First column-->
+        <div class="col-md-5">
+
+            <!--Form with header-->
+            <div class="card">
+
+                <div class="card-block">
+                    <!--Header-->
+                    <div class="form-header mdb-color">
+                        <h3><i class="fa fa-envelope"></i> Write to us:</h3>
+                    </div>
+                    @if (ViewBag.UserMessage != null)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <strong>Thank you!</strong> @ViewBag.UserMessage
+                        </div>
+                        <br>
+                    }
+                    else
+                    {
+                        <p>Enter your here information along with your subject and message.</p>
+                        <br>
+                    }
+
+                    <!--Body-->
+                    <form method="post">
+                        <div class="md-form">
+                            <i class="fa fa-user prefix"></i>
+                            <input asp-for="Name" type="text" class="form-control">
+                            <label asp-for="Name"></label>
+                            <span class="text-muted" asp-validation-for="Name"></span>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-envelope prefix"></i>
+                            <input asp-for="Email" type="email" class="form-control">
+                            <label asp-for="Email"></label>
+                            <span class="text-muted" asp-validation-for="Email"></span>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-tag prefix"></i>
+                            <input asp-for="Subject" type="text" class="form-control">
+                            <label asp-for="Subject"></label>
+                            <span class="text-muted" asp-validation-for="Subject"></span>
+                        </div>
+
+                        <div class="md-form">
+                            <i class="fa fa-pencil prefix"></i>
+                            <textarea asp-for="Message" type="text" class="md-textarea"></textarea>
+                            <label asp-for="Message"></label>
+                            <span class="text-muted" asp-validation-for="Message"></span>
+                        </div>
+
+                        <span class="text-muted" asp-validation-summary="ModelOnly"></span>
+
+                        <div class="text-xs-center">
+                            <button class="btn btn-ins" type="submit">Submit</button>
+                        </div>
+                    </form>
+
+
+                </div>
+
+            </div>
+            <!--/Form with header-->
+
+        </div>
+        <!--/First column-->
+        <!--Second column-->
+        <div class="col-md-7">
+
+            <!--Google map-->
+            <div id="map-container" class="z-depth-1-half map-container" style="height: 400px"></div>
+
+            <br>
+            <!--Buttons-->
+            <div class="row text-xs-center">
+                <div class="col-md-4">
+                    <a class="btn-floating btn-small mdb-color"><i class="fa fa-map-marker"></i></a>
+                    <p>West Palm Beach, FL 33415</p>
+                    <p>United States</p>
+                </div>
+
+                <div class="col-md-4">
+                    <a class="btn-floating btn-small mdb-color"><i class="fa fa-phone"></i></a>
+                    <p>+ 01 561 853 8015</p>
+                    <p>Mon - Fri</p>
+                    <p>8:30 AM - 5:00 PM</p>
+                </div>
+
+                <div class="col-md-4">
+                    <a class="btn-floating btn-small mdb-color"><i class="fa fa-envelope"></i></a>
+                    <p>mmatiasn@gmail.com</p>
+                    <p>mnoriega@pbcgov.org</p>
+                </div>
+            </div>
+
+        </div>
+        <!--/Second column-->
+
+    </div>
+
+</section>
+<!--/Section: Contact v.1-->
