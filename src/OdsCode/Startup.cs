@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -9,6 +12,7 @@ using OdsCode.Models;
 using OdsCode.Repository;
 using OdsCode.Services;
 using OdsCode.ViewModels;
+using System.Threading.Tasks;
 
 namespace OdsCode
 {
@@ -65,11 +69,42 @@ namespace OdsCode
             services.AddTransient<WorldContextSeedData>();
 
             // AddMvc → UseMvc | All MVC services are configures here.
-            services.AddMvc()
-                .AddJsonOptions(config =>
+            services.AddMvc(config =>
+            {
+                if (_env.IsProduction())
+                {
+                    config.Filters.Add(new RequireHttpsAttribute());
+                }
+            })
+            .AddJsonOptions(config =>
                 {
                     config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 });
+
+            services.AddIdentity<WorldUser, IdentityRole>(config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequiredLength = 8;
+                config.Cookies.ApplicationCookie.LoginPath = "/Login";
+                config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
+                {
+                    OnRedirectToLogin = async ctx =>
+                    {
+                        if (ctx.Request.Path.StartsWithSegments("/api") && ctx.Response.StatusCode == 200)
+                        {
+                            ctx.Response.StatusCode = 401;
+                        }
+                        else
+                        {
+                            ctx.Response.Redirect(ctx.RedirectUri);
+                        }
+                        await Task.Yield();
+                    }
+                };
+            })
+            .AddEntityFrameworkStores<WorldContext>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,6 +114,9 @@ namespace OdsCode
             ILoggerFactory factory)
         {
             //Middleware- software that acts as a bridge between an operating system or database and applications, especially on a network.
+            app.UseStaticFiles();
+
+            app.UseIdentity();
 
             Mapper.Initialize(config =>
             {
@@ -96,11 +134,20 @@ namespace OdsCode
                 factory.AddDebug(LogLevel.Error);
             }
 
-            app.UseStaticFiles();
-
             // AddMvc → UseMvc | Lisens for operations to perform
             app.UseMvc(config =>
             {
+                config.MapRoute(
+                    name: "Login",
+                    template: "Login/{action}/{id?}",
+                    defaults: new { controller = "Login", action = "Login" }
+                    );
+                config.MapRoute(
+                    name: "Logout",
+                    template: "Logout/{action}/{id?}",
+                    defaults: new { controller = "Logout", action = "Logout" }
+                    );
+
                 config.MapRoute(
                     name: "Home",
                     template: "Home/{action}/{id?}",

@@ -10,6 +10,7 @@
 
     <!-- Font Awesome -->
     <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"> -->
 
     <!-- Bootstrap core CSS -->
@@ -17,6 +18,10 @@
 
     <!-- Material Design Bootstrap -->
     <link href="~/lib/MDBPro/css/mdb.css" rel="stylesheet" />
+
+    <!-- Section Styles -->
+    @RenderSection("styles", false)
+    <!--/. Section Styles -->
 
 </head>
 
@@ -49,17 +54,53 @@
                         <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "YouTube" ? "active" : "")">
                             <a class="nav-link" asp-controller="YouTube" asp-action="YouTube">YouTube</a>
                         </li>
-                        <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Contact" ? "active" : "")">
-                            <a class="nav-link" asp-controller="Contact" asp-action="Contact">Contact</a>
-                        </li>
-                        <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "About" ? "active" : "")">
-                            <a class="nav-link" asp-controller="About" asp-action="About">About</a>
-                        </li>
+                        @if (!User.Identity.IsAuthenticated || ViewBag.SignOutAsync == "true")
+                        {
+                            <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Contact" ? "active" : "")">
+                                <a class="nav-link" asp-controller="Contact" asp-action="Contact">Contact</a>
+                            </li>
+                            <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "About" ? "active" : "")">
+                                <a class="nav-link" asp-controller="About" asp-action="About">About</a>
+                            </li>
+                        }
                     </ul>
+
+                    <ul class="nav navbar-nav pull-right">
+                        @if (User.Identity.IsAuthenticated && ViewBag.SignOutAsync == null)
+                        {
+                            <li class="nav-item  @(ViewContext.RouteData.Values["Controller"].ToString() == "Contact" ? "active" : "")">
+                                <a class="nav-link waves-effect waves-light" asp-controller="Contact" asp-action="Contact"> <i class="fa fa-envelope-o"></i> <span class="hidden-sm-down">Contact</span></a>
+                            </li>
+                            <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "About" ? "active" : "")">
+                                <a class="nav-link waves-effect waves-light" asp-controller="About" asp-action="About"> <i class="fa fa-info"></i> <span class="hidden-sm-down"> About </span></a>
+                            </li>
+
+                            <li class="nav-item btn-group">
+                                <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user"></i> <span class="hidden-sm-down"> @User.Identity.Name </span> </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="Account"> Account <i class="fa fa-user" aria-hidden="true"></i> </a>
+                                    <a class="dropdown-item" asp-controller="Settings" asp-action="Settings"> Settings <i class="fa fa-gear" aria-hidden="true"></i> </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-controller="Logout" asp-action="Logout"> Logout <i class="fa fa-sign-out" aria-hidden="true"></i> </a>
+                                </div>
+                            </li>
+                        }
+                        @if (!User.Identity.IsAuthenticated || ViewBag.SignOutAsync == "true")
+                        {
+                            <li class="nav-item  @(ViewContext.RouteData.Values["Controller"].ToString() == "Login" ? "active" : "")">
+                                <a class="nav-link waves-effect waves-light" asp-controller="Login" asp-action="Login"> <i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Login</span></a>
+                            </li>
+                        }
+                    </ul>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
                     <!--Search form-->
-                    <form class="form-inline">
-                        <input class="form-control" type="text" placeholder="Search">
-                    </form>
+                        <form class="form-inline hidden-md-down">
+                            <input class="form-control" type="text" placeholder="Search">
+                        </form>
+                    }
+
                 </div>
                 <!--/.Collapse content-->
 
@@ -78,119 +119,120 @@
         </div>
     </main>
 
-        <!--Footer-->
-        <footer class="page-footer center-on-small-only">
+    <!--Footer-->
+    <footer class="page-footer center-on-small-only">
 
-            <!--Footer Links-->
+        <!--Footer Links-->
+        <div class="container-fluid">
+            <div class="row">
+
+                <!--First column-->
+                <div class="col-md-3 col-md-offset-1">
+                    <h5 class="title">ABOUT MATERIAL DESIGN</h5>
+                    <p>Material Design (codenamed Quantum Paper) is a design language developed by Google. </p>
+
+                    <p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS, and JS framework - Bootstrap.</p>
+                </div>
+                <!--/.First column-->
+
+                <hr class="hidden-md-up">
+
+                <!--Second column-->
+                <div class="col-md-2 col-md-offset-1">
+                    <h5 class="title">Useful inks</h5>
+                    <ul>
+                        <li><a href="#!">Contact us</a></li>
+                        <li><a href="#!">About company</a></li>
+                        <li><a href="#!">Bug Report</a></li>
+                        <li><a href="#!">License</a></li>
+                        <li><a href="#!">ChangeLog</a></li>
+                        <li><a href="#!">Browsers and devices</a></li>
+                    </ul>
+                </div>
+                <!--/.Second column-->
+
+                <hr class="hidden-md-up">
+
+                <!--Third column-->
+                <div class="col-md-5">
+                    <h5 class="title">Instagram feed</h5>
+                    <div class="footer-imgs"></div>
+                    <ul class="inline-ul-img">
+                        <li><img src="http://mdbootstrap.com/images/avatars/avatar-1.jpg" alt=""></li>
+                        <li><img src="http://mdbootstrap.com/images/avatars/avatar-2.jpg" alt=""></li>
+                        <li><img src="http://mdbootstrap.com/images/avatars/avatar-8.jpg" alt=""></li>
+                        <li><img src="http://mdbootstrap.com/images/avatars/avatar-5.jpg" alt=""></li>
+                        <br>
+                        <li><img src="http://mdbootstrap.com/images/avatars/avatar-4.jpg" alt=""></li>
+                        <li><img src="http://mdbootstrap.com/images/avatars/avatar-7.jpg" alt=""></li>
+                        <li><img src="http://mdbootstrap.com/images/avatars/avatar-3.jpg" alt=""></li>
+                        <li><img src="http://mdbootstrap.com/images/avatars/avatar-6.jpg" alt=""></li>
+                    </ul>
+                </div>
+                <!--/.Third column-->
+
+            </div>
+        </div>
+        <!--/.Footer Links-->
+
+        <hr>
+
+        <!--Call to action-->
+        <div class="call-to-action">
+            <ul>
+                <li>
+                    <h5>Register for free</h5>
+                </li>
+                <li><a href="" class="btn btn-danger">Sign up!</a></li>
+            </ul>
+        </div>
+        <!--/.Call to action-->
+
+        <hr>
+
+        <!--Social buttons-->
+        <div class="social-section">
+            <ul>
+                <li><a class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
+                <li><a class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
+                <li><a class="btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
+                <li><a class="btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></a></li>
+                <li><a class="btn-floating btn-small btn-git"><i class="fa fa-github"> </i></a></li>
+                <li><a class="btn-floating btn-small btn-pin"><i class="fa fa-pinterest"> </i></a></li>
+                <li><a class="btn-floating btn-small btn-ins"><i class="fa fa-instagram"> </i></a></li>
+            </ul>
+        </div>
+        <!--/.Social buttons-->
+        <!--Copyright-->
+        <div class="footer-copyright">
             <div class="container-fluid">
-                <div class="row">
+                © @System.DateTime.Now.Year Copyright: <a href="http://pbcgov.org/"> Palm Beach County </a>
 
-                    <!--First column-->
-                    <div class="col-md-3 col-md-offset-1">
-                        <h5 class="title">ABOUT MATERIAL DESIGN</h5>
-                        <p>Material Design (codenamed Quantum Paper) is a design language developed by Google. </p>
-
-                        <p>Material Design for Bootstrap (MDB) is a powerful Material Design UI KIT for most popular HTML, CSS, and JS framework - Bootstrap.</p>
-                    </div>
-                    <!--/.First column-->
-
-                    <hr class="hidden-md-up">
-
-                    <!--Second column-->
-                    <div class="col-md-2 col-md-offset-1">
-                        <h5 class="title">Useful inks</h5>
-                        <ul>
-                            <li><a href="#!">Contact us</a></li>
-                            <li><a href="#!">About company</a></li>
-                            <li><a href="#!">Bug Report</a></li>
-                            <li><a href="#!">License</a></li>
-                            <li><a href="#!">ChangeLog</a></li>
-                            <li><a href="#!">Browsers and devices</a></li>
-                        </ul>
-                    </div>
-                    <!--/.Second column-->
-
-                    <hr class="hidden-md-up">
-
-                    <!--Third column-->
-                    <div class="col-md-5">
-                        <h5 class="title">Instagram feed</h5>
-                        <div class="footer-imgs"></div>
-                        <ul class="inline-ul-img">
-                            <li><img src="http://mdbootstrap.com/images/avatars/avatar-1.jpg" alt=""></li>
-                            <li><img src="http://mdbootstrap.com/images/avatars/avatar-2.jpg" alt=""></li>
-                            <li><img src="http://mdbootstrap.com/images/avatars/avatar-8.jpg" alt=""></li>
-                            <li><img src="http://mdbootstrap.com/images/avatars/avatar-5.jpg" alt=""></li>
-                            <br>
-                            <li><img src="http://mdbootstrap.com/images/avatars/avatar-4.jpg" alt=""></li>
-                            <li><img src="http://mdbootstrap.com/images/avatars/avatar-7.jpg" alt=""></li>
-                            <li><img src="http://mdbootstrap.com/images/avatars/avatar-3.jpg" alt=""></li>
-                            <li><img src="http://mdbootstrap.com/images/avatars/avatar-6.jpg" alt=""></li>
-                        </ul>
-                    </div>
-                    <!--/.Third column-->
-
-                </div>
             </div>
-            <!--/.Footer Links-->
+        </div>
+        <!--/.Copyright-->
 
-            <hr>
+    </footer>
+    <!--/.Footer-->
+    <!-- LAYOUT SCRIPTS -->
+    <!-- JQuery -->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
 
-            <!--Call to action-->
-            <div class="call-to-action">
-                <ul>
-                    <li>
-                        <h5>Register for free</h5>
-                    </li>
-                    <li><a href="" class="btn btn-danger">Sign up!</a></li>
-                </ul>
-            </div>
-            <!--/.Call to action-->
+    <!-- Tooltips -->
+    <script src="~/lib/tether/dist/js/tether.js"></script>
 
-            <hr>
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 
-            <!--Social buttons-->
-            <div class="social-section">
-                <ul>
-                    <li><a class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
-                    <li><a class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
-                    <li><a class="btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
-                    <li><a class="btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></a></li>
-                    <li><a class="btn-floating btn-small btn-git"><i class="fa fa-github"> </i></a></li>
-                    <li><a class="btn-floating btn-small btn-pin"><i class="fa fa-pinterest"> </i></a></li>
-                    <li><a class="btn-floating btn-small btn-ins"><i class="fa fa-instagram"> </i></a></li>
-                </ul>
-            </div>
-            <!--/.Social buttons-->
-            <!--Copyright-->
-            <div class="footer-copyright">
-                <div class="container-fluid">
-                    © @System.DateTime.Now.Year Copyright: <a href="http://pbcgov.org/"> Palm Beach County </a>
+    <!-- MDB core JavaScript -->
+    <script src="~/lib/MDBPro/js/mdb.js"></script>
 
-                </div>
-            </div>
-            <!--/.Copyright-->
-
-        </footer>
-        <!--/.Footer-->
-
-        <!-- LAYOUT SCRIPTS -->
-        <!-- JQuery -->
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-
-        <!-- Tooltips -->
-        <script src="~/lib/tether/dist/js/tether.js"></script>
-
-        <!-- Bootstrap core JavaScript -->
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-
-        <!-- MDB core JavaScript -->
-        <script src="~/lib/MDBPro/js/mdb.js"></script>
-        <!--/. LAYOUT SCRIPTS -->
-
-        <!-- SECTION SCRIPTS -->
-        @RenderSection("scripts", false)
-        <!--/. SECTION SCRIPTS -->
+    <!-- OdsCode Tooltip Initiation-->
+    <script src="~/lib/OdsCode/odscodetooltip.js"></script>
+    <!--/. LAYOUT SCRIPTS -->
+    <!-- SECTION SCRIPTS -->
+    @RenderSection("scripts", false)
+    <!--/. SECTION SCRIPTS -->
 
 </body>
 

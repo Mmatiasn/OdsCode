@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OdsCode.Repository;
 using System;
@@ -20,6 +21,12 @@ namespace OdsCode.Controllers.Web
         }
         public IActionResult TripPlanner()
         {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult Trips()
+        {
             try
             {
                 var data = _repository.GetAllTrips();
@@ -30,7 +37,6 @@ namespace OdsCode.Controllers.Web
                 _logger.LogError($"Failed to get trips in TripPlanner page: {ex.Message}");
                 return Redirect("/error");
             }
-
         }
     }
 }

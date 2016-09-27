@@ -11,5 +11,8 @@ namespace OdsCode.Repository
         void AddTrip(Trip trip);
         void AddStop(string tripName, Stop newStop);
         Task<bool> SaveChangesAsync();
+        IEnumerable<Trip> GetUserTripsWithStops();
+        IEnumerable<Trip> GetUserTripsWithStops(string name);
+        Task<bool> SaveAll();
     }
 }

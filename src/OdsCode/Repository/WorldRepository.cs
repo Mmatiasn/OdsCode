@@ -50,6 +50,44 @@ namespace OdsCode.Repository
                 .FirstOrDefault();
         }
 
+        public IEnumerable<Trip> GetUserTripsWithStops()
+        {
+            try
+            {
+                return _context.Trips
+                    .Include(t => t.Stops)
+                    .OrderBy(t => t.Name)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("COuld not get trips with stops from database", ex);
+                return null;
+            }
+        }
+
+        public IEnumerable<Trip> GetUserTripsWithStops(string name)
+        {
+            try
+            {
+                return _context.Trips
+                    .Include(t => t.Stops)
+                    .OrderBy(t => t.Name)
+                    .Where(t => t.UserName == name)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Could not get trips with stops from database", ex);
+                return null;
+            }
+        }
+
+        public async Task<bool> SaveAll()
+        {
+            return (await _context.SaveChangesAsync()) > 0;
+        }
+
         public async Task<bool> SaveChangesAsync()
         {
             return (await _context.SaveChangesAsync()) > 0;
