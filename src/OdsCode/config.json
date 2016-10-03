@@ -3,7 +3,7 @@
     "ToAddress": "mmatiasn@gmail.com"
   },
   "ConnectionStrings": {
-    "WorldContextConnection": "Server=(localdb)\\mssqllocaldb;Database=OdsCode;Trusted_Connection=true;MultipleActiveResultSets=true"
+    "WorldContextConnection": "Data Source=.;Initial Catalog=OdsCode;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False"
   },
   "Keys": {
     "BingKey": "AnXlCo4KUWFaEtSgU2S3p9VpKmTizajwnpmR2vBj2UBlyphHMKkes1A-a7Mm30XV"

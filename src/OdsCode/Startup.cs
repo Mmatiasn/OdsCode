@@ -84,7 +84,11 @@ namespace OdsCode
             services.AddIdentity<WorldUser, IdentityRole>(config =>
             {
                 config.User.RequireUniqueEmail = true;
-                config.Password.RequiredLength = 8;
+                config.Password.RequiredLength = 5;
+                config.Password.RequireDigit = false;
+                config.Password.RequireNonAlphanumeric = false;
+                config.Password.RequireLowercase = false;
+                config.Password.RequireUppercase = false;
                 config.Cookies.ApplicationCookie.LoginPath = "/Login";
                 config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents()
                 {
@@ -131,6 +135,8 @@ namespace OdsCode
             }
             else
             {
+                // Temporary
+                app.UseDeveloperExceptionPage();
                 factory.AddDebug(LogLevel.Error);
             }
 
@@ -155,9 +161,9 @@ namespace OdsCode
                     );
 
                 config.MapRoute(
-                    name: "TripsHome",
-                    template: "TripsHome/{action}/{id?}",
-                    defaults: new { controller = "TripsHome", action = "TripsHome" }
+                    name: "Trips",
+                    template: "Trips/{action}/{id?}",
+                    defaults: new { controller = "Trips", action = "Trips" }
                     );
 
                 config.MapRoute(

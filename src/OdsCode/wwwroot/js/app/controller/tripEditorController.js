@@ -15,7 +15,7 @@
 
 
         // GETS ALL STOPS FOR A TRIP
-        $http.get("/api/trips/" + vm.paramspName)
+        $http.get(OdsRoot + "/api/trips/" + vm.paramspName)
         .then(function (response) {
             // Success
             vm.getName = response.data[0].name;
@@ -38,7 +38,7 @@
 
             vm.isBusy = true;
 
-            $http.post("/api/trips/" + vm.paramspName + "/stops", vm.newStop)
+            $http.post(OdsRoot + "/api/trips/" + vm.paramspName + "/stops", vm.newStop)
                 .then(function (response) {
                     // Success
                     vm.stops.push(response.data);
@@ -58,21 +58,53 @@
         function _showMap(stops) {
             if (stops && stops.length > 0) {
 
-                var mapStops = _.map(stops, function (item) {
-                    return {
-                        lat: item.latitude,
-                        long: item.longitude,
-                        info: item.name
-                    };
-                });
+                var mapStops = _.map(stops,
+                    function (item) {
+                        return {
+                            lat: item.latitude,
+                            long: item.longitude,
+                            info: item.name
+                        };
+                    });
 
                 // Show Map
                 travelMap.createMap({
                     stops: mapStops,
                     selector: "#map",
-                    currentStop: 1,
+                    currentStop: 0,
                     initialZoom: 3
                 });
+            }
+            else {
+                vm.stops = [
+                    {
+                        arrival: "2016-10-04T00:00:00",
+                        id: 1,
+                        latitude: 33.748995,
+                        longitude: -84.387982,
+                        name: "West Palm Beach, Florida",
+                        order: 0,
+                        userName: "Default",
+                    }
+                ];
+
+                var mapStops = [
+                    {
+                        info: "West Palm Beach, Florida",
+                        lat: 26.714389,
+                        long: -80.053192
+                    }
+                ];
+
+                // Show Map
+                travelMap.createMap({
+                    stops: mapStops,
+                    selector: "#map",
+                    currentStop: 0,
+                    initialZoom: 6
+                });
+
+                vm.stops = [];
             }
         }
 

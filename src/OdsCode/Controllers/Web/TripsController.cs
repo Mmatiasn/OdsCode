@@ -8,24 +8,24 @@ using System;
 
 namespace OdsCode.Controllers.Web
 {
-    public class TripsHomeController : Controller
+    public class TripsController : Controller
     {
-        private ILogger<TripsHomeController> _logger;
+        private ILogger<TripsController> _logger;
         private IWorldRepository _repository;
 
-        public TripsHomeController(IWorldRepository repository,
-            ILogger<TripsHomeController> logger)
+        public TripsController(IWorldRepository repository,
+            ILogger<TripsController> logger)
         {
             _repository = repository;
             _logger = logger;
         }
-        public IActionResult TripsHome()
+        public IActionResult Trips()
         {
             return View();
         }
 
         [Authorize]
-        public IActionResult Trips()
+        public IActionResult All()
         {
                 return View();
         }

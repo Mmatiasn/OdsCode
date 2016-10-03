@@ -2,6 +2,10 @@
     ViewBag.Title = "Trip Planner";
 }
 
+@section Scripts {
+    <script src="~/js/OdsShowMap/OdsShowMap.js"></script>
+}
+
 <!--Section: Contact v.1-->
 <section class="section m-b-4">
 
@@ -19,7 +23,7 @@
                 <hr class="hr-dark wow fadeInLeft">
                 <p class="wow fadeInLeft" data-wow-delay="0.4s">Create your trip locally, in your county or around the world.</p>
                 <br>
-                <a class="btn btn-primary btn-lg wow fadeInLeft" data-wow-delay="0.7s" asp-controller="TripsHome" asp-action="trips">Create my trip!</a>
+                <a class="btn btn-primary btn-lg wow fadeInLeft" data-wow-delay="0.7s" asp-controller="Trips" asp-action="All">Create my trip!</a>
             </div>
         </div>
         <!--/First column-->
@@ -28,7 +32,7 @@
         <div class="col-md-7">
 
             <!--Google map-->
-            <div id="map-container" class="z-depth-1-half map-container" style="height: 400px"></div>
+            <div id="map" class="z-depth-1-half map-container" style="height: 400px"></div>
 
             <br>
             <!--Buttons-->

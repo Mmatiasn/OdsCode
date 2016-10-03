@@ -19,7 +19,7 @@
             <div class="md-form">
                 <i class="fa fa-map-marker prefix"></i>
                 <input data-ng-disabled="!vm.getName" type="text" name="name" id="name" data-ng-model="vm.newStop.name" required data-ng-minlength="3" class="form-control">
-                <label for="stop-name">Stop Name</label>
+                <label for="name">Stop Name</label>
             </div>
 
             <div class="md-form">
@@ -51,12 +51,12 @@
             <li><span> Stop name must be at least three characters</span></li>
         </ul>
     </div>
-    <div data-ng-show="newStopForm.date.$error.required && !newStopForm.name.$error.minlength && !newStopForm.name.$error.required" class="card-data info-color">
+    <div data-ng-show="newStopForm.arrival.$error.required && !newStopForm.name.$error.required && !newStopForm.name.$error.minlength" class="card-data info-color">
         <ul>
             <li><span> Stop arrival date is required to create a new stop</span></li>
         </ul>
     </div>
-    <div data-ng-show="newStopForm.date.$error.pattern && !newStopForm.date.$error.required" class="card-data info-color">
+    <div data-ng-show="newStopForm.arrival.$error.pattern && !newStopForm.name.$error.required && !newStopForm.name.$error.minlength" class="card-data info-color">
         <ul>
             <li><span> Stop arrival date must be in a MM/DD/YYYY format</span></li>
         </ul>

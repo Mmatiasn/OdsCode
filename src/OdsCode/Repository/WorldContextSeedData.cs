@@ -23,15 +23,15 @@ namespace OdsCode.Repository
 
 		public async Task EnsureSeedData()
         {
-            if (await _userManager.FindByEmailAsync("mmatiasn@gmail.com") == null)
+            if (await _userManager.FindByEmailAsync("admin@odscode.com") == null)
             {
-                var user = new WorldUser()
+                var user = new WorldUser
                 {
-                    UserName = "mmatiasn",
-                    Email = "mmatiasn@gmail.com"
+                    UserName = "admin",
+                    Email = "admin@odscode.com"
                 };
 
-                await _userManager.CreateAsync(user, "P@ssw0rd!");
+                await _userManager.CreateAsync(user, "password");
             }
 
 			if (!_context.Trips.Any())
@@ -40,7 +40,7 @@ namespace OdsCode.Repository
                 {
                     DateCreated = DateTime.UtcNow,
                     Name = "US Trip",
-                    UserName = "mmatiasn", //TODO Add UserName
+                    UserName = "admin", //TODO Add UserName
                     Stops = new List<Stop>()
                     {
 						new Stop() {  Name = "Atlanta, GA", Arrival = new DateTime(2014, 6, 4), Latitude = 33.748995, Longitude = -84.387982, Order = 0 },
@@ -61,7 +61,7 @@ namespace OdsCode.Repository
                 {
                     DateCreated = DateTime.UtcNow,
                     Name = "WorldTrip",
-                    UserName = "mmatiasn", //TODO Add UserName
+                    UserName = "admin", //TODO Add UserName
                     Stops = new List<Stop>()
                     {
 						new Stop() { Order = 0, Latitude =  33.748995, Longitude =  -84.387982, Name = "Atlanta, Georgia", Arrival = DateTime.Parse("Jun 3, 2014") },

@@ -50,8 +50,8 @@
                         <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "")">
                             <a class="nav-link" asp-controller="Home" asp-action="Home">Home</a>
                         </li>
-                        <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "TripsHome" ? "active" : "")">
-                            <a class="nav-link" asp-controller="TripsHome" asp-action="TripsHome">Trip Planner</a>
+                        <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Trips" ? "active" : "")">
+                            <a class="nav-link" asp-controller="Trips" asp-action="Trips">Trip Planner</a>
                         </li>
                         <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "YouTube" ? "active" : "")">
                             <a class="nav-link" asp-controller="YouTube" asp-action="YouTube">YouTube</a>
@@ -218,8 +218,16 @@
     <!--/.Footer-->
 
     <!-- LAYOUT SCRIPTS -->
+    
+    <!-- Application Root -->
+<script type="text/javascript">
+    //Production Root
+    var OdsRoot = "/OdsCode";
+    //Local Root
+    //var OdsRoot = "";
+</script>
 
-    <!-- Underscore -->
+<!-- Underscore -->
     <script src="~/lib/underscore/underscore.js"></script>
 
     <!-- Angular -->

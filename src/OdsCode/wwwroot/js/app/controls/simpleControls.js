@@ -12,7 +12,7 @@
                 show: "=displayWhen"
             },
             restrict: "E",
-            templateUrl: "/views/waitCursor.html"
+            templateUrl: OdsRoot + "/views/waitCursor.html"
         };
     }
 

@@ -23,7 +23,7 @@
 
         vm.isBusy = true;
 
-        $http.get("/api/trips/" + vm.paramspName)
+        $http.get(OdsRoot + "/api/trips/" + vm.paramspName)
         .then(function (response) {
             // Success
             vm.getTripName = response.data[0].name;
@@ -47,7 +47,7 @@
             vm.isBusy = true;
             vm.errorMessage = "";
 
-            $http.post("/api/trips/" + vm.paramspName + "/stops", vm.newStop)
+            $http.post(OdsRoot + "/api/trips/" + vm.paramspName + "/stops", vm.newStop)
            .then(function (response) {
                // Success
                vm.stops.push(response.data);

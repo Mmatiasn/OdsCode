@@ -12,17 +12,22 @@
 
         vm.trips = [];
 
+        vm.stops = [];
+
         vm.newTrip = {};
 
         vm.errorMessage = "";
 
         vm.isBusy = true;
 
-        $http.get("/api/trips")
+
+        // Get Get Trips
+        $http.get(OdsRoot + "/api/trips")
             .then(function (response) {
                 // Success
                 angular.copy(response.data, vm.trips);
                 toastr["info"]("Loaded " + vm.trips.length + " trip(s)");
+                _showMap();
             }, function (error) {
                 // Failure
                 vm.errorMessage = "Failed to load data: " + error;
@@ -32,11 +37,13 @@
                 vm.isBusy = false;
             });
 
+
+        // Post Add Trip
         vm.addTrip = function () {
             vm.isBusy = true;
             vm.errorMessage = "";
 
-            $http.post("/api/trips", vm.newTrip)
+            $http.post(OdsRoot + "/api/trips", vm.newTrip)
            .then(function (response) {
                // Success
                vm.trips.push(response.data);
@@ -52,6 +59,59 @@
            });
 
         };
-    }
 
+        // Manages GMAP
+        function _showMap(stops) {
+            if (stops && stops.length > 0) {
+
+                var mapStops = _.map(stops,
+                    function (item) {
+                        return {
+                            lat: item.latitude,
+                            long: item.longitude,
+                            info: item.name
+                        };
+                    });
+
+                // Show Map
+                travelMap.createMap({
+                    stops: mapStops,
+                    selector: "#map",
+                    currentStop: 0,
+                    initialZoom: 3
+                });
+            }
+            else {
+                vm.stops = [
+                    {
+                        arrival: "2016-10-04T00:00:00",
+                        id: 1,
+                        latitude: 33.748995,
+                        longitude: -84.387982,
+                        name: "West Palm Beach, Florida",
+                        order: 0,
+                        userName: "Default",
+                    }
+                ];
+
+                var mapStops = [
+                    {
+                        info: "West Palm Beach, Florida",
+                        lat: 26.714389,
+                        long: -80.053192
+                    }
+                ];
+
+                // Show Map
+                travelMap.createMap({
+                    stops: mapStops,
+                    selector: "#map",
+                    currentStop: 0,
+                    initialZoom: 6
+                });
+
+                vm.stops = [];
+            }
+        }
+    }
 })();

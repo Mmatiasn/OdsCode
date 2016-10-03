@@ -9,25 +9,25 @@
         $routeProvider.when("/", {
             controller: "tripsController",
             controllerAs: "vm",
-            templateUrl: "/views/tripsViews/tripsView.html"
+            templateUrl: OdsRoot + "/views/tripsViews/tripsView.html"
         });
 
         $routeProvider.when("/editor/:tripName", {
             controller: "tripEditorController",
             controllerAs: "vm",
-            templateUrl: "/views/tripsViews/tripEditorView.html"
+            templateUrl: OdsRoot + "/views/tripsViews/tripEditorView.html"
         });
 
         $routeProvider.when("/editor/:tripName/stops", {
             controller: "stopsController",
             controllerAs: "vm",
-            templateUrl: "/views/stopsViews/stopsView.html"
+            templateUrl: OdsRoot + "/views/stopsViews/stopsView.html"
         });
 
         $routeProvider.when("/editor/:tripName/:stopId/editor", {
             controller: "stopEditorController",
             controllerAs: "vm",
-            templateUrl: "/views/stopsViews/stopsEditorView.html"
+            templateUrl: OdsRoot + "/views/stopsViews/stopsEditorView.html"
         });
 
         $routeProvider.otherwise({ redirectTo: "/" });
@@ -35,6 +35,4 @@
     .filter('escape', function () {
         return window.encodeURIComponent;
     });
-
-
 })();
