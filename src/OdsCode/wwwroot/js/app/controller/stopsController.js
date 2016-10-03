@@ -1,34 +1,34 @@
 ﻿// stopsController.js
 
 (function () {
-	"use strict";
+    "use strict";
 
-	angular.module("app-trips")
+    angular.module("app-trips")
     .controller("stopsController", stopsController);
 
-	function stopsController($http, $routeParams) {
+    function stopsController($http, $routeParams) {
 
-	    var vm = this;
+        var vm = this;
 
-	    vm.paramspName = $routeParams.tripName;
+        vm.paramspName = $routeParams.tripName;
 
-	    vm.getTripName = "";
-        vm.getTripDate = ""
+        vm.getTripName = "";
+        vm.getTripDate = "";
 
-	    vm.stops = [];
+        vm.stops = [];
 
-	    vm.newStop = {};
+        vm.newStop = {};
 
-	    vm.errorMessage = "";
+        vm.errorMessage = "";
 
-	    vm.isBusy = true;
+        vm.isBusy = true;
 
-	    $http.get("/api/trips/" + vm.paramspName)
+        $http.get("/api/trips/" + vm.paramspName)
         .then(function (response) {
             // Success
             vm.getTripName = response.data[0].name;
             vm.getTripDate = response.data[0].dateCreated;
-            angular.copy(response.data[0].stops, vm.stops)
+            angular.copy(response.data[0].stops, vm.stops);
             toastr["info"]("Loaded " + vm.stops.length + " Stop(s)");
         }, function (error) {
             // Failure
@@ -43,11 +43,11 @@
             });
         });
 
-	    vm.addStop = function () {
-	        vm.isBusy = true;
-	        vm.errorMessage = "";
+        vm.addStop = function () {
+            vm.isBusy = true;
+            vm.errorMessage = "";
 
-	        $http.post("/api/trips/" + vm.paramspName + "/stops", vm.newStop)
+            $http.post("/api/trips/" + vm.paramspName + "/stops", vm.newStop)
            .then(function (response) {
                // Success
                vm.stops.push(response.data);
@@ -62,6 +62,6 @@
                vm.isBusy = false;
            });
 
-	    };
-	}
+        };
+    }
 })();

@@ -11,7 +11,7 @@
         vm.stops = [];
         vm.newStop = {};
         vm.errorMessage = "";
-        vm.isBusy = true
+        vm.isBusy = true;
 
 
         // GETS ALL STOPS FOR A TRIP
@@ -20,7 +20,7 @@
             // Success
             vm.getName = response.data[0].name;
             vm.dateCreated = response.data[0].dateCreated;
-            angular.copy(response.data[0].stops, vm.stops)
+            angular.copy(response.data[0].stops, vm.stops);
             _showMap(vm.stops);
             toastr["info"]("Loaded " + vm.getName);
         }, function (error) {
@@ -63,7 +63,7 @@
                         lat: item.latitude,
                         long: item.longitude,
                         info: item.name
-                    }
+                    };
                 });
 
                 // Show Map
