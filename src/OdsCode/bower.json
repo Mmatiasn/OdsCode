@@ -3,10 +3,13 @@
   "private": true,
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
     "MDBPro": "^1.0.0",
     "font-awesome": "^4.6.3",
     "jquery-validation": "^1.15.1",
     "jquery-validation-unobtrusive": "^3.2.6",
-    "howler.js": "^2.0.0"
+    "howler.js": "^2.0.0",
+    "travelmap": "^1.0.2",
+    "underscore": "^1.8.3"
   }
 }

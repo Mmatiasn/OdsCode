@@ -29,14 +29,23 @@ namespace OdsCode.Controllers.Api
         [HttpGet("")]
         public JsonResult Get()
         {
-            var trips = _repository.GetUserTripsWithStops(User.Identity.Name);
+            var trips = _repository.GetAllTrips();
+            var results = Mapper.Map<IEnumerable<TripViewModel>>(trips);
+
+            return Json(results);
+        }
+
+        [HttpGet("{tripName}")]
+        public JsonResult Get(string tripName)
+        {
+            var trips = _repository.GetUserTripWithStops(tripName, User.Identity.Name);
             var results = Mapper.Map<IEnumerable<TripViewModel>>(trips);
 
             return Json(results);
         }
 
         [HttpPost("")]
-        public JsonResult Post([FromBody]TripViewModel vm)
+        public async Task<JsonResult> Post([FromBody]TripViewModel vm)
         {
             try
             {
@@ -50,7 +59,7 @@ namespace OdsCode.Controllers.Api
                     _logger.LogInformation("Attempting to save a new trip");
                     _repository.AddTrip(newTrip);
 
-                    if (_repository.SaveAll())
+                    if (await _repository.SaveAll())
                     {
                         Response.StatusCode = (int)HttpStatusCode.Created;
                         return Json(Mapper.Map<TripViewModel>(newTrip));

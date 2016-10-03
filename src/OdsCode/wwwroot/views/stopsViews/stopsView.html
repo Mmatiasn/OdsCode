@@ -1,0 +1,72 @@
+﻿    <div class="card">
+        <!--Card content-->
+        <div class="card-block">
+            <form novalidate name="newStopForm" data-ng-submit="vm.addStop()">
+                <h2 class="h2-responsive">
+                    <span>Trip: </span>
+                    <span class="text-info font-weight-normal">{{ vm.getTripName }}</span>
+                </h2>
+                <h5 class="h5-responsive">Created on: <span class="text-muted">{{ vm.getTripDate | date }}</span></h5>
+                <div class="md-form input-group">
+                    <i class="fa fa-globe prefix" aria-hidden="true"></i>
+                    <input class="form-control" type="text" id="name" name="name" data-ng-model="vm.newStop.name" required data-ng-minlength="5" />
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-success btn-lg" data-ng-disabled="newStopForm.$invalid">Add</button>
+                    </span>
+                    <label for="name">Stop Name</label>
+                </div>
+            </form>
+        </div>
+        <!--/.Card content-->
+
+        <!-- Card footer -->
+        <div data-ng-show="newStopForm.name.$error.required" class="card-data info-color">
+            <ul>
+                <li><span> Stop name is required to add a new stop.</span></li>
+            </ul>
+        </div>
+        <div data-ng-show="newStopForm.name.$error.minlength" class="card-data info-color">
+            <ul>
+                <li><span> Stop name must be at least five characters to add a new stop.</span></li>
+            </ul>
+        </div>
+        <!-- Card footer -->
+    </div>
+    <br>
+    <h4 class="feature-title">
+        You have
+        <span class="tag blue" data-ng-hide="vm.isBusy">{{vm.stops.length}}</span>
+        stops saved
+    </h4>
+    <br>
+    <!--Card Danger-->
+    <div class="card card-danger text-xs-center z-depth-2" data-ng-show="vm.errorMessage">
+        <div class="card-block">
+            <p class="white-text"><strong>Oh snap!</strong><br>{{ vm.errorMessage }}</p>
+        </div>
+    </div>
+    <!--/.Card Danger-->
+
+    <wait-cursor data-display-when="vm.isBusy"></wait-cursor>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Stop Name</th>
+                <th>Arrival Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-show="vm.stops" data-ng-repeat="stop in vm.stops">
+                <td>{{ stop.name }}</td>
+                <td>{{ stop.arrival | date }}</td>
+                <td><a data-ng-href="#/editor/{{ stop.name | escape }}" class="btn btn-sm btn-primary">Manage</a></td>
+            </tr>
+            <tr data-ng-hide="vm.stops.length">
+                <td>Empty</td>
+                <td>Empty</td>
+                <td><a href="#" class="btn btn-sm btn-primary disabled" disabled="disabled">N/A</a></td>
+            </tr>
+        </tbody>
+    </table>

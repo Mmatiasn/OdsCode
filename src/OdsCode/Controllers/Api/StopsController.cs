@@ -8,6 +8,7 @@ using OdsCode.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace OdsCode.Controllers.Api
@@ -29,25 +30,68 @@ namespace OdsCode.Controllers.Api
         }
 
         [HttpGet("")]
-        public IActionResult Get(string tripName)
+        public JsonResult Get(string tripName)
         {
             try
             {
                 var trip = _repository.GetTripByName(tripName);
 
-                return Ok(Mapper.Map<IEnumerable<StopViewModel>>(trip.Stops.OrderBy(s => s.Order).ToList()));
+                Response.StatusCode = (int)HttpStatusCode.OK;
+                return Json(Mapper.Map<IEnumerable<StopViewModel>>(trip.Stops.OrderBy(s => s.Order).ToList()));
             }
             catch (Exception ex)
             {
                 _logger.LogError("Failed to get stops: {0}", ex);
+                //return BadRequest("Failed to get stops");
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new { Message = ex.Message });
             }
-
-            return BadRequest("Failed to get stops");
         }
 
         [HttpPost("")]
-        public async Task<IActionResult> Post(string tripName, [FromBody]StopViewModel vm)
+        public async Task<JsonResult> Post(string tripName, [FromBody]StopViewModel vm)
         {
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    
+                    var newStop = Mapper.Map<Stop>(vm);
+
+                    // Lookup the Geocodes
+                    var result = await _coordsService.GetCoordsAsync(newStop.Name);
+                    if (!result.Success)
+                    {
+                        _logger.LogError(result.Message);
+                    }
+                    else
+                    {
+                        newStop.Latitude = result.Latitude;
+                        newStop.Longitude = result.Longitude;
+                    }
+
+                    // Save to the Datbase
+                    _repository.AddStop(tripName, newStop);
+
+                    if (await _repository.SaveChangesAsync())
+                    {
+                        Response.StatusCode = (int)HttpStatusCode.Created;
+                        return Json(Mapper.Map<Stop>(newStop));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed to save new trip", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json(new { Message = ex.Message });
+            }
+
+            Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            return Json(new { Message = "Failed", ModelState = ModelState });
+
+            #region Old IActionResult Code
+            /*
             try
             {
                 // If the VM is valid
@@ -82,6 +126,9 @@ namespace OdsCode.Controllers.Api
                 _logger.LogError("Failed to save new Stop: {0}", ex);
             }
             return BadRequest("Failed to save new stop");
+            */
+            #endregion
         }
+
     }
 }

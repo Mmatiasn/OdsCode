@@ -11,13 +11,15 @@
     <!-- Font Awesome -->
     <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"> -->
-
     <!-- Bootstrap core CSS -->
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
     <!-- Material Design Bootstrap -->
     <link href="~/lib/MDBPro/css/mdb.css" rel="stylesheet" />
+
+    <!-- Application Styles -->
+    <link href="~/css/OdsCode/OdCode.css" rel="stylesheet" />
+    <!--/. Application Styles -->
 
     <!-- Section Styles -->
     @RenderSection("styles", false)
@@ -48,8 +50,8 @@
                         <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "")">
                             <a class="nav-link" asp-controller="Home" asp-action="Home">Home</a>
                         </li>
-                        <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "TripPlanner" ? "active" : "")">
-                            <a class="nav-link" asp-controller="TripPlanner" asp-action="TripPlanner">Trip Planner</a>
+                        <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "TripsHome" ? "active" : "")">
+                            <a class="nav-link" asp-controller="TripsHome" asp-action="TripsHome">Trip Planner</a>
                         </li>
                         <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "YouTube" ? "active" : "")">
                             <a class="nav-link" asp-controller="YouTube" asp-action="YouTube">YouTube</a>
@@ -113,14 +115,14 @@
 
     <!--Main layout-->
     <main>
-        <div class="container">
+        <div class="container" id="LayoutContainer">
             <!--Section: Follow section format and add feature-box class if you want a more bold look for the section-->
             @RenderBody()
         </div>
     </main>
 
     <!--Footer-->
-    <footer class="page-footer center-on-small-only">
+    <footer class="page-footer center-on-small-only" id="StickyStopFooter">
 
         <!--Footer Links-->
         <div class="container-fluid">
@@ -214,7 +216,27 @@
 
     </footer>
     <!--/.Footer-->
+
     <!-- LAYOUT SCRIPTS -->
+
+    <!-- Underscore -->
+    <script src="~/lib/underscore/underscore.js"></script>
+
+    <!-- Angular -->
+    <script src="~/lib/angular/angular.js"></script>
+
+    <!-- Angular Route -->
+    <script src="~/lib/angular-route/angular-route.js"></script>
+
+    <!-- Gmaps Api -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvq-XCHM8dO19gshvmgcqsILBwLea-QfQ&callback=initMap"></script>
+
+    <!-- Gmaps -->
+    <script src="~/lib/gmaps/gmaps.js"></script>
+
+    <!-- Travelmap -->
+    <script src="~/lib/travelmap/travelmap.js"></script>
+
     <!-- JQuery -->
     <script src="~/lib/jquery/dist/jquery.js"></script>
 
@@ -227,9 +249,17 @@
     <!-- MDB core JavaScript -->
     <script src="~/lib/MDBPro/js/mdb.js"></script>
 
-    <!-- OdsCode Tooltip Initiation-->
-    <script src="~/lib/OdsCode/odscodetooltip.js"></script>
+    <!-- OdsCode Tooltip Initialization -->
+    <script src="~/js/OdsLayout/odscodetooltip.js"></script>
+
+    <!-- OdsCode Toastr Configuration -->
+    <script src="~/js/OdsLayout/odscodetoastr.js"></script>
+
+    <!-- OdsCode Sticky Configuration -->
+    <script src="~/js/OdsLayout/odscodesticky.js"></script>
+
     <!--/. LAYOUT SCRIPTS -->
+
     <!-- SECTION SCRIPTS -->
     @RenderSection("scripts", false)
     <!--/. SECTION SCRIPTS -->

@@ -11,7 +11,7 @@ namespace OdsCode.ViewModels
     public class TripViewModel
     {
         [Required]
-        [StringLength(100, MinimumLength = 5)]
+        [StringLength(100, MinimumLength = 2)]
         public string Name { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
         public IEnumerable<Stop> Stops { get; set; }

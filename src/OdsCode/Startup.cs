@@ -62,7 +62,7 @@ namespace OdsCode
 
             services.AddScoped<IWorldRepository, WorldRepository>(); //MockWorldRepository can be used to test.
 
-            //BingMap is registered.
+            // BingMap is registered.
             services.AddTransient<GeoCoordsService>();
 
             // Is used to create data in the database.
@@ -155,9 +155,9 @@ namespace OdsCode
                     );
 
                 config.MapRoute(
-                    name: "TripPlanner",
-                    template: "TripPlanner/{action}/{id?}",
-                    defaults: new { controller = "TripPlanner", action = "TripPlanner" }
+                    name: "TripsHome",
+                    template: "TripsHome/{action}/{id?}",
+                    defaults: new { controller = "TripsHome", action = "TripsHome" }
                     );
 
                 config.MapRoute(

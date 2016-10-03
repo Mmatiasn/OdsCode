@@ -1,0 +1,73 @@
+﻿<div class="card">
+    <!--Card content-->
+    <div class="card-block">
+        <form novalidate name="newTripForm" data-ng-submit="vm.addTrip()">
+            <h2 class="h2-responsive">
+                <span>My </span>
+                <span class="text-info font-weight-normal"> Trips</span>
+            </h2>
+            <br>
+            <div class="md-form input-group">
+                <i class="fa fa-globe prefix" aria-hidden="true"></i>
+                <input class="form-control" type="text" id="name" name="name" data-ng-model="vm.newTrip.name" required data-ng-minlength="5" />
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-success btn-lg" data-ng-disabled="newTripForm.$invalid">Add</button>
+                </span>
+                <label for="name">Trip Name</label>
+            </div>
+        </form>
+    </div>
+    <!--/.Card content-->
+    <!-- Card footer -->
+    <div data-ng-show="newTripForm.name.$error.required" class="card-data info-color">
+        <ul>
+            <li><span> Trip name is required to add a new trip</span></li>
+        </ul>
+    </div>
+    <div data-ng-show="newTripForm.name.$error.minlength" class="card-data info-color">
+        <ul>
+            <li><span> Trip name must be at least five characters to add a new trip</span></li>
+        </ul>
+    </div>
+    <!-- Card footer -->
+</div>
+
+<br>
+
+<h4 class="feature-title">
+    You have
+    <span class="tag blue">{{vm.trips.length}}</span>
+    trips saved
+</h4>
+<br>
+<!--Card Danger-->
+<div class="card card-danger text-xs-center z-depth-2" data-ng-show="vm.errorMessage">
+    <div class="card-block">
+        <p class="white-text"><strong>Oh snap!</strong><br>{{ vm.errorMessage }}</p>
+    </div>
+</div>
+<!--/.Card Danger-->
+
+<wait-cursor data-display-when="vm.isBusy"></wait-cursor>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Trip Name</th>
+            <th>Date Created</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-show="vm.trips" data-ng-repeat="trip in vm.trips">
+            <td>{{ trip.name }}</td>
+            <td>{{ trip.dateCreated | date }}</td>
+            <td><a data-ng-href="#/editor/{{ trip.name | escape }}" class="btn btn-sm btn-primary">Manage</a></td>
+        </tr>
+        <tr data-ng-hide="vm.trips.length">
+            <td>Empty</td>
+            <td>Empty</td>
+            <td><a href="#" class="btn btn-sm btn-primary disabled" disabled="disabled">N/A</a></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,108 @@
+﻿<!-- Card -->
+<div class="card">
+    <!--Card content-->
+    <div class="card-block">
+        <!--Header-->
+        <h2 class="h2-responsive">
+            <span>Managing </span>
+            <span class="text-info font-weight-normal"> {{ vm.getName || "Unavailable" }}</span>
+        </h2>
+        <h5 class="h5-responsive">
+            <span>Created on </span>
+            <span class="text-muted"> {{ (vm.dateCreated | date) || "Unavailable" }}</span>
+        </h5>
+
+        <br>
+
+        <form novalidate name="newStopForm" data-ng-submit="vm.addStop()">
+            
+            <div class="md-form">
+                <i class="fa fa-map-marker prefix"></i>
+                <input data-ng-disabled="!vm.getName" type="text" name="name" id="name" data-ng-model="vm.newStop.name" required data-ng-minlength="3" class="form-control">
+                <label for="stop-name">Stop Name</label>
+            </div>
+
+            <div class="md-form">
+                <i class="fa fa-calendar prefix"></i>
+                <input data-ng-disabled="!vm.getName"
+                       name="arrival" id="arrival" type="text"
+                       data-ng-model="vm.newStop.arrival"
+                       required class="form-control"
+                       ng-pattern="/^(0?[1-9]|1[012])\/(0?[1-9]|[12][0-9]|3[01])\/((19\d{2})|([2-9]\d{3}))$/">
+                <label for="arrival">Arrival Date</label>
+            </div>
+
+            <div class="text-xs-center">
+                <a class="btn btn-default" href="#/"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
+                <!--<a data-ng-disabled="!vm.getName" class="btn btn-info" data-ng-class="{'disabled': !vm.getName}" data-ng-href="#/editor/{{ vm.getName }}/stops">Manage Stops</a>-->
+                <button data-ng-disabled="newStopForm.$invalid" class="btn btn-success" type="submit" data-ng-class="{'disabled': !vm.getName}">Add Stop</button>
+            </div>
+        </form>
+    </div>
+    <!--/.Card content-->
+    <!-- Card footer -->
+    <div data-ng-show="newStopForm.name.$error.required" class="card-data info-color">
+        <ul>
+            <li><span> Stop name is required to create a new stop</span></li>
+        </ul>
+    </div>
+    <div data-ng-show="newStopForm.name.$error.minlength" class="card-data info-color">
+        <ul>
+            <li><span> Stop name must be at least three characters</span></li>
+        </ul>
+    </div>
+    <div data-ng-show="newStopForm.date.$error.required && !newStopForm.name.$error.minlength && !newStopForm.name.$error.required" class="card-data info-color">
+        <ul>
+            <li><span> Stop arrival date is required to create a new stop</span></li>
+        </ul>
+    </div>
+    <div data-ng-show="newStopForm.date.$error.pattern && !newStopForm.date.$error.required" class="card-data info-color">
+        <ul>
+            <li><span> Stop arrival date must be in a MM/DD/YYYY format</span></li>
+        </ul>
+    </div>
+    <!-- Card footer -->
+</div>
+<!--/. Card -->
+
+<br>
+
+<h4 class="feature-title">
+    This trip contains
+    <span class="tag blue">{{vm.stops.length}}</span>
+    stop(s)
+</h4>
+
+<br>
+
+<!--Card Danger-->
+<div class="card card-danger text-xs-center z-depth-2" data-ng-show="vm.errorMessage">
+    <div class="card-block">
+        <p class="white-text"><strong>Oh snap!</strong><br>{{ vm.errorMessage }}</p>
+    </div>
+</div>
+<!--/.Card Danger-->
+
+
+<wait-cursor data-display-when="vm.isBusy"></wait-cursor>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Stop Name</th>
+            <th>Arrival Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-show="vm.stops" data-ng-repeat="stop in vm.stops">
+            <td>{{ stop.name }}</td>
+            <td>{{ stop.arrival | date }}</td>
+            <td><a data-ng-href="#/editor/{{ trip.name | escape }}" class="btn btn-sm btn-primary">Manage</a></td>
+        </tr>
+        <tr data-ng-hide="vm.stops.length">
+            <td>Empty</td>
+            <td>Empty</td>
+            <td><a href="#" class="btn btn-sm btn-primary disabled" disabled="disabled">N/A</a></td>
+        </tr>
+    </tbody>
+</table>
