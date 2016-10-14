@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Youtube Playlist";
+}
+
+@section Scripts {
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="~/js/app/controls/simpleControls.js"></script>
+    <script src="~/js/app/app-youtube.js"></script>
+    <script src="~/js/app/controller/playListsController.js"></script>
+    <script src="~/js/app/controller/videoController.js"></script>
+    <script src="~/js/app/controls/youtubeControls.js"></script>
+    <script src="~/js/app/services/youTubeApiService.js"></script>
+    @*    <script src="~/js/app/controller/tripEditorController.js"></script>
+    <script src="~/js/app/controller/stopsController.js"></script>
+    <script src="~/js/app/controller/stopEditorController.js"></script>*@
+}
+
+<!--Section: Contact v.1-->
+<section class="section m-b-4" data-ng-app="app-youtube">
+
+    <!--Section heading-->
+    <h1 class="section-heading">@ViewBag.Title</h1>
+    <!--Section sescription-->
+    <!-- <p class="section-description m-b-5">Manage your trip below.</p> -->
+
+    <div class="row">
+
+        <!--Second column-->
+        <div class="col-md-7">
+
+            <div class="sticky">
+                <div class="sticky-map-width">
+
+                    <!--Youtube-->
+                    <youtube class="embed-responsive embed-responsive-16by9" width="640" height="390" videoid="M7lc1UVf-VE"></youtube>
+
+                    <br>
+                    <!--Buttons-->
+                    <div class="row text-xs-center">
+                        <div class="col-md-4">
+                            <a class="btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Back"><i class="fa fa-step-backward"></i></a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a class="btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Play"><i class="fa fa-play"></i></a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a class="btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Next"><i class="fa fa-step-forward"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/Second column-->
+        <!--First column-->
+        <div class="col-md-5" data-ng-view>
+        </div>
+        <!--/First column-->
+
+    </div>
+    
+    <!--Buttons-->
+    <div class="row text-xs-center">
+        <div class="col-md-4">
+            <a class="btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Controller" data-ng-href="#/editor/variable"><i class="fa fa-step-backward"></i></a>
+        </div>
+
+        <div class="col-md-4">
+            <a class="btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Play" data-ng-href="#/editor/variable/videos"><i class="fa fa-play"></i></a>
+        </div>
+
+        <div class="col-md-4">
+            <a class="btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Next" data-ng-href="#/editor/variable/videos/variable"><i class="fa fa-step-forward"></i></a>
+        </div>
+    </div>
+
+</section>
+<!--/Section: Contact v.1-->

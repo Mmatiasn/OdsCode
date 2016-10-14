@@ -3,19 +3,18 @@
 }
 
 @section Scripts {
+    <!-- Gmaps Api -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClVHLUqTOBlEQa-v0Zj0keLRxGUmHZcMg&libraries=places"></script>
     <script src="~/js/app/controls/simpleControls.js"></script>
     <script src="~/js/app/app-trips.js"></script>
-    <script src="~/js/app/controller/tripsController.js"></script>
-    <script src="~/js/app/controller/tripEditorController.js"></script>
-    <script src="~/js/app/controller/stopsController.js"></script>
-    <script src="~/js/app/controller/stopEditorController.js"></script>
-    <script src="~/js/OdsShowMap/OdsShowMap.js"></script>
+    <script src="~/js/app/controllers/tripsController.js"></script>
+    <script src="~/js/app/controllers/tripEditorController.js"></script>
+    <script src="~/js/app/controllers/stopsController.js"></script>
+    <script src="~/js/app/controllers/stopEditorController.js"></script>
 }
 
 <!--Section: Contact v.1-->
 <section class="section m-b-4" data-ng-app="app-trips">
-
-
 
     <!--Section heading-->
     <h1 class="section-heading">@ViewBag.Title</h1>
@@ -27,6 +26,7 @@
         <!--First column-->
         <div class="col-md-5" data-ng-view></div>
         <!--/First column-->
+
         <!--Second column-->
         <div class="col-md-7">
 

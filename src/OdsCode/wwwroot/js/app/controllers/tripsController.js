@@ -62,9 +62,12 @@
 
         // Manages GMAP
         function _showMap(stops) {
+
+            var mapStops;
+
             if (stops && stops.length > 0) {
 
-                var mapStops = _.map(stops,
+                mapStops = _.map(stops,
                     function (item) {
                         return {
                             lat: item.latitude,
@@ -90,11 +93,11 @@
                         longitude: -84.387982,
                         name: "West Palm Beach, Florida",
                         order: 0,
-                        userName: "Default",
+                        userName: "Default"
                     }
                 ];
 
-                var mapStops = [
+                mapStops = [
                     {
                         info: "West Palm Beach, Florida",
                         lat: 26.714389,

@@ -10,6 +10,6 @@
     "commit": "648f15aff1c7c6115d372973864a3878da9e1621"
   },
   "_source": "https://github.com/HPNeo/gmaps.git",
-  "_target": "~0.4.17",
+  "_target": "^0.4.24",
   "_originalSource": "gmaps"
 }

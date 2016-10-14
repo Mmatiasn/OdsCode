@@ -5183,7 +5183,7 @@ Waves.attach('.pagination .page-item .page-link', ['waves-effect']);
 Waves.init();//Preloading script
 
 $(document).ready(function () {
-    $('#preloader-markup').load("/html/preloader.html", function () {
+    $('#preloader-markup').load("mdb-addons/preloader.html", function () {
         $(window).load(function () {
             $('#mdb-preloader').fadeOut('slow');
         });

@@ -55,6 +55,7 @@ namespace OdsCode
             else
             {
                 //Implement a real Mail Service
+                services.AddScoped<IMailService, DebugMailService>();
             }
 
             // AddDbContext is used to tell the webservice about a repository?

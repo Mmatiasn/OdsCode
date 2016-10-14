@@ -9,5 +9,10 @@ namespace OdsCode.Controllers.Web
         {
             return View();
         }
+
+        public IActionResult All()
+        {
+            return View();
+        }
     }
 }
