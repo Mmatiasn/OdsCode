@@ -3,7 +3,7 @@
     $("#map")
         .ready(function () {
             var map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: -34.397, lng: 150.644 },
+                center: { lat: 26.714, lng: -80.053 },
                 zoom: 6
             });
             
