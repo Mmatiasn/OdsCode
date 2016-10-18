@@ -29,19 +29,81 @@ namespace OdsCode.Controllers.Api
         [HttpGet("")]
         public JsonResult Get()
         {
-            var trips = _repository.GetAllTrips();
-            var results = Mapper.Map<IEnumerable<TripViewModel>>(trips);
+            try
+            {
+                var trips = _repository.GetAllTrips();
+                var results = Mapper.Map<IEnumerable<TripViewModel>>(trips);
+                if (trips != null)
+                {
+                    Response.StatusCode = (int)HttpStatusCode.OK;
+                    return Json(results);
+                }
+                Response.StatusCode = (int)HttpStatusCode.NotFound;
+                return Json(results);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed to get all trips: {0}", ex);
+                //return BadRequest("Failed to get stops");
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { Message = ex.Message });
+            }
 
-            return Json(results);
+
         }
 
-        [HttpGet("{tripName}")]
-        public JsonResult Get(string tripName)
+        [HttpGet("{tripId}")]
+        public JsonResult Get(int tripId)
         {
-            var trips = _repository.GetUserTripWithStops(tripName, User.Identity.Name);
-            var results = Mapper.Map<IEnumerable<TripViewModel>>(trips);
+            try
+            {
+                var trips = _repository.GetUserTripWithStops(tripId, User.Identity.Name);
+                var results = Mapper.Map<TripViewModel>(trips);
 
-            return Json(results);
+                if (trips != null)
+                {
+                    Response.StatusCode = (int)HttpStatusCode.OK;
+                    return Json(results);
+                }
+
+                Response.StatusCode = (int)HttpStatusCode.NotFound;
+                return Json(results);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed to get trip: {0}", ex);
+                //return BadRequest("Failed to get stops");
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { Message = ex.Message });
+            }
+        }
+
+        [HttpDelete("{tripId}")]
+        public async Task<JsonResult> Delete(int tripId)
+        {
+            try
+            {
+                var trip = _repository.DeleteUserTripWithStops(tripId, User.Identity.Name);
+                var results = Mapper.Map<TripViewModel>(trip);
+
+                if (results != null)
+                {
+                    if (await _repository.SaveAll())
+                    {
+                        Response.StatusCode = (int)HttpStatusCode.OK;
+                        return Json(null);
+                    }
+                }
+                Response.StatusCode = (int)HttpStatusCode.NotFound;
+                return Json(null);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed to delete trip: {0}", ex);
+                //return BadRequest("Failed to get stops");
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { Message = ex.Message });
+            }
         }
 
         [HttpPost("")]

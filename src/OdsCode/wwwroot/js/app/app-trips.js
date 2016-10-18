@@ -12,22 +12,22 @@
             templateUrl: OdsRoot + "/views/tripsViews/tripsView.html"
         });
 
-        $routeProvider.when("/editor/:tripName", {
+        $routeProvider.when("/editor/:tripId", {
             controller: "tripEditorController",
             controllerAs: "vm",
             templateUrl: OdsRoot + "/views/tripsViews/tripEditorView.html"
         });
 
-        $routeProvider.when("/editor/:tripName/stops", {
+        $routeProvider.when("/editor/:tripId/stops", {
             controller: "stopsController",
             controllerAs: "vm",
             templateUrl: OdsRoot + "/views/stopsViews/stopsView.html"
         });
 
-        $routeProvider.when("/editor/:tripName/:stopId/editor", {
+        $routeProvider.when("/editor/:tripId/stops/:stopId", {
             controller: "stopEditorController",
             controllerAs: "vm",
-            templateUrl: OdsRoot + "/views/stopsViews/stopsEditorView.html"
+            templateUrl: OdsRoot + "/views/stopsViews/stopEditorView.html"
         });
 
         $routeProvider.otherwise({ redirectTo: "/" });

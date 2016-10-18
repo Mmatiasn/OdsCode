@@ -16,27 +16,30 @@
 
         vm.newTrip = {};
 
+        vm.modalData;
+
         vm.errorMessage = "";
 
         vm.isBusy = true;
 
+        vm.getTrips = function () {
+            // Get Get Trips
+            $http.get(OdsRoot + "/api/trips")
+                .then(function (response) {
+                    // Success
+                    angular.copy(response.data, vm.trips);
+                    _showMap();
+                }, function (error) {
+                    // Failure
+                    vm.errorMessage = "Failed to load data: " + error;
+                    toastr["error"]("Failed To Load Trip(s).");
+                })
+                .finally(function () {
+                    vm.isBusy = false;
+                });
+        };
 
-        // Get Get Trips
-        $http.get(OdsRoot + "/api/trips")
-            .then(function (response) {
-                // Success
-                angular.copy(response.data, vm.trips);
-                toastr["info"]("Loaded " + vm.trips.length + " trip(s)");
-                _showMap();
-            }, function (error) {
-                // Failure
-                vm.errorMessage = "Failed to load data: " + error;
-                toastr["error"]("Failed To Load Trip(s).");
-            })
-            .finally(function () {
-                vm.isBusy = false;
-            });
-
+        vm.getTrips();
 
         // Post Add Trip
         vm.addTrip = function () {
@@ -59,6 +62,49 @@
            });
 
         };
+
+        // Delete Remove Trip
+        vm.deleteTrip = function (tripId, tripName) {
+            vm.isBusy = true;
+            vm.errorMessage = "";
+            console.log(tripId);
+
+            $http.delete(OdsRoot + "/api/trips/" + tripId)
+           .then(function (response) {
+               // Success
+               $('.odsModal').modal('hide');
+               toastr["success"](tripName + " Deleted");
+               vm.getTrips();
+           }, function (error) {
+               // Failure
+               vm.errorMessage = "Failed to delete the" + tripName + ": " + error;
+               toastr["error"]("Failed To Delete Trip");
+           })
+           .finally(function () {
+               vm.isBusy = false;
+           });
+
+        };
+
+        vm.modal = function (tripId, tripName) {
+
+            console.log(tripId + " " + tripName);
+
+            $('.odsModal').modal('show');
+
+            vm.modalData = 
+                {
+                    id: tripId,
+                    name: tripName
+                };
+
+        };
+
+        $('.odsModal').on('hidden.bs.modal', function (e) {
+            vm.modalData = null;
+            console.log(e);
+            console.log(vm.modalData)
+        })
 
         // Manages GMAP
         function _showMap(stops) {
@@ -98,15 +144,15 @@
                     handleLocationError(false, infoWindow, map.getCenter());
                 }
 
-
-                function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent(browserHasGeolocation ?
-                                          'Error: The Geolocation service failed.' :
-                                          'Error: Your browser doesn\'t support geolocation.');
-                }
-                
             }
+
+            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                infoWindow.setPosition(pos);
+                infoWindow.setContent(browserHasGeolocation ?
+                                      'Error: The Geolocation service failed.' :
+                                      'Error: Your browser doesn\'t support geolocation.');
+            }
+
         }
     }
 })();

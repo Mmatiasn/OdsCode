@@ -128,19 +128,11 @@ namespace OdsCode.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Arrival");
-
-                    b.Property<double>("Latitude");
-
-                    b.Property<double>("Longitude");
-
                     b.Property<string>("Name");
 
-                    b.Property<int>("Order");
+                    b.Property<DateTime>("StopDate");
 
                     b.Property<int?>("TripId");
-
-                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 

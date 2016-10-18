@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace OdsCode.Controllers.Api
 {
-    [Route("api/trips/{tripName}/stops")]
+    [Route("api/trips/{tripId}/stops")]
     public class StopsController : Controller
     {
         private GeoCoordsService _coordsService;
@@ -30,14 +30,14 @@ namespace OdsCode.Controllers.Api
         }
 
         [HttpGet("")]
-        public JsonResult Get(string tripName)
+        public JsonResult Get(int tripId)
         {
             try
             {
-                var trip = _repository.GetTripByName(tripName);
+                var trip = _repository.GetTripByName(tripId);
 
                 Response.StatusCode = (int)HttpStatusCode.OK;
-                return Json(Mapper.Map<IEnumerable<StopViewModel>>(trip.Stops.OrderBy(s => s.Order).ToList()));
+                return Json(Mapper.Map<IEnumerable<StopViewModel>>(trip.Stops.OrderBy(s => s.StopDate).ToList()));
             }
             catch (Exception ex)
             {
@@ -49,29 +49,15 @@ namespace OdsCode.Controllers.Api
         }
 
         [HttpPost("")]
-        public async Task<JsonResult> Post(string tripName, [FromBody]StopViewModel vm)
+        public async Task<JsonResult> Post(int tripId, [FromBody]StopViewModel vm)
         {
             try
             {
                 if(ModelState.IsValid)
                 {
-                    
                     var newStop = Mapper.Map<Stop>(vm);
 
-                    // Lookup the Geocodes
-                    var result = await _coordsService.GetCoordsAsync(newStop.Name);
-                    if (!result.Success)
-                    {
-                        _logger.LogError(result.Message);
-                    }
-                    else
-                    {
-                        newStop.Latitude = result.Latitude;
-                        newStop.Longitude = result.Longitude;
-                    }
-
-                    // Save to the Datbase
-                    _repository.AddStop(tripName, newStop);
+                    _repository.AddStop(tripId, newStop);
 
                     if (await _repository.SaveChangesAsync())
                     {
@@ -89,45 +75,34 @@ namespace OdsCode.Controllers.Api
 
             Response.StatusCode = (int)HttpStatusCode.BadRequest;
             return Json(new { Message = "Failed", ModelState = ModelState });
+        }
 
-            #region Old IActionResult Code
-            /*
+        [HttpDelete("{stopId}")]
+        public async Task<JsonResult> Delete(int tripId, int stopId)
+        {
             try
             {
-                // If the VM is valid
-                if(ModelState.IsValid)
+                var stop = _repository.DeleteUserTripStop(tripId, stopId, User.Identity.Name);
+                var results = Mapper.Map<StopViewModel>(stop);
+
+                if (results != null)
                 {
-                    var newStop = Mapper.Map<Stop>(vm);
-
-                    // Lookup the Geocodes
-                    var result = await _coordsService.GetCoordsAsync(newStop.Name);
-                    if(!result.Success)
+                    if (await _repository.SaveAll())
                     {
-                        _logger.LogError(result.Message);
-                    }
-                    else
-                    {
-                        newStop.Latitude = result.Latitude;
-                        newStop.Longitude = result.Longitude;
-                    }
-
-                    // Save to the Database
-                    _repository.AddStop(tripName, newStop);
-
-                    if (await _repository.SaveChangesAsync())
-                    {
-                        return Created("$/api/trips/{tripName}/stops/{newStop.Name}",
-                            Mapper.Map<StopViewModel>(newStop));
+                        Response.StatusCode = (int)HttpStatusCode.OK;
+                        return Json(null);
                     }
                 }
+                Response.StatusCode = (int)HttpStatusCode.NotFound;
+                return Json(null);
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed to save new Stop: {0}", ex);
+                _logger.LogError("Failed to delete trip: {0}", ex);
+                //return BadRequest("Failed to get stops");
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { Message = ex.Message });
             }
-            return BadRequest("Failed to save new stop");
-            */
-            #endregion
         }
 
     }

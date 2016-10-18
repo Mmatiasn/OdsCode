@@ -6,11 +6,13 @@ namespace OdsCode.Repository
 {
     public interface IWorldRepository
     {
-        Trip GetTripByName(string tripName);
+        Trip GetTripByName(int tripId);
         void AddTrip(Trip trip);
-        void AddStop(string tripName, Stop newStop);
+        void AddStop(int tripId, Stop newStop);
+        Stop DeleteUserTripStop(int tripId, int stopId, string name);
         IEnumerable<Trip> GetAllTrips();
-        IEnumerable<Trip> GetUserTripWithStops(string name, string tripName);
+        Trip DeleteUserTripWithStops(int tripId, string name);
+        Trip GetUserTripWithStops(int tripId, string name);
         IEnumerable<Trip> GetUserTripsWithStops(string name);
         Task<bool> SaveChangesAsync();
         Task<bool> SaveAll();

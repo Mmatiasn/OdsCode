@@ -25,31 +25,77 @@ namespace OdsCode.Repository
             _context.Add(trip);
         }
 
-        public Trip GetTripByName(string tripName)
+        public Trip GetTripByName(int tripId)
         {
             return _context.Trips
                 .Include(t => t.Stops)
-                .Where(t => t.Name == tripName)
+                .Where(t => t.Id == tripId)
                 .FirstOrDefault();
         }
 
         public IEnumerable<Trip> GetAllTrips()
         {
             _logger.LogInformation("Getting All Trips from the Database");
-            return _context.Trips.ToList();
+            return _context.Trips
+                .Include(t => t.Stops)
+                .ToList();
         }
 
 
 
-        public IEnumerable<Trip> GetUserTripWithStops(string tripName, string name)
+        public Trip GetUserTripWithStops(int tripId, string userName)
         {
             try
             {
                 return _context.Trips
                     .Include(t => t.Stops)
                     .OrderBy(t => t.Name)
-                    .Where(t => t.UserName == name && t.Name == tripName)
-                    .ToList();
+                    .Where(t => t.UserName == userName && t.Id == tripId)
+                    .FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Could not get trips with stops from database", ex);
+                return null;
+            }
+        }
+
+        public Trip DeleteUserTripWithStops(int tripId, string userName)
+        {
+            try
+            {
+                Trip trip = _context.Trips
+                    .Include(t => t.Stops)
+                    .Where(t => t.UserName == userName && t.Id == tripId)
+                    .First();
+                _context.Stops.RemoveRange(trip.Stops);
+                _context.Trips.Remove(trip);
+
+                return trip;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Could not get trips with stops from database", ex);
+                return null;
+            }
+        }
+
+        public Stop DeleteUserTripStop(int tripId, int stopId, string userName)
+        {
+            try
+            {
+                 var trip = _context.Trips
+                    .Include(t => t.Stops)
+                    .Where(t => t.Id == tripId && t.UserName == userName)
+                    .First();
+
+                var stop = trip.Stops
+                    .Where(s => s.Id == stopId)
+                    .First();
+
+                _context.Stops.Remove(stop);
+
+                return stop;
             }
             catch (Exception ex)
             {
@@ -75,9 +121,9 @@ namespace OdsCode.Repository
             }
         }
 
-        public void AddStop(string tripName, Stop newStop)
+        public void AddStop(int tripId, Stop newStop)
         {
-            var trip = GetTripByName(tripName);
+            var trip = GetTripByName(tripId);
 
             if (trip != null)
             {

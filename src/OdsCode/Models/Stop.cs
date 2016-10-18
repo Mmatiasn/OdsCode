@@ -6,10 +6,6 @@ namespace OdsCode.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-        public string UserName { get; set; }
-        public int Order { get; set; }
-        public DateTime Arrival { get; set; }
+        public DateTime StopDate { get; set; }
     }
 }

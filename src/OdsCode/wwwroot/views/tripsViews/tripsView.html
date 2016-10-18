@@ -62,7 +62,24 @@
         <tr data-ng-show="vm.trips" data-ng-repeat="trip in vm.trips">
             <td>{{ trip.name }}</td>
             <td>{{ trip.dateCreated | date }}</td>
-            <td><a data-ng-href="#/editor/{{ trip.name | escape }}" class="btn btn-sm btn-primary">Manage</a></td>
+            <td>
+
+                <!-- Split button -->
+                <div class="btn-group">
+                    <a class="btn btn-sm btn-primary" data-ng-href="#/editor/{{ trip.id }}" title="Edit {{ trip.name }}"><i class="fa fa-edit"></i></a>
+                    <a class="btn btn-sm btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-chevron-down" title="Click to Expand"></i>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" data-ng-href="#/editor/{{ trip.id }}" title="Edit {{ trip.name }}">Edit <i class="fa fa-edit pull-right text-primary"></i></a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" data-ng-click="vm.modal(trip.id, trip.name)" title="Delete {{ trip.name }}?">Delete <i class="fa fa-trash pull-right text-danger"></i></a>
+                    </div>
+                </div>
+                <!--/. Split button -->
+
+            </td>
         </tr>
         <tr data-ng-hide="vm.trips.length">
             <td>Empty</td>
@@ -71,3 +88,28 @@
         </tr>
     </tbody>
 </table>
+
+<!-- Small modal -->
+<div class="modal fade odsModal" tabindex="-1" role="dialog" aria-labelledby="odsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="h4-responsive"><strong>Delete Trip?</strong></h4>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                Are you sure you want to delete <span class="text-info font-weight-bold">{{ vm.modalData.name }}</span>?
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-ng-click="vm.deleteTrip(vm.modalData.id, vm.modalData.name)">Delete <i class="fa fa-trash pull-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/. Small modal -->
