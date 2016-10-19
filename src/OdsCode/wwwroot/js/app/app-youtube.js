@@ -3,7 +3,7 @@
     "use strict";
 
     // Creating the Module
-    angular.module("app-youtube", ["ngRoute"])
+    angular.module("app-youtube", ['ngRoute', 'autocomplete'])
         .config(function($routeProvider) {
 
             $routeProvider.when("/",

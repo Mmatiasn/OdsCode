@@ -92,7 +92,7 @@
 
             $('.odsModal').modal('show');
 
-            vm.modalData = 
+            vm.modalData =
                 {
                     id: tripId,
                     name: tripName
@@ -100,11 +100,13 @@
 
         };
 
-        $('.odsModal').on('hidden.bs.modal', function (e) {
-            vm.modalData = null;
-            console.log(e);
-            console.log(vm.modalData)
-        })
+        $('.odsModal')
+            .on('hidden.bs.modal',
+                function (e) {
+                    vm.modalData = null;
+                    console.log(e);
+                    console.log(vm.modalData)
+                });
 
         // Manages GMAP
         function _showMap(stops) {
@@ -114,12 +116,17 @@
                 toastr["error"]("Failed To Load Map");
             }
             else {
-                
+
                 var map = new google.maps.Map(document.getElementById('map'), {
                     center: { lat: 26.714, lng: -80.053 },
                     zoom: 6
                 });
 
+                $(document).ready(function () {
+                    google.maps.event.addListener(map, "idle", function () {
+                        google.maps.event.trigger(map, 'resize');
+                    });
+                });
 
                 // Try HTML5 geolocation.
                 if (navigator.geolocation) {

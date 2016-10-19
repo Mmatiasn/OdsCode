@@ -1,4 +1,4 @@
-﻿// tripsController.js
+﻿// playListsController.js
 (function () {
     "use strict";
 
@@ -6,54 +6,147 @@
     angular.module("app-youtube")
         .controller("playListsController", playListsController);
 
-    function playListsController(/* $http ← Is needed to get and post */) {
+    function playListsController($scope, $http, $q) {
 
-        var vm = this;
+        $scope.dirty = {};
 
-        vm.trips = [];
+        $scope.playlists = [];
 
-        vm.stops = [];
+        $scope.videos = [];
 
-        vm.newTrip = {};
+        $scope.newPlayList = {};
 
-        vm.errorMessage = "";
+        $scope.modalData;
 
-        vm.isBusy = true;
+        $scope.errorMessage = "";
 
+        $scope.isBusy = true;
 
-        //// Get Get Trips
-        //$http.get(OdsRoot + "/api/trips")
-        //    .then(function (response) {
-        //        // Success
-        //        angular.copy(response.data, vm.trips);
-        //        toastr["info"]("Loaded " + vm.trips.length + " trip(s)");
-        //        _showMap();
-        //    }, function (error) {
-        //        // Failure
-        //        vm.errorMessage = "Failed to load data: " + error;
-        //        toastr["error"]("Failed To Load Trip(s).");
-        //    })
-        //    .finally(function () {
-        //        vm.isBusy = false;
-        //    });
-        //// Post Add Trip
-        //vm.addTrip = function () {
-        //    vm.isBusy = true;
-        //    vm.errorMessage = "";
-        //    $http.post(OdsRoot + "/api/trips", vm.newTrip)
-        //   .then(function (response) {
-        //       // Success
-        //       vm.trips.push(response.data);
-        //       toastr["success"](vm.newTrip.name + " Saved");
-        //       vm.newTrip = {};
-        //   }, function (error) {
-        //       // Failure
-        //       vm.errorMessage = "Failed to save new trip: " + error;
-        //       toastr["error"]("Failed To Save Trip");
-        //   })
-        //   .finally(function () {
-        //       vm.isBusy = false;
-        //   });
-        //};
+        $scope.getPlayList = function () {
+            // Get Get Trips
+            $http.get(OdsRoot + "/api/playlists")
+                .then(function (response) {
+                    // Success
+                    angular.copy(response.data, $scope.playlists);
+                    _showMap();
+                }, function (error) {
+                    // Failure
+                    $scope.errorMessage = "Failed to load data: " + error;
+                    toastr["error"]("Failed To Load Play-List(s).");
+                })
+                .finally(function () {
+                    $scope.isBusy = false;
+                });
+        };
+
+        $scope.getPlayList();
+
+        // Post Add Trip
+        $scope.addTrip = function () {
+            $scope.isBusy = true;
+            $scope.errorMessage = "";
+
+            $http.post(OdsRoot + "/api/trips", $scope.newPlayList)
+           .then(function (response) {
+               // Success
+               $scope.playlists.push(response.data);
+               toastr["success"]($scope.newPlayList.name + " Saved");
+               $scope.newTrip = {};
+           }, function (error) {
+               // Failure
+               $scope.errorMessage = "Failed to save new play-list: " + error;
+               toastr["error"]("Failed To Save Play-List");
+           })
+           .finally(function () {
+               $scope.isBusy = false;
+           });
+
+        };
+
+        // Delete Remove Trip
+        $scope.deleteTrip = function (playListId, playListName) {
+            $scope.isBusy = true;
+            $scope.errorMessage = "";
+
+            $http.delete(OdsRoot + "/api/playlist/" + playListId)
+           .then(function () {
+               // Success
+               $('.odsModal').modal('hide');
+               toastr["success"](playListName + " Deleted");
+               $scope.getTrips();
+           }, function (error) {
+               // Failure
+               $scope.errorMessage = "Failed to delete " + playListName + ": " + error;
+               toastr["error"]("Failed To Delete Play-List");
+           })
+           .finally(function () {
+               $scope.isBusy = false;
+           });
+
+        };
+
+        $scope.modal = function (playListId, playListName) {
+
+            $('.odsModal').modal('show');
+
+            $scope.modalData =
+                {
+                    id: playListId,
+                    name: playListName
+                };
+
+        };
+
+        function get_yt_autocomplete(query) {
+            var deferred = $q.defer();
+            var jsonQuery = JSON.stringify(query);
+            console.log(jsonQuery);
+            // Get YouTube Autocomplete
+            // Simple GET request example:
+            $http({
+                    method: 'GET',
+                    url: OdsRoot + "/api/youtube/search",
+                    params: query
+                })
+                .then(function successCallback(response) {
+                        // this callback will be called asynchronously
+                        // when the response is available
+                        deferred.resolve(response.data);
+                        $scope.errorMessage = "";
+                    },
+                    function errorCallback(error) {
+                        // called asynchronously if an error occurs
+                        // or server returns response with an error status.
+                        $scope.errorMessage = "Failed to find results: " + error;
+                    })
+                .finally(function () {
+                    return deferred.promise;
+                });
+
+            //$http.get(OdsRoot + "/api/youtube/search", jsonQuery)
+            //    .then(function (response) {
+            //        // Success
+            //        deferred.resolve(response.data);
+            //        $scope.errorMessage = "";
+            //    }, function (error) {
+            //        // Failure
+            //        $scope.errorMessage = "Failed to find results: " + error;
+            //    })
+            //    .finally(function () {
+            //        return deferred.promise;
+            //    });
+        }
+
+        $scope.autocomplete_yt = {
+            suggest: get_yt_autocomplete,
+            on_error: console.log
+        };
+
+        $('.odsModal')
+            .on('hidden.bs.modal',
+                function (e) {
+                    $scope.modalData = null;
+                });
+
     }
 })();

@@ -20,7 +20,6 @@
     <!-- Application Styles -->
     <link href="~/css/OdsCode/OdCode.css" rel="stylesheet" />
     <!--/. Application Styles -->
-
     <!-- Section Styles -->
     @RenderSection("styles", false)
     <!--/. Section Styles -->
@@ -115,14 +114,17 @@
 
     <!--Main layout-->
     <main>
-        <div class="container" id="LayoutContainer">
+        <div class="container-fluid" id="LayoutContainer">
             <!--Section: Follow section format and add feature-box class if you want a more bold look for the section-->
             @RenderBody()
         </div>
     </main>
 
+    <!-- Sticky Stop-->
+    <div id="StickyStopFooter"></div>
+    <!--/. Sticky Stop-->
     <!--Footer-->
-    <footer class="page-footer center-on-small-only" id="StickyStopFooter">
+    <footer class="page-footer center-on-small-only">
 
         <!--Footer Links-->
         <div class="container-fluid">
@@ -195,21 +197,20 @@
         <!--Social buttons-->
         <div class="social-section">
             <ul>
-                <li><a class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
-                <li><a class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
-                <li><a class="btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
-                <li><a class="btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></a></li>
-                <li><a class="btn-floating btn-small btn-git"><i class="fa fa-github"> </i></a></li>
-                <li><a class="btn-floating btn-small btn-pin"><i class="fa fa-pinterest"> </i></a></li>
-                <li><a class="btn-floating btn-small btn-ins"><i class="fa fa-instagram"> </i></a></li>
+                <li><a class="btn btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
+                <li><a class="btn btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
+                <li><a class="btn btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
+                <li><a class="btn btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></a></li>
+                <li><a class="btn btn-floating btn-small btn-git"><i class="fa fa-github"> </i></a></li>
+                <li><a class="btn btn-floating btn-small btn-pin"><i class="fa fa-pinterest"> </i></a></li>
+                <li><a class="btn btn-floating btn-small btn-ins"><i class="fa fa-instagram"> </i></a></li>
             </ul>
         </div>
         <!--/.Social buttons-->
-
         <!--Copyright-->
         <div class="footer-copyright">
             <div class="container-fluid">
-                © @System.DateTime.Now.Year Copyright: <a href="http://pbcgov.org/"> Palm Beach County </a>
+                © @DateTime.Now.Year Copyright: <a href="http://pbcgov.org/"> Matias Miranda Noriega </a>
 
             </div>
         </div>
@@ -217,16 +218,14 @@
 
     </footer>
     <!--/.Footer-->
-
     <!-- LAYOUT SCRIPTS -->
-    
     <!-- Application Root -->
-<script type="text/javascript">
-    //Production Root
-    //var OdsRoot = "/OdsCode";
-    //Local Root
-    var OdsRoot = "";
-</script>
+    <script type="text/javascript">
+        //Production Root
+        //var OdsRoot = "/OdsCode";
+        //Local Root
+        var OdsRoot = "";
+    </script>
     <!-- Underscore ^1.8.3 -->
     <script src="~/lib/underscore/underscore.js"></script>
 
@@ -258,7 +257,6 @@
     <script src="~/js/OdsLayout/odscodesticky.js"></script>
 
     <!--/. LAYOUT SCRIPTS -->
-
     <!-- SECTION SCRIPTS -->
     @RenderSection("scripts", false)
     <!--/. SECTION SCRIPTS -->

@@ -1,1 +1,122 @@
-﻿<h1> playListsView </h1>
+﻿<div class="card">
+    <!--Card content-->
+    <div class="card-block">
+        <form novalidate name="newPlayListForm" data-ng-submit="addPlayList()">
+            <h2 class="h2-responsive">
+                <span>My </span>
+                <span class="text-info font-weight-normal"> Play-List</span>
+            </h2>
+            <br>
+            <div class="md-form input-group">
+                <i class="fa fa-youtube-play prefix" aria-hidden="true"></i>
+                <div autocomplete>
+                    <input class="form-control"
+                           type="text" id="name"
+                           name="name"
+                           data-ng-model="dirty.value"
+                           required data-ng-minlength="3"
+                           autocomplete-item="autocomplete_yt"/>
+                </div>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-success btn-lg" data-ng-disabled="newPlayListForm.$invalid">Add</button>
+                </span>
+                <label for="name">Play-List Name</label>
+            </div>
+        </form>
+    </div>
+    <!--/.Card content-->
+    <!-- Card footer -->
+    <div data-ng-show="newPlayListForm.name.$error.required" class="card-data info-color">
+        <ul>
+            <li><span> Play-list name is required to add a play-list.</span></li>
+        </ul>
+    </div>
+    <div data-ng-show="newTripForm.name.$error.minlength" class="card-data info-color">
+        <ul>
+            <li><span> Play-list name must be at least three characters long.</span></li>
+        </ul>
+    </div>
+    <!-- Card footer -->
+</div>
+
+<br>
+
+<h4 class="feature-title">
+    You have
+    <span class="tag blue">{{playlists.length}}</span>
+    play-list saved
+</h4>
+<br>
+<!--Card Danger-->
+<div class="card card-danger text-xs-center z-depth-2" data-ng-show="errorMessage">
+    <div class="card-block">
+        <p class="white-text"><strong>Oh snap!</strong><br>{{ errorMessage }}</p>
+    </div>
+</div>
+<!--/.Card Danger-->
+
+<wait-cursor data-display-when="isBusy"></wait-cursor>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Play-List Name</th>
+            <th>Date Created</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-show="playlists" data-ng-repeat="playlist in playlists">
+            <td>{{ playlist.name }}</td>
+            <td>{{ playlist.dateCreated | date }}</td>
+            <td>
+
+                <!-- Split button -->
+                <div class="btn-group">
+                    <a class="btn btn-sm btn-primary" data-ng-href="#/editor/{{ playlist.id }}" title="Edit {{ playlist.name }}"><i class="fa fa-edit"></i></a>
+                    <a class="btn btn-sm btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-chevron-down" title="Click to Expand"></i>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" data-ng-href="#/editor/{{ playlist.id }}" title="Edit {{ playlist.name }}">Edit <i class="fa fa-edit pull-right text-primary"></i></a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" data-ng-click="vm.modal(trip.id, trip.name)" title="Delete {{ playlist.name }}?">Delete <i class="fa fa-trash pull-right text-danger"></i></a>
+                    </div>
+                </div>
+                <!--/. Split button -->
+
+            </td>
+        </tr>
+        <tr data-ng-hide="playlist.length">
+            <td>Empty</td>
+            <td>Empty</td>
+            <td><a href="#" class="btn btn-sm btn-primary disabled" disabled="disabled">N/A</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Small modal -->
+<div class="modal fade odsModal" tabindex="-1" role="dialog" aria-labelledby="odsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="h4-responsive"><strong>Delete Play-List?</strong></h4>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                Are you sure you want to delete <span class="text-info font-weight-bold">{{ modalData.name }}</span>?
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-ng-click="vm.deletePlaylist(modalData.id, modalData.name)">Delete <i class="fa fa-trash pull-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/. Small modal -->

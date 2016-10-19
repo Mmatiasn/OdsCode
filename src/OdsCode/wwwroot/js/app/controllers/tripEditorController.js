@@ -255,7 +255,7 @@
                                     lat: position.coords.latitude,
                                     lng: position.coords.longitude
                                 };
-                                $scope.infowindow = new google.maps.InfoWindow({ map: $scope.map }); 
+                                $scope.infowindow = new google.maps.InfoWindow({ map: $scope.map });
                                 $scope.infowindow.setOptions(
                                 {
                                     content: '<h3><span class="tag blue"><i class="fa fa-map-marker" aria-hidden="true"></i></span> My Location </h3>'
@@ -276,6 +276,7 @@
                 });
 
                 $scope.directionsDisplay.setMap($scope.map);
+                $scope.directionsDisplay.setPanel(document.getElementById('directionsPanel'));
 
             }
             else {

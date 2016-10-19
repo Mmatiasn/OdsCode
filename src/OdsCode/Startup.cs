@@ -63,8 +63,8 @@ namespace OdsCode
 
             services.AddScoped<IWorldRepository, WorldRepository>(); //MockWorldRepository can be used to test.
 
-            // BingMap is registered.
-            services.AddTransient<GeoCoordsService>();
+            // YouTube Service is registered.
+            services.AddTransient<YouTubeSearchService>();
 
             // Is used to create data in the database.
             services.AddTransient<WorldContextSeedData>();

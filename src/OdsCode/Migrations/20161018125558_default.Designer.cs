@@ -8,8 +8,8 @@ using OdsCode.Repository;
 namespace OdsCode.Migrations
 {
     [DbContext(typeof(WorldContext))]
-    [Migration("20161015034445_Initial")]
-    partial class Initial
+    [Migration("20161018125558_default")]
+    partial class @default
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

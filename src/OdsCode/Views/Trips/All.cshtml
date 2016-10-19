@@ -11,6 +11,7 @@
     <script src="~/js/app/controllers/tripEditorController.js"></script>
     <script src="~/js/app/controllers/stopsController.js"></script>
     <script src="~/js/app/controllers/stopEditorController.js"></script>
+    <script src="~/js/app/controls/mapDisplayControls.js"></script>
 }
 
 <!--Section: Contact v.1-->
@@ -24,20 +25,18 @@
     <div class="row">
 
         <!--First column-->
-        <div class="col-md-5" data-ng-view></div>
-        <!--/First column-->
-
+        <div class="col-md-3" data-ng-view></div>
+        <!--/. First column-->
         <!--Second column-->
-        <div class="col-md-7">
+        <div class="col-md-9" data-ng-controller="mapDisplayControls">
 
-            <div class="sticky">
-                <div class="sticky-map-width sticky-map-height" style="height: 700px;">
-
+            <div class="sticky map-sticky-position">
+                <div class="row">
+                    <div data-ng-class="mapColSize">
                         <!--Google map-->
-                        <div id="map" class="z-depth-1-half map-container sticky-map-height"></div>
-
+                        <div id="map" class="z-depth-1-half map-container"></div>
+                        
                         <br>
-                        <!--Buttons-->
                         <div class="row text-xs-center">
                             <div class="col-md-4">
                                 <a class="btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Plan Your Trip"><i class="fa fa-map"></i></a>
@@ -51,10 +50,12 @@
                                 <a class="btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Search For Adventures"><i class="fa fa-search"></i></a>
                             </div>
                         </div>
-                    <!--/Second column-->
+                    </div>
                 </div>
             </div>
+
         </div>
+        <!--/Second column-->
     </div>
 
 </section>

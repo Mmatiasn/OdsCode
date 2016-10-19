@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace OdsCode.Migrations
 {
-    public partial class Initial : Migration
+    public partial class @default : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

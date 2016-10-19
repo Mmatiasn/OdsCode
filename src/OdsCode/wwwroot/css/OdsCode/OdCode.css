@@ -7,23 +7,32 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-    .sticky-map-width {
-        width: 390px;
-    }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-    .sticky-map-width {
-        width: 518.33px;
-    }
 }
 
 @media (min-width: 1200px) {
-    .sticky-map-width {
-        width: 635px;
-    }
 }
 
-.sticky-map-height {
-    height: 600px;
+.map-sticky-position {
+    min-width: 200px;
+    width: 100%;
+    min-height: 200px;
+    height: 800px;
+}
+
+#map {
+    min-width: 200px;
+    width: 100%;
+    min-height: 200px;
+    height: 725px;
+}
+
+.mapscrolling {
+    width: 73.85%;
+}
+
+#StickyStopFooter {
+    height: 3px;
 }
