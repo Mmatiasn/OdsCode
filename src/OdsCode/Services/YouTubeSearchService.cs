@@ -1,9 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace OdsCode.Services
@@ -23,13 +26,17 @@ namespace OdsCode.Services
         public async Task<YouTubeSearchResult> SearchYouTubeAsync(string query)
         {
             var result = new YouTubeSearchResult();
-
+            var errorMessage = "";
             try
             {
                 string encodedName = WebUtility.UrlEncode(query);
                 Uri url = new Uri($"http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q={encodedName}");
                 HttpClient client = new HttpClient();
-                var jsonResults = JObject.Parse(await client.GetAsync(url));
+                Stream streamResult = await client.GetStreamAsync(url);
+                StreamReader reader = new StreamReader(streamResult);
+               
+                errorMessage = reader.ReadToEnd();
+                JObject jsonResults = JObject.Parse(reader.ReadToEnd());
 
                 result.Success = true;
                 result.Message = "Success getting search results";
@@ -38,7 +45,7 @@ namespace OdsCode.Services
             catch (Exception ex)
             {
                 result.Success = false;
-                result.Message = $"Server error getting search results: {ex}";
+                result.Message = $"Server error getting search results: {errorMessage} | {ex}";
                 result.SearchResults = null;
             }
 
