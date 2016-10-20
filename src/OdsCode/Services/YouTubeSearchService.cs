@@ -30,13 +30,11 @@ namespace OdsCode.Services
             try
             {
                 string encodedName = WebUtility.UrlEncode(query);
-                Uri url = new Uri($"http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q={encodedName}");
+                Uri url = new Uri($"http://suggestqueries.google.com/complete/search?client=chrome&ds=yt&q={encodedName}");
                 HttpClient client = new HttpClient();
                 Stream streamResult = await client.GetStreamAsync(url);
                 StreamReader reader = new StreamReader(streamResult);
-               
-                errorMessage = reader.ReadToEnd();
-                JObject jsonResults = JObject.Parse(reader.ReadToEnd());
+                JArray jsonResults = JArray.Parse(reader.ReadToEnd());
 
                 result.Success = true;
                 result.Message = "Success getting search results";

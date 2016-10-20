@@ -27,8 +27,9 @@
             $http.get(OdsRoot + "/api/playlists")
                 .then(function (response) {
                     // Success
+                    console.log(response);
                     angular.copy(response.data, $scope.playlists);
-                    _showMap();
+                    // Remember you can do something here too..._showMap();
                 }, function (error) {
                     // Failure
                     $scope.errorMessage = "Failed to load data: " + error;
@@ -42,16 +43,16 @@
         $scope.getPlayList();
 
         // Post Add Trip
-        $scope.addTrip = function () {
+        $scope.addPlayList = function () {
             $scope.isBusy = true;
             $scope.errorMessage = "";
 
-            $http.post(OdsRoot + "/api/trips", $scope.newPlayList)
+            $http.post(OdsRoot + "/api/playlists", $scope.newPlayList)
            .then(function (response) {
                // Success
                $scope.playlists.push(response.data);
                toastr["success"]($scope.newPlayList.name + " Saved");
-               $scope.newTrip = {};
+               $scope.newPlayList = {};
            }, function (error) {
                // Failure
                $scope.errorMessage = "Failed to save new play-list: " + error;
@@ -106,7 +107,7 @@
             $http({
                     method: 'GET',
                     url: OdsRoot + "/api/youtube/search",
-                    params: query
+                    params: { q: query }
                 })
                 .then(function successCallback(response) {
                         // this callback will be called asynchronously

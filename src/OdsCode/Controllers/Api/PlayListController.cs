@@ -1,26 +1,25 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using OdsCode.Models;
-using OdsCode.Repository;
-using OdsCode.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Net;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using OdsCode.Repository;
+using Microsoft.Extensions.Logging;
+using AutoMapper;
+using System.Net;
+using OdsCode.Models;
+using OdsCode.ViewModels;
 
 namespace OdsCode.Controllers.Api
 {
-    [Route("api/trips")]
-    [Authorize]
-    public class TripsController : Controller
+    [Route("api/playlists")]
+    public class PlayListController : Controller
     {
-        private ILogger<TripsController> _logger;
+        private ILogger<PlayListController> _logger;
         private IWorldRepository _repository;
 
-        public TripsController(IWorldRepository repository,
-            ILogger<TripsController> logger)
+        public PlayListController(IWorldRepository repository,
+            ILogger<PlayListController> logger)
         {
             _repository = repository;
             _logger = logger;
@@ -31,62 +30,62 @@ namespace OdsCode.Controllers.Api
         {
             try
             {
-                var trips = _repository.GetAllTrips(User.Identity.Name);
-                var results = Mapper.Map<IEnumerable<TripViewModel>>(trips);
-                if (trips != null)
-                {
-                    Response.StatusCode = (int)HttpStatusCode.OK;
-                    return Json(results);
-                }
-                Response.StatusCode = (int)HttpStatusCode.NotFound;
-                return Json(results);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Failed to get all trips: {0}", ex);
-                //return BadRequest("Failed to get stops");
-                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                return Json(new { Message = ex.Message });
-            }
-
-
-        }
-
-        [HttpGet("{tripId}")]
-        public JsonResult Get(int tripId)
-        {
-            try
-            {
-                var trips = _repository.GetUserTripWithStops(tripId, User.Identity.Name);
-                var results = Mapper.Map<TripViewModel>(trips);
-
-                if (trips != null)
-                {
-                    Response.StatusCode = (int)HttpStatusCode.OK;
-                    return Json(results);
-                }
-
-                Response.StatusCode = (int)HttpStatusCode.NotFound;
-                return Json(results);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Failed to get trip: {0}", ex);
-                //return BadRequest("Failed to get stops");
-                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                return Json(new { Message = ex.Message });
-            }
-        }
-
-        [HttpDelete("{tripId}")]
-        public async Task<JsonResult> Delete(int tripId)
-        {
-            try
-            {
-                var trip = _repository.DeleteUserTripWithStops(tripId, User.Identity.Name);
-                var results = Mapper.Map<TripViewModel>(trip);
-
+                var playlists = _repository.GetAllPlayLists(User.Identity.Name);
+                var results = Mapper.Map<IEnumerable<PlayListViewModel>>(playlists);
                 if (results != null)
+                {
+                    Response.StatusCode = (int)HttpStatusCode.OK;
+                    return Json(results);
+                }
+                Response.StatusCode = (int)HttpStatusCode.NotFound;
+                return Json(results);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed to get all play-lists: {0}", ex);
+                //return BadRequest("Failed to get stops");
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { Message = ex.Message });
+            }
+
+
+        }
+
+        [HttpGet("{playListsId}")]
+        public JsonResult Get(int playListsId)
+        {
+            try
+            {
+                var playlist = _repository.GetUserPlayListWithVideos(playListsId, User.Identity.Name);
+                var results = Mapper.Map<PlayListViewModel>(playlist);
+
+                if (playlist != null)
+                {
+                    Response.StatusCode = (int)HttpStatusCode.OK;
+                    return Json(results);
+                }
+
+                Response.StatusCode = (int)HttpStatusCode.NotFound;
+                return Json(results);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Failed to get play-list with videos: {0}", ex);
+                //return BadRequest("Failed to get stops");
+                Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                return Json(new { Message = ex.Message });
+            }
+        }
+
+        [HttpDelete("{playListsId}")]
+        public async Task<JsonResult> Delete(int playListsId)
+        {
+            try
+            {
+                var playlist = _repository.DeleteUserTripWithStops(playListsId, User.Identity.Name);
+                var results = Mapper.Map<PlayListViewModel>(playlist);
+
+                if (playlist != null)
                 {
                     if (await _repository.SaveAll())
                     {
@@ -99,7 +98,7 @@ namespace OdsCode.Controllers.Api
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed to delete trip: {0}", ex);
+                _logger.LogError("Failed to delete play-list: {0}", ex);
                 //return BadRequest("Failed to get stops");
                 Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 return Json(new { Message = ex.Message });
@@ -107,30 +106,30 @@ namespace OdsCode.Controllers.Api
         }
 
         [HttpPost("")]
-        public async Task<JsonResult> Post([FromBody]TripViewModel vm)
+        public async Task<JsonResult> Post([FromBody]PlayListViewModel vm)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var newTrip = Mapper.Map<Trip>(vm);
+                    var newPlayLists = Mapper.Map<PlayList>(vm);
 
-                    newTrip.UserName = User.Identity.Name;
+                    newPlayLists.UserName = User.Identity.Name;
 
                     // Save to the Database
-                    _logger.LogInformation("Attempting to save a new trip");
-                    _repository.AddTrip(newTrip);
+                    _logger.LogInformation("Attempting to save a new play-list");
+                    _repository.AddPlayList(newPlayLists);
 
                     if (await _repository.SaveAll())
                     {
                         Response.StatusCode = (int)HttpStatusCode.Created;
-                        return Json(Mapper.Map<TripViewModel>(newTrip));
+                        return Json(Mapper.Map<PlayListViewModel>(newPlayLists));
                     }
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError("Failed to save new trip", ex);
+                _logger.LogError("Failed to save new play-list", ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json(new { Message = ex.Message });
             }

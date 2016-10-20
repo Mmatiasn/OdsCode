@@ -9,14 +9,11 @@
             <br>
             <div class="md-form input-group">
                 <i class="fa fa-youtube-play prefix" aria-hidden="true"></i>
-                <div autocomplete>
                     <input class="form-control"
                            type="text" id="name"
                            name="name"
-                           data-ng-model="dirty.value"
-                           required data-ng-minlength="3"
-                           autocomplete-item="autocomplete_yt"/>
-                </div>
+                           data-ng-model="newPlayList.name"
+                           required data-ng-minlength="3"/>
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-success btn-lg" data-ng-disabled="newPlayListForm.$invalid">Add</button>
                 </span>
@@ -28,12 +25,12 @@
     <!-- Card footer -->
     <div data-ng-show="newPlayListForm.name.$error.required" class="card-data info-color">
         <ul>
-            <li><span> Play-list name is required to add a play-list.</span></li>
+            <li><h4 class="h4-responsive"><span> Play-list name is required to add a play-list. </span></h4></li>
         </ul>
     </div>
-    <div data-ng-show="newTripForm.name.$error.minlength" class="card-data info-color">
+    <div data-ng-show="newPlayListForm.name.$error.minlength" class="card-data info-color">
         <ul>
-            <li><span> Play-list name must be at least three characters long.</span></li>
+            <li><h4 class="h4-responsive"><span> Play-list name must be at least three characters long.</span></h4></li>
         </ul>
     </div>
     <!-- Card footer -->
@@ -88,7 +85,7 @@
 
             </td>
         </tr>
-        <tr data-ng-hide="playlist.length">
+        <tr data-ng-hide="playlists.length">
             <td>Empty</td>
             <td>Empty</td>
             <td><a href="#" class="btn btn-sm btn-primary disabled" disabled="disabled">N/A</a></td>

@@ -25,23 +25,36 @@ namespace OdsCode.Repository
             _context.Add(trip);
         }
 
-        public Trip GetTripByName(int tripId)
+        public void AddPlayList(PlayList playList)
+        {
+            _context.Add(playList);
+        }
+
+        public Trip GetTripById(int tripId, string userName)
         {
             return _context.Trips
                 .Include(t => t.Stops)
-                .Where(t => t.Id == tripId)
+                .Where(t => t.Id == tripId && t.UserName == userName)
                 .FirstOrDefault();
         }
 
-        public IEnumerable<Trip> GetAllTrips()
+        public IEnumerable<Trip> GetAllTrips(string userName)
         {
             _logger.LogInformation("Getting All Trips from the Database");
             return _context.Trips
                 .Include(t => t.Stops)
+                .Where(t => t.UserName == userName)
                 .ToList();
         }
 
-
+        public IEnumerable<PlayList> GetAllPlayLists(string userName)
+        {
+            _logger.LogInformation("Getting All Play-list from the Database");
+            return _context.PlayLists
+                .Include(t => t.Videos)
+                .Where(t => t.UserName == userName)
+                .ToList();
+        }
 
         public Trip GetUserTripWithStops(int tripId, string userName)
         {
@@ -51,6 +64,23 @@ namespace OdsCode.Repository
                     .Include(t => t.Stops)
                     .OrderBy(t => t.Name)
                     .Where(t => t.UserName == userName && t.Id == tripId)
+                    .FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Could not get trips with stops from database", ex);
+                return null;
+            }
+        }
+
+        public PlayList GetUserPlayListWithVideos(int playListsId, string userName)
+        {
+            try
+            {
+                return _context.PlayLists
+                    .Include(t => t.Videos)
+                    .OrderBy(t => t.Name)
+                    .Where(t => t.UserName == userName && t.Id == playListsId)
                     .FirstOrDefault();
             }
             catch (Exception ex)
@@ -121,9 +151,9 @@ namespace OdsCode.Repository
             }
         }
 
-        public void AddStop(int tripId, Stop newStop)
+        public void AddStop(int tripId, string userName, Stop newStop)
         {
-            var trip = GetTripByName(tripId);
+            var trip = GetTripById(tripId, userName);
 
             if (trip != null)
             {

@@ -34,7 +34,7 @@ namespace OdsCode.Controllers.Api
         {
             try
             {
-                var trip = _repository.GetTripByName(tripId);
+                var trip = _repository.GetTripById(tripId, User.Identity.Name);
 
                 Response.StatusCode = (int)HttpStatusCode.OK;
                 return Json(Mapper.Map<IEnumerable<StopViewModel>>(trip.Stops.OrderBy(s => s.StopDate).ToList()));
@@ -57,7 +57,7 @@ namespace OdsCode.Controllers.Api
                 {
                     var newStop = Mapper.Map<Stop>(vm);
 
-                    _repository.AddStop(tripId, newStop);
+                    _repository.AddStop(tripId, User.Identity.Name, newStop);
 
                     if (await _repository.SaveChangesAsync())
                     {

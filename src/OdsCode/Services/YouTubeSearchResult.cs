@@ -6,6 +6,6 @@ namespace OdsCode.Services
     {
         public bool Success { get; set; }
         public string Message { get; set; }
-        public JObject SearchResults { get; set; }
+        public JArray SearchResults { get; set; }
     }
 }

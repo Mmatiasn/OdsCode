@@ -127,6 +127,8 @@ namespace OdsCode
             {
                 config.CreateMap<TripViewModel, Trip>().ReverseMap();
                 config.CreateMap<StopViewModel, Stop>().ReverseMap();
+                config.CreateMap<PlayListViewModel, PlayList>().ReverseMap();
+                config.CreateMap<VideoViewModel, Video>().ReverseMap();
             });
 
             if (env.IsDevelopment())

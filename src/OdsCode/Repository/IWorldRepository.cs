@@ -6,14 +6,17 @@ namespace OdsCode.Repository
 {
     public interface IWorldRepository
     {
-        Trip GetTripByName(int tripId);
+        Trip GetTripById(int tripId, string userName);
         void AddTrip(Trip trip);
-        void AddStop(int tripId, Stop newStop);
-        Stop DeleteUserTripStop(int tripId, int stopId, string name);
-        IEnumerable<Trip> GetAllTrips();
-        Trip DeleteUserTripWithStops(int tripId, string name);
-        Trip GetUserTripWithStops(int tripId, string name);
-        IEnumerable<Trip> GetUserTripsWithStops(string name);
+        void AddPlayList(PlayList playList);
+        void AddStop(int tripId, string userName, Stop newStop);
+        Stop DeleteUserTripStop(int tripId, int stopId, string userName);
+        IEnumerable<Trip> GetAllTrips(string userName);
+        IEnumerable<PlayList> GetAllPlayLists(string userName);
+        Trip DeleteUserTripWithStops(int tripId, string userName);
+        Trip GetUserTripWithStops(int tripId, string userName);
+        PlayList GetUserPlayListWithVideos(int playListsId, string userName);
+        IEnumerable<Trip> GetUserTripsWithStops(string userName);
         Task<bool> SaveChangesAsync();
         Task<bool> SaveAll();
     }

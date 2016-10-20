@@ -18,6 +18,9 @@ namespace OdsCode.Repository
         public DbSet<Trip> Trips { get; set; }
         public DbSet<Stop> Stops { get; set; }
 
+        public DbSet<PlayList> PlayLists { get; set; }
+        public DbSet<Video> Videos { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

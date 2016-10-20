@@ -13,7 +13,7 @@ using OdsCode.ViewModels;
 
 namespace OdsCode.Controllers.Api
 {
-    [Route("api/youtube/{ytQuery}")]
+    [Route("api/youtube/")]
     public class YouTubeSearchController : Controller
     {
         private YouTubeSearchService _youTubeSearchService;
@@ -26,14 +26,14 @@ namespace OdsCode.Controllers.Api
             _youTubeSearchService = youTubeSearchService;
         }
 
-        [HttpGet("")]
-        public async Task<JsonResult> Get(string ytQuery)
+        [HttpGet("search")]
+        public async Task<JsonResult> Get([FromQuery]string q)
         {
             try
             {
                 var ytSearch = _youTubeSearchService;
 
-                YouTubeSearchResult ytResult = await ytSearch.SearchYouTubeAsync(ytQuery);
+                YouTubeSearchResult ytResult = await ytSearch.SearchYouTubeAsync(q);
 
                 Response.StatusCode = (int)HttpStatusCode.OK;
                 return Json(ytResult);
