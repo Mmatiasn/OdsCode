@@ -82,7 +82,7 @@ namespace OdsCode.Controllers.Api
         {
             try
             {
-                var playlist = _repository.DeleteUserTripWithStops(playListsId, User.Identity.Name);
+                var playlist = _repository.DeleteUserPlayListWithVideos(playListsId, User.Identity.Name);
                 var results = Mapper.Map<PlayListViewModel>(playlist);
 
                 if (playlist != null)

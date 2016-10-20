@@ -56,7 +56,7 @@ const Collapse = (($) => {
   }
 
   const Selector = {
-    ACTIVES     : '.card > .in, .card > .collapsing',
+    ACTIVES     : '.panel > .in, .panel > .collapsing',
     DATA_TOGGLE : '[data-toggle="collapse"]'
   }
 
@@ -235,7 +235,7 @@ const Collapse = (($) => {
           .trigger(Event.HIDDEN)
       }
 
-      this._element.style[dimension] = ''
+      this._element.style[dimension] = 0
 
       if (!Util.supportsTransitionEnd()) {
         complete()

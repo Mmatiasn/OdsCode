@@ -110,6 +110,26 @@ namespace OdsCode.Repository
             }
         }
 
+        public PlayList DeleteUserPlayListWithVideos(int playListId, string userName)
+        {
+            try
+            {
+                PlayList playlist = _context.PlayLists
+                    .Include(t => t.Videos)
+                    .Where(t => t.UserName == userName && t.Id == playListId)
+                    .First();
+                _context.Videos.RemoveRange(playlist.Videos);
+                _context.PlayLists.Remove(playlist);
+
+                return playlist;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Could not get trips with stops from database", ex);
+                return null;
+            }
+        }
+
         public Stop DeleteUserTripStop(int tripId, int stopId, string userName)
         {
             try
@@ -130,6 +150,30 @@ namespace OdsCode.Repository
             catch (Exception ex)
             {
                 _logger.LogError("Could not get trips with stops from database", ex);
+                return null;
+            }
+        }
+
+        public Video DeleteUserPlayListVideo(int playListId, int videId, string userName)
+        {
+            try
+            {
+                var playlist = _context.PlayLists
+                   .Include(t => t.Videos)
+                   .Where(t => t.Id == playListId && t.UserName == userName)
+                   .First();
+
+                var video = playlist.Videos
+                    .Where(s => s.Id == videId)
+                    .First();
+
+                _context.Videos.Remove(video);
+
+                return video;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Could not delete video in play-list from database", ex);
                 return null;
             }
         }

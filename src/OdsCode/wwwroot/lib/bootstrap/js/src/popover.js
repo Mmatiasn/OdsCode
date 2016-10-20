@@ -28,6 +28,7 @@ const Popover = (($) => {
     trigger   : 'click',
     content   : '',
     template  : '<div class="popover" role="tooltip">'
+              + '<div class="popover-arrow"></div>'
               + '<h3 class="popover-title"></h3>'
               + '<div class="popover-content"></div></div>'
   })
@@ -43,7 +44,8 @@ const Popover = (($) => {
 
   const Selector = {
     TITLE   : '.popover-title',
-    CONTENT : '.popover-content'
+    CONTENT : '.popover-content',
+    ARROW   : '.popover-arrow'
   }
 
   const Event = {

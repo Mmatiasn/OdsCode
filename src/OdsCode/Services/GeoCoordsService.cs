@@ -10,12 +10,9 @@ namespace OdsCode.Services
     public class GeoCoordsService
     {
         private IConfigurationRoot _config;
-        private ILogger<GeoCoordsService> _logger;
 
-        public GeoCoordsService(ILogger<GeoCoordsService> logger,
-            IConfigurationRoot config)
+        public GeoCoordsService(IConfigurationRoot config)
         {
-            _logger = logger;
             _config = config;
         }
 

@@ -14,10 +14,10 @@ const Tooltip = (($) => {
 
   /**
    * Check for Tether dependency
-   * Tether - http://tether.io/
+   * Tether - http://github.hubspot.com/tether/
    */
   if (window.Tether === undefined) {
-    throw new Error('Bootstrap tooltips require Tether (http://tether.io/)')
+    throw new Error('Bootstrap tooltips require Tether (http://github.hubspot.com/tether/)')
   }
 
 
@@ -38,6 +38,7 @@ const Tooltip = (($) => {
   const Default = {
     animation   : true,
     template    : '<div class="tooltip" role="tooltip">'
+                + '<div class="tooltip-arrow"></div>'
                 + '<div class="tooltip-inner"></div></div>',
     trigger     : 'hover focus',
     title       : '',
@@ -610,7 +611,7 @@ const Tooltip = (($) => {
         let _config = typeof config === 'object' ?
           config : null
 
-        if (!data && /dispose|hide/.test(config)) {
+        if (!data && /destroy|hide/.test(config)) {
           return
         }
 

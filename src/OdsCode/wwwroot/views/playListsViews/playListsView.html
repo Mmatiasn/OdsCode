@@ -9,11 +9,11 @@
             <br>
             <div class="md-form input-group">
                 <i class="fa fa-youtube-play prefix" aria-hidden="true"></i>
-                    <input class="form-control"
-                           type="text" id="name"
-                           name="name"
-                           data-ng-model="newPlayList.name"
-                           required data-ng-minlength="3"/>
+                <input class="form-control"
+                       type="text" id="name"
+                       name="name"
+                       data-ng-model="newPlayList.name"
+                       required data-ng-minlength="3"/>
                 <span class="input-group-btn">
                     <button type="submit" class="btn btn-success btn-lg" data-ng-disabled="newPlayListForm.$invalid">Add</button>
                 </span>
@@ -25,23 +25,23 @@
     <!-- Card footer -->
     <div data-ng-show="newPlayListForm.name.$error.required" class="card-data info-color">
         <ul>
-            <li><h4 class="h4-responsive"><span> Play-list name is required to add a play-list. </span></h4></li>
+            <li><span> Play-list name is required to add a play-list. </span></li>
         </ul>
     </div>
     <div data-ng-show="newPlayListForm.name.$error.minlength" class="card-data info-color">
         <ul>
-            <li><h4 class="h4-responsive"><span> Play-list name must be at least three characters long.</span></h4></li>
+            <li><span> Play-list name must be at least three characters long.</span></li>
         </ul>
     </div>
     <!-- Card footer -->
 </div>
 
-<br>
+<br/>
 
 <h4 class="feature-title">
     You have
     <span class="tag blue">{{playlists.length}}</span>
-    play-list saved
+    play-list(s) saved
 </h4>
 <br>
 <!--Card Danger-->
@@ -78,7 +78,7 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" data-ng-href="#/editor/{{ playlist.id }}" title="Edit {{ playlist.name }}">Edit <i class="fa fa-edit pull-right text-primary"></i></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" data-ng-click="vm.modal(trip.id, trip.name)" title="Delete {{ playlist.name }}?">Delete <i class="fa fa-trash pull-right text-danger"></i></a>
+                        <a class="dropdown-item" data-ng-click="modal(playlist.id, playlist.name)" title="Delete {{ playlist.name }}?">Delete <i class="fa fa-trash pull-right text-danger"></i></a>
                     </div>
                 </div>
                 <!--/. Split button -->
@@ -111,7 +111,7 @@
             <!--Footer-->
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" data-ng-click="vm.deletePlaylist(modalData.id, modalData.name)">Delete <i class="fa fa-trash pull-right"></i></button>
+                <button type="button" class="btn btn-danger" data-ng-click="deletePlaylist(modalData.id, modalData.name)">Delete <i class="fa fa-trash pull-right"></i></button>
             </div>
         </div>
     </div>

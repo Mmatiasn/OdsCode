@@ -2,11 +2,12 @@
 (function () {
     $("#map")
         .ready(function () {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: 26.714, lng: -80.053 },
-                zoom: 6
-            });
-            
+            if (typeof google === 'object' && typeof google.maps === 'object') {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: 26.714, lng: -80.053 },
+                    zoom: 6
+                });
+            }
 
             // Try HTML5 geolocation.
             if (navigator.geolocation) {

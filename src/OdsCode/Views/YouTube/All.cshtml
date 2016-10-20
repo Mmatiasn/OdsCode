@@ -10,6 +10,7 @@
     <script src="~/js/app/factories/youTubeLoaderFactory.js"></script>
     <script src="~/js/app/controllers/youTubeIframeController.js"></script>
     <script src="~/js/app/provider/autocompleteProvider.js"></script>
+    <script src="~/js/app/factories/YouTubeSearchFactory.js"></script>
 
     @*    <script src="~/js/app/controller/tripEditorController.js"></script>
         <script src="~/js/app/controller/stopsController.js"></script>
@@ -28,25 +29,28 @@
 
         <!--Second column-->
         <div class="col-md-7" data-ng-controller="youTubeIframeController">
-            
-            <div class="embed-responsive embed-responsive-16by9">
-                <!-- You tube Directive. -->
-                <youtube class="embed-responsive-item" width="{{yt.width}}" height="{{yt.height}}" videoid="{{yt.videoid}}"></youtube>
-            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <!-- You tube Directive. -->
+                        <youtube class="embed-responsive-item" width="{{yt.width}}" height="{{yt.height}}" videoid="{{yt.videoid}}"></youtube>
+                    </div>
 
-            <br>
-            <!--Buttons-->
-            <div class="row text-xs-center">
-                <div class="col-md-4">
-                    <a class="btn btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Back" data-ng-click="sendControlEvent(YT_event.PLAY)"><i class="fa fa-step-backward"></i></a>
-                </div>
+                    <br>
+                    <!--Buttons-->
+                    <div class="row text-xs-center">
+                        <div class="col-sm-4 col-md-4">
+                            <a class="btn btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Back" data-ng-click="sendControlEvent(YT_event.PLAY)"><i class="fa fa-step-backward"></i></a>
+                        </div>
 
-                <div class="col-md-4">
-                    <a class="btn btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Play / Pause" data-ng-click="sendControlEvent(playToggle())"><i class="fa" data-ng-class="{ 'fa-play': iconStatus, 'fa-pause': !iconStatus }"></i></a>
-                </div>
+                        <div class="col-sm-4 col-md-4">
+                            <a class="btn btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Play / Pause" data-ng-click="sendControlEvent(playToggle())"><i class="fa" data-ng-class="{ 'fa-play': iconStatus, 'fa-pause': !iconStatus }"></i></a>
+                        </div>
 
-                <div class="col-md-4">
-                    <a class="btn btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Next" data-ng-click="sendControlEvent(YT_event.STOP)"><i class="fa fa-step-forward"></i></a>
+                        <div class="col-sm-4 col-md-4">
+                            <a class="btn btn-floating btn-small stylish-color-dark" data-toggle="tooltip" data-placement="bottom" title="Next" data-ng-click="sendControlEvent(YT_event.STOP)"><i class="fa fa-step-forward"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

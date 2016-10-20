@@ -6,9 +6,7 @@
     angular.module("app-youtube")
         .controller("playListsController", playListsController);
 
-    function playListsController($scope, $http, $q) {
-
-        $scope.dirty = {};
+    function playListsController($scope, $http, youTubeSearchFactory) {
 
         $scope.playlists = [];
 
@@ -16,7 +14,7 @@
 
         $scope.newPlayList = {};
 
-        $scope.modalData;
+        $scope.modalData= {};
 
         $scope.errorMessage = "";
 
@@ -64,17 +62,17 @@
 
         };
 
-        // Delete Remove Trip
-        $scope.deleteTrip = function (playListId, playListName) {
+        // Delete Remove Playlist
+        $scope.deletePlaylist = function (playListId, playListName) {
             $scope.isBusy = true;
             $scope.errorMessage = "";
 
-            $http.delete(OdsRoot + "/api/playlist/" + playListId)
+            $http.delete(OdsRoot + "/api/playlists/" + playListId)
            .then(function () {
                // Success
                $('.odsModal').modal('hide');
                toastr["success"](playListName + " Deleted");
-               $scope.getTrips();
+               $scope.getPlayList();
            }, function (error) {
                // Failure
                $scope.errorMessage = "Failed to delete " + playListName + ": " + error;
@@ -96,51 +94,6 @@
                     name: playListName
                 };
 
-        };
-
-        function get_yt_autocomplete(query) {
-            var deferred = $q.defer();
-            var jsonQuery = JSON.stringify(query);
-            console.log(jsonQuery);
-            // Get YouTube Autocomplete
-            // Simple GET request example:
-            $http({
-                    method: 'GET',
-                    url: OdsRoot + "/api/youtube/search",
-                    params: { q: query }
-                })
-                .then(function successCallback(response) {
-                        // this callback will be called asynchronously
-                        // when the response is available
-                        deferred.resolve(response.data);
-                        $scope.errorMessage = "";
-                    },
-                    function errorCallback(error) {
-                        // called asynchronously if an error occurs
-                        // or server returns response with an error status.
-                        $scope.errorMessage = "Failed to find results: " + error;
-                    })
-                .finally(function () {
-                    return deferred.promise;
-                });
-
-            //$http.get(OdsRoot + "/api/youtube/search", jsonQuery)
-            //    .then(function (response) {
-            //        // Success
-            //        deferred.resolve(response.data);
-            //        $scope.errorMessage = "";
-            //    }, function (error) {
-            //        // Failure
-            //        $scope.errorMessage = "Failed to find results: " + error;
-            //    })
-            //    .finally(function () {
-            //        return deferred.promise;
-            //    });
-        }
-
-        $scope.autocomplete_yt = {
-            suggest: get_yt_autocomplete,
-            on_error: console.log
         };
 
         $('.odsModal')

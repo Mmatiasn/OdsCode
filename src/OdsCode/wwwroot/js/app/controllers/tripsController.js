@@ -105,7 +105,7 @@
                 function (e) {
                     vm.modalData = null;
                     console.log(e);
-                    console.log(vm.modalData)
+                    console.log(vm.modalData);
                 });
 
         // Manages GMAP
