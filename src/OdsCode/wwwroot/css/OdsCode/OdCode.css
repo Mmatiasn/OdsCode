@@ -36,3 +36,25 @@
 #StickyStopFooter {
     height: 3px;
 }
+
+.YTHover:hover {
+    background-color: #ececec;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.YTShawdowNone {
+    box-shadow: 0 0 0 0 !important;
+}
+
+.YTButton {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    z-index: 2;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}

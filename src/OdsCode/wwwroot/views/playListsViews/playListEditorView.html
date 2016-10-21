@@ -2,9 +2,18 @@
 <div class="card">
     <div class="card-block ">
         <div class="pull-right">
+            <div class="d-inline">
+                <a class="m-r-1">
+                    <i class="fa fa-random" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Shuffle"></i>
+                </a>
+
+                <a class="m-r-1">
+                    <i class="fa fa-repeat" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Repeat playlist"></i>
+                </a>
+            </div>
             <!-- Switch -->
-            <div class="switch">
-                Autoplay <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="When autoplay is enabled, the next video will automatically play next."></i> |
+            <div class="switch d-inline">
+                Autoplay <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="When autoplay is enabled, the next video will automatically play next."></i> |
                 <label>
                     Off
                     <input type="checkbox">
@@ -14,610 +23,218 @@
             </div>
         </div>
         <h4 class="h4-responsive">
-            Up next
+            <i class="fa fa-arrow-right" aria-hidden="true"></i> Up next
         </h4>
     </div>
-    <ul>
-        <li class="z-depth-1 grey lighten-5">
-            <div class="card-block">
+    <ul class="z-depth-1">
+        <li class="YTHover">
+            <div class="view overlay hm-white-slight YTShawdowNone">
+                <div class="mask waves-effect waves-effect"></div>
+                <div class="card-block">
 
-                <div class="content-wrapper">
-                    <a href="/watch?v=R2fCbRTsnxY" title="YTP-Bee Movie: Barry Beetrays the Nazi Party">
-                        <h4 class="h4-responsive">
-                            YTP-Bee Movie: Barry Beetrays the Nazi Party
-                        </h4>
-                    </a>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4 col-md-5 col-lg-4">
-                        <div style="position: relative; display: inline-block;">
-                            <a href="/watch?v=R2fCbRTsnxY">
-                                <img class="img-fluid" src="https://i.ytimg.com/vi/R2fCbRTsnxY/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Gq40B9GJWILJuQlmKohtqRqfKZ4">
-                                <span class="tag elegant-color" style="position: absolute; bottom: 0; right: 0">
-                                    4:51
-                                </span>
-                            </a>
-                        </div>
-                        
-                        <div class="m-t-1">
-                            <ul class="inline-ul">
-                                <li><i class="fa fa-star amber-text"></i></li>
-                                <li><i class="fa fa-star amber-text"></i></li>
-                                <li><i class="fa fa-star amber-text"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-8 col-md-7 col-lg-8">
-                        <div class="h5-responsive">
-                            <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
-                        </div>
-                        <br/>
-                        <div class="row">
-                            <div class="col-xl-7 col-lg-6 h5-responsive">
-                                <i class="fa fa-youtube-square" aria-hidden="true"></i> Channel: <span class="text-muted">EliteChannels</span>
-                            </div>
-                            <br class="hidden-lg-up" />
-                            <div class="col-xl-5 col-lg-6 h5-responsive">
-                                <i class="fa fa-eye" aria-hidden="true"></i> Views: <span class="text-muted">1,223,446</span>
-                            </div>
-                        </div>
+                    <div class="content-wrapper">
+                        <a href="/watch?v=R2fCbRTsnxY" title="YTP-Bee Movie: Barry Beetrays the Nazi Party">
+                            <h4 class="h4-responsive">
+                                YTP-Bee Movie: Barry Beetrays the Nazi Party
+                            </h4>
+                        </a>
                     </div>
 
-                </div>
+                    <div class="row">
+                        <div class="col-sm-4 col-md-5 col-lg-4">
+                            <div style="position: relative; display: inline-block;">
+                                <a href="/watch?v=R2fCbRTsnxY">
+                                    <img class="img-fluid" src="https://i.ytimg.com/vi/R2fCbRTsnxY/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Gq40B9GJWILJuQlmKohtqRqfKZ4">
+                                    <span class="tag elegant-color" style="position: absolute; bottom: 0; right: 0">
+                                        4:51
+                                    </span>
+                                </a>
+                            </div>
 
+                            <div class="m-t-1">
+                                <ul class="inline-ul">
+                                    <li><i class="fa fa-star amber-text"></i></li>
+                                    <li><i class="fa fa-star amber-text"></i></li>
+                                    <li><i class="fa fa-star amber-text"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-md-7 col-lg-8">
+                            <div class="h5-responsive">
+                                <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-xl-7 col-lg-6 h5-responsive">
+                                    <i class="fa fa-youtube-square" aria-hidden="true"></i> Channel: <span class="text-muted">EliteChannels</span>
+                                </div>
+                                <br class="hidden-lg-up" />
+                                <div class="col-xl-5 col-lg-6 h5-responsive">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Views: <span class="text-muted">1,223,446</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </li>
+
     </ul>
 
 
 </div>
 
+<div class="card">
+    <div class="card-block">
+        <h4 class="h4-responsive">
+            <i class="fa fa-search" aria-hidden="true"></i> Search
+        </h4>
+
+                <!--Right-->
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search youtube for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" type="button">Search</button>
+                    </span>
+                </div>
+
+    </div>
+</div>
 
 <div class="card">
-    <h4 class="h4-responsive">
-        <i class="fa fa-youtube-play" aria-hidden="true"></i> Play List
-    </h4>
+    <div class="card-block ">
+        <h4 class="h4-responsive">
+            <i class="fa fa-youtube-play" aria-hidden="true"></i> YouTube Videos
+        </h4>
+    </div>
+    <ul class="z-depth-1">
+        <!-- YouTube Video -->
+        <li class="YTHover">
+            <div class="view overlay hm-white-slight YTShawdowNone">
+                <div class="YTButton" aria-label="Basic example">
+                    <button type="button" class="btn-flat waves-effect"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                    <button type="button" class="btn-flat waves-effect"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                </div>
+                <div class="mask waves-effect waves-effect"></div>
+                <div class="card-block">
 
-    <ul>
-        <li>
-            <a href="/watch?v=QsGYNfagHlU&amp;list=RDQsGYNfagHlU" class="yt-uix-sessionlink related-playlist yt-pl-thumb-link spf-link mix-playlist resumable-list spf-link" data-sessionlink="itct=CCsQozAYASITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIKbGlzdF9vdGhlckjVvIC134bm4EI" data-visibility-tracking="CCsQozAYASITCMqWzr2B6s8CFQi-vgodlEQPpyj4HQ==" data-secondary-video-url="/watch?v=Mh5LY4Mz15o&amp;list=RDQsGYNfagHlU" rel="spf-prefetch">
-                <span class=" yt-mix-thumb yt-pl-thumb">
+                    <div class="content-wrapper">
+                        <a href="/watch?v=R2fCbRTsnxY" title="YTP-Bee Movie: Barry Beetrays the Nazi Party">
+                            <h4 class="h4-responsive">
+                                YTP-Bee Movie: Barry Beetrays the Nazi Party
+                            </h4>
+                        </a>
+                    </div>
 
-                    <span class="video-thumb  yt-thumb yt-thumb-168">
-                        <span class="yt-thumb-default">
-                            <span class="yt-thumb-clip">
+                    <div class="row">
+                        <div class="col-sm-4 col-md-5 col-lg-4">
+                            <div style="position: relative; display: inline-block;">
+                                <a href="/watch?v=R2fCbRTsnxY">
+                                    <img class="img-fluid" src="https://i.ytimg.com/vi/R2fCbRTsnxY/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Gq40B9GJWILJuQlmKohtqRqfKZ4">
+                                    <span class="tag elegant-color" style="position: absolute; bottom: 0; right: 0">
+                                        4:51
+                                    </span>
+                                </a>
+                            </div>
 
-                                <img src="https://i.ytimg.com/vi/QsGYNfagHlU/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=AGW4h7suTpTuCTV3jvQuzHeNshE" width="168" data-ytimg="1" onload=";__ytRIL(this)" aria-hidden="true" alt="">
-
-                                <span class="vertical-align"></span>
-                            </span>
-                        </span>
-                    </span>
-
-
-                    <span class="sidebar">
-                        <span class="yt-pl-sidebar-content yt-valign">
-                            <span class="yt-valign-container">
-                                <span class="formatted-video-count-label">
-                                    <b>50+</b> videos
-                                </span>
-
-                                <span class="yt-pl-icon yt-pl-icon-mix yt-sprite"></span>
-                            </span>
-                        </span>
-                    </span>
-
-                    <span class="yt-pl-thumb-overlay">
-                        <span class="yt-pl-thumb-overlay-content">
-                            <span class="play-icon yt-sprite"></span>
-                            <span class="yt-pl-thumb-overlay-text">
-                                Play all
-                            </span>
-                        </span>
-                    </span>
-
-                    <span class="yt-pl-watch-queue-overlay">
-                        <span class="thumb-menu dark-overflow-action-menu video-actions">
-                            <button class="yt-uix-button-reverse flip addto-watch-queue-menu spf-nolink hide-until-delayloaded yt-uix-button yt-uix-button-dark-overflow-action-menu yt-uix-button-size-default yt-uix-button-has-icon no-icon-markup yt-uix-button-empty" aria-haspopup="true" type="button" aria-expanded="false" onclick=";return false;"><span class="yt-uix-button-arrow yt-sprite"></span><ul class="watch-queue-thumb-menu yt-uix-button-menu yt-uix-button-menu-dark-overflow-action-menu hid"><li role="menuitem" class="overflow-menu-choice addto-watch-queue-menu-choice addto-watch-queue-play-now yt-uix-button-menu-item" data-action="play-now" onclick=";return false;" data-list-id="RDQsGYNfagHlU" data-video-ids="QsGYNfagHlU"><span class="addto-watch-queue-menu-text">Play now</span></li></ul></button>
-                        </span>
-
-                        <button class="yt-uix-button yt-uix-button-size-small yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup addto-button addto-queue-button video-actions spf-nolink hide-until-delayloaded addto-tv-queue-button yt-uix-tooltip" type="button" onclick=";return false;" title="Queue" data-list-id="RDQsGYNfagHlU" data-video-ids="QsGYNfagHlU" data-style="tv-queue"></button>
-
-                    </span>
-
-                </span>
-                <span dir="ltr" class="title" title="Mix - THE ENTIRE BEE MOVIE SCRIPT">Mix - THE ENTIRE BEE MOVIE SCRIPT</span><span class="stat attribution">YouTube</span>
-            </a>
+                            <div class="m-t-1">
+                                <ul class="inline-ul">
+                                    <li><i class="fa fa-star amber-text"></i></li>
+                                    <li><i class="fa fa-star amber-text"></i></li>
+                                    <li><i class="fa fa-star amber-text"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-md-7 col-lg-8">
+                            <div class="h5-responsive">
+                                <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-xl-7 col-lg-6 h5-responsive">
+                                    <i class="fa fa-youtube-square" aria-hidden="true"></i> Channel: <span class="text-muted">EliteChannels</span>
+                                </div>
+                                <br class="hidden-lg-up" />
+                                <div class="col-xl-5 col-lg-6 h5-responsive">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Views: <span class="text-muted">1,223,446</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </li>
-        <li class="video-list-item related-list-item related-list-item-compact-video">
+        <!--/. YouTube Video -->
+        <!-- YouTube Video -->
+        <li class="YTHover">
+            <div class="view overlay hm-white-slight YTShawdowNone">
+                <div class="mask waves-effect waves-effect"></div>
+                <div class="card-block">
 
-            <div class="content-wrapper">
-                <a href="/watch?v=rYvzbeMwpjw" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CCoQpDAYAiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIGcmVsbWZ1SNW8gLXfhubgQg" title="She Wants The B" rel="spf-prefetch" data-visibility-tracking="CCoQpDAYAiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUC8zMKZ3u38xa0B">
-                    <span dir="ltr" class="title" aria-describedby="description-id-138053">
-                        She Wants The B
-                    </span>
-                    <span class="accessible-description" id="description-id-138053">
-                        - Duration: 9:29.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UC7EpM9PXIn3bTIlJYiP1xWg" data-name="relmfu">Brendaniel</span></span>
-                    <span class="stat view-count">114,098 views</span>
-                </a>
+                    <div class="content-wrapper">
+                        <a href="/watch?v=R2fCbRTsnxY" title="YTP-Bee Movie: Barry Beetrays the Nazi Party">
+                            <h4 class="h4-responsive">
+                                YTP-Bee Movie: Barry Beetrays the Nazi Party
+                            </h4>
+                        </a>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4 col-md-5 col-lg-4">
+                            <div style="position: relative; display: inline-block;">
+                                <a href="/watch?v=R2fCbRTsnxY">
+                                    <img class="img-fluid" src="https://i.ytimg.com/vi/R2fCbRTsnxY/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Gq40B9GJWILJuQlmKohtqRqfKZ4">
+                                    <span class="tag elegant-color" style="position: absolute; bottom: 0; right: 0">
+                                        4:51
+                                    </span>
+                                </a>
+                            </div>
+
+                            <div class="m-t-1">
+                                <ul class="inline-ul">
+                                    <li><i class="fa fa-star amber-text"></i></li>
+                                    <li><i class="fa fa-star amber-text"></i></li>
+                                    <li><i class="fa fa-star amber-text"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-md-7 col-lg-8">
+                            <div class="h5-responsive">
+                                <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-xl-7 col-lg-6 h5-responsive">
+                                    <i class="fa fa-youtube-square" aria-hidden="true"></i> Channel: <span class="text-muted">EliteChannels</span>
+                                </div>
+                                <br class="hidden-lg-up" />
+                                <div class="col-xl-5 col-lg-6 h5-responsive">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Views: <span class="text-muted">1,223,446</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=rYvzbeMwpjw" class="yt-uix-sessionlink thumb-link spf-link spf-link" data-sessionlink="itct=CCoQpDAYAiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIGcmVsbWZ1SNW8gLXfhubgQg" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CCoQpDAYAiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUC8zMKZ3u38xa0B" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="rYvzbeMwpjw"><img src="https://i.ytimg.com/vi/rYvzbeMwpjw/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=T_9CtvoCcv4QtdvwWcjKyloGsWI" width="168" style="top: 0px" aria-hidden="true" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    9:29
-                </span>
-
-
-
-                <button class="yt-uix-button yt-uix-button-size-small yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-tooltip" type="button" onclick=";return false;" title="Watch Later" role="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="rYvzbeMwpjw"><span class="yt-uix-button-arrow yt-sprite"></span></button>
-                <span class="thumb-menu dark-overflow-action-menu video-actions">
-                    <button class="yt-uix-button-reverse flip addto-watch-queue-menu spf-nolink hide-until-delayloaded yt-uix-button yt-uix-button-dark-overflow-action-menu yt-uix-button-size-default yt-uix-button-has-icon no-icon-markup yt-uix-button-empty" aria-haspopup="true" type="button" aria-expanded="false" onclick=";return false;"><span class="yt-uix-button-arrow yt-sprite"></span><ul class="watch-queue-thumb-menu yt-uix-button-menu yt-uix-button-menu-dark-overflow-action-menu hid"><li role="menuitem" class="overflow-menu-choice addto-watch-queue-menu-choice addto-watch-queue-play-next yt-uix-button-menu-item" data-action="play-next" onclick=";return false;" data-video-ids="rYvzbeMwpjw"><span class="addto-watch-queue-menu-text">Play next</span></li><li role="menuitem" class="overflow-menu-choice addto-watch-queue-menu-choice addto-watch-queue-play-now yt-uix-button-menu-item" data-action="play-now" onclick=";return false;" data-video-ids="rYvzbeMwpjw"><span class="addto-watch-queue-menu-text">Play now</span></li></ul></button>
-                </span>
-                <button class="yt-uix-button yt-uix-button-size-small yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup addto-button addto-queue-button video-actions spf-nolink hide-until-delayloaded addto-tv-queue-button yt-uix-tooltip" type="button" onclick=";return false;" title="Queue" data-video-ids="rYvzbeMwpjw" data-style="tv-queue"></button>
-            </div>
-
         </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
+        <!--/. YouTube Video -->
 
-            <div class="content-wrapper">
-                <a href="/watch?v=uusthNgksN8" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CCkQpDAYAyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIGcmVsbWZ1SNW8gLXfhubgQg" title="Tales From 4chan 30" rel="spf-prefetch" data-visibility-tracking="CCkQpDAYAyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDf4ZLBzbDL9boB">
-                    <span dir="ltr" class="title" aria-describedby="description-id-839779">
-                        Tales From 4chan 30
-                    </span>
-                    <span class="accessible-description" id="description-id-839779">
-                        - Duration: 8:18.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UC7EpM9PXIn3bTIlJYiP1xWg" data-name="relmfu">Brendaniel</span></span>
-                    <span class="stat view-count">212,358 views</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=uusthNgksN8" class="yt-uix-sessionlink thumb-link spf-link spf-link" data-sessionlink="itct=CCkQpDAYAyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIGcmVsbWZ1SNW8gLXfhubgQg" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CCkQpDAYAyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDf4ZLBzbDL9boB" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="uusthNgksN8"><img src="https://i.ytimg.com/vi/uusthNgksN8/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=0I9XzN-yEccEyHiNDvQw8z4vxRY" width="168" style="top: 0px" aria-hidden="true" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    8:18
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=x_CpCCAnJow" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CCgQpDAYBCITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" title="Baited! Ep #10 - Leafy vs Keemstar (literally)" rel="spf-prefetch" data-visibility-tracking="CCgQpDAYBCITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCMzZyBgqGq-McB">
-                    <span dir="ltr" class="title" aria-describedby="description-id-315352">
-                        Baited! Ep #10 - Leafy vs Keemstar (literally)
-                    </span>
-                    <span class="accessible-description" id="description-id-315352">
-                        - Duration: 1:09:24.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UCHCZlTMfz0pEKSVX_gqvX5A" data-name="related">Baited!</span></span>
-                    <span class="stat view-count">1,314,293 views<ul class="yt-badge-list "><li class="yt-badge-item"><span class="yt-badge ">New</span></li></ul></span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=x_CpCCAnJow" class="yt-uix-sessionlink thumb-link spf-link spf-link" data-sessionlink="itct=CCgQpDAYBCITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CCgQpDAYBCITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCMzZyBgqGq-McB" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="x_CpCCAnJow"><img src="https://i.ytimg.com/vi/x_CpCCAnJow/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=CBmh8SC8WA8W-JzXd63a3vmzImE" width="168" style="top: 0px" aria-hidden="true" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    1:09:24
-                </span>
-
-
-
-                <button class="yt-uix-button yt-uix-button-size-small yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup addto-button video-actions spf-nolink hide-until-delayloaded addto-watch-later-button-sign-in yt-uix-tooltip" type="button" onclick=";return false;" title="Watch Later" role="button" data-button-menu-id="shared-addto-watch-later-login" data-video-ids="x_CpCCAnJow"><span class="yt-uix-button-arrow yt-sprite"></span></button>
-                <span class="thumb-menu dark-overflow-action-menu video-actions">
-                    <button class="yt-uix-button-reverse flip addto-watch-queue-menu spf-nolink hide-until-delayloaded yt-uix-button yt-uix-button-dark-overflow-action-menu yt-uix-button-size-default yt-uix-button-has-icon no-icon-markup yt-uix-button-empty" aria-haspopup="true" type="button" aria-expanded="false" onclick=";return false;"><span class="yt-uix-button-arrow yt-sprite"></span><ul class="watch-queue-thumb-menu yt-uix-button-menu yt-uix-button-menu-dark-overflow-action-menu hid"><li role="menuitem" class="overflow-menu-choice addto-watch-queue-menu-choice addto-watch-queue-play-next yt-uix-button-menu-item" data-action="play-next" onclick=";return false;" data-video-ids="x_CpCCAnJow"><span class="addto-watch-queue-menu-text">Play next</span></li><li role="menuitem" class="overflow-menu-choice addto-watch-queue-menu-choice addto-watch-queue-play-now yt-uix-button-menu-item" data-action="play-now" onclick=";return false;" data-video-ids="x_CpCCAnJow"><span class="addto-watch-queue-menu-text">Play now</span></li></ul></button>
-                </span>
-                <button class="yt-uix-button yt-uix-button-size-small yt-uix-button-default yt-uix-button-empty yt-uix-button-has-icon no-icon-markup addto-button addto-queue-button video-actions spf-nolink hide-until-delayloaded addto-tv-queue-button yt-uix-tooltip" type="button" onclick=";return false;" title="Queue" data-video-ids="x_CpCCAnJow" data-style="tv-queue"></button>
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-playlist">
-            <a href="/watch?v=q6EoRBvdVPQ&amp;list=PL7XlqX4npddfrdpMCxBnNZXg2GFll7t5y" class="yt-uix-sessionlink related-playlist yt-pl-thumb-link spf-link spf-link" data-sessionlink="itct=CCcQojAYBSITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsbGlzdEjVvIC134bm4EI" data-visibility-tracking="CCcQojAYBSITCMqWzr2B6s8CFQi-vgodlEQPpyj4HQ==" rel="spf-prefetch">
-                <span class=" yt-pl-thumb">
-
-                    <span class="video-thumb  yt-thumb yt-thumb-168">
-                        <span class="yt-thumb-default">
-                            <span class="yt-thumb-clip">
-
-                                <img src="https://i.ytimg.com/vi/q6EoRBvdVPQ/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=UPKgVDUDvOJ_ss66BH7LRt0QNrg" width="168" data-ytimg="1" onload=";__ytRIL(this)" aria-hidden="true" alt="">
-
-                                <span class="vertical-align"></span>
-                            </span>
-                        </span>
-                    </span>
-
-
-                    <span class="sidebar">
-                        <span class="yt-pl-sidebar-content yt-valign">
-                            <span class="yt-valign-container">
-                                <span class="formatted-video-count-label">
-                                    <b>312</b> videos
-                                </span>
-
-                                <span class="yt-pl-icon yt-pl-icon-reg yt-sprite"></span>
-                            </span>
-                        </span>
-                    </span>
-
-                    <span class="yt-pl-thumb-overlay">
-                        <span class="yt-pl-thumb-overlay-content">
-                            <span class="play-icon yt-sprite"></span>
-                            <span class="yt-pl-thumb-overlay-text">
-                                Play all
-                            </span>
-                        </span>
-                    </span>
-
-                </span>
-                <span dir="ltr" class="title" title="important videos">important videos</span><span class="stat attribution"><span class="g-hovercard" data-ytid="UCZj9kF7Wu2IE_-DzbQZwCEw">eljolto</span></span>
-            </a>
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=TlOwSejnCuw" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CCYQpDAYBiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" title="[Vinesauce] Vinny - Bee Movie Game" rel="spf-prefetch" data-visibility-tracking="CCYQpDAYBiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDslZzHnonsqU4=">
-                    <span dir="ltr" class="title" aria-describedby="description-id-845024">
-                        [Vinesauce] Vinny - Bee Movie Game
-                    </span>
-                    <span class="accessible-description" id="description-id-845024">
-                        - Duration: 11:03.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UC8wZ3c8SYlnwcZIlH_4nomw" data-name="related">GaMERCaT</span></span>
-                    <span class="stat view-count">207,201 views</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=TlOwSejnCuw" class="yt-uix-sessionlink thumb-link spf-link spf-link" data-sessionlink="itct=CCYQpDAYBiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CCYQpDAYBiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDslZzHnonsqU4=" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="TlOwSejnCuw"><img src="https://i.ytimg.com/vi/TlOwSejnCuw/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=MXAfJHS3pvSh6ZvvdIjftkfL-Yo" width="168" style="top: 0px" aria-hidden="true" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    11:03
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=bXjnakAlF-s" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CCUQpDAYByITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" title="Christian Weston Chandler Documentary" rel="spf-prefetch" data-visibility-tracking="CCUQpDAYByITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDrr5SBpO25vG0=">
-                    <span dir="ltr" class="title" aria-describedby="description-id-754348">
-                        Christian Weston Chandler Documentary
-                    </span>
-                    <span class="accessible-description" id="description-id-754348">
-                        - Duration: 1:09:08.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UCzwbm0PGQ2Co6xXgcCemRrA" data-name="related">sachumo</span></span>
-                    <span class="stat view-count">552,489 views</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=bXjnakAlF-s" class="yt-uix-sessionlink thumb-link spf-link spf-link" data-sessionlink="itct=CCUQpDAYByITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CCUQpDAYByITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDrr5SBpO25vG0=" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="bXjnakAlF-s"><img src="https://i.ytimg.com/vi/bXjnakAlF-s/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=ActoHbN1ru6UAolUkWRS-mtItXQ" width="168" style="top: 0px" aria-hidden="true" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    1:09:08
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=HI5S1UEtwqw" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CCQQpDAYCCITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" title="Bee Movie - Barry Sues the Human Race - HD" rel="spf-prefetch" data-visibility-tracking="CCQQpDAYCCITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCshbeJ1NqUxxw=">
-                    <span dir="ltr" class="title" aria-describedby="description-id-65989">
-                        Bee Movie - Barry Sues the Human Race - HD
-                    </span>
-                    <span class="accessible-description" id="description-id-65989">
-                        - Duration: 3:36.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UCNKhtEJPcj0jQRHf_h7n_6w" data-name="related">YoureAJagOff</span></span>
-                    <span class="stat view-count">47,488 views</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=HI5S1UEtwqw" class="yt-uix-sessionlink  vve-check thumb-link spf-link        spf-link " data-sessionlink="itct=CCQQpDAYCCITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CCQQpDAYCCITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCshbeJ1NqUxxw=" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="HI5S1UEtwqw"><img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" width="168" style="top: 0px" aria-hidden="true" data-thumb="https://i.ytimg.com/vi/HI5S1UEtwqw/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Xl9eJExb3BmlxGjlgHoe3DEE0ks" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    3:36
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=OtkhER7rFa0" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CCMQpDAYCSITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIKd2F0Y2gtdnJlY0jVvIC134bm4EI" title="Songs We Forget (1990-00's)" rel="spf-prefetch" data-visibility-tracking="CCMQpDAYCSITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCtq6z3kaLI7Do=">
-                    <span dir="ltr" class="title" aria-describedby="description-id-597874">
-                        Songs We Forget (1990-00's)
-                    </span>
-                    <span class="accessible-description" id="description-id-597874">
-                        - Duration: 16:43.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UC4q5BVqc_GTQXMkqjn6vyYg" data-name="watch-vrec">DJ Matty P</span></span>
-                    <span class="stat view-count">Recommended for you</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=OtkhER7rFa0" class="yt-uix-sessionlink  vve-check thumb-link spf-link        spf-link " data-sessionlink="itct=CCMQpDAYCSITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIKd2F0Y2gtdnJlY0jVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CCMQpDAYCSITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCtq6z3kaLI7Do=" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="OtkhER7rFa0"><img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" width="168" style="top: 0px" aria-hidden="true" data-thumb="https://i.ytimg.com/vi/OtkhER7rFa0/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=PcFxonh-oA-EYfYcaVfeZuArSEA" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    16:43
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=miVRaoR_8xQ" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CCIQpDAYCiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" title="Mr. Plinkett's The Star Wars Awakens Review" rel="spf-prefetch" data-visibility-tracking="CCIQpDAYCiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCU5v-jqK3UkpoB">
-                    <span dir="ltr" class="title" aria-describedby="description-id-22550">
-                        Mr. Plinkett's The Star Wars Awakens Review
-                    </span>
-                    <span class="accessible-description" id="description-id-22550">
-                        - Duration: 1:45:08.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UCrTNhL_yO3tPTdQ5XgmmWjA" data-name="related">RedLetterMedia</span></span>
-                    <span class="stat view-count">1,715,584 views</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=miVRaoR_8xQ" class="yt-uix-sessionlink  vve-check thumb-link spf-link        spf-link " data-sessionlink="itct=CCIQpDAYCiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CCIQpDAYCiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCU5v-jqK3UkpoB" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="miVRaoR_8xQ"><img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" width="168" style="top: 0px" aria-hidden="true" data-thumb="https://i.ytimg.com/vi/miVRaoR_8xQ/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=mGhKazXOefMUZ5NKX3oeuylh1oE" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    1:45:08
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=CKj4-rhgx70" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CCEQpDAYCyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIKd2F0Y2gtdnJlY0jVvIC134bm4EI" title="*HARDEST VERSION* Try Not to Laugh or Grin While Watching This (IMPOSSIBLE CHALLENGE)" rel="spf-prefetch" data-visibility-tracking="CCEQpDAYCyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUC9j4PDq5--1Ag=">
-                    <span dir="ltr" class="title" aria-describedby="description-id-610575">
-                        *HARDEST VERSION* Try Not to Laugh or Grin While Watching This (IMPOSSIBLE CHALLENGE)
-                    </span>
-                    <span class="accessible-description" id="description-id-610575">
-                        - Duration: 10:07.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UCRZE7EQJ4bfHN-rj4F4kFvQ" data-name="watch-vrec">AlotVines 2</span></span>
-                    <span class="stat view-count">Recommended for you</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=CKj4-rhgx70" class="yt-uix-sessionlink  vve-check thumb-link spf-link        spf-link " data-sessionlink="itct=CCEQpDAYCyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIKd2F0Y2gtdnJlY0jVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CCEQpDAYCyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUC9j4PDq5--1Ag=" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="CKj4-rhgx70"><img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" width="168" style="top: 0px" aria-hidden="true" data-thumb="https://i.ytimg.com/vi/CKj4-rhgx70/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=p7w-lxYSpLgFALempWrm_PcLjLY" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    10:07
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=x_XKWfEM1NQ" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CCAQpDAYDCITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIKd2F0Y2gtdnJlY0jVvIC134bm4EI" title="15 Minutes of Dank Memes V-79  ͡° ͜ʖ ͡°" rel="spf-prefetch" data-visibility-tracking="CCAQpDAYDCITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDUqbOIn8vy-scB">
-                    <span dir="ltr" class="title" aria-describedby="description-id-403133">
-                        15 Minutes of Dank Memes V-79  ͡° ͜ʖ ͡°
-                    </span>
-                    <span class="accessible-description" id="description-id-403133">
-                        - Duration: 15:09.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UCi6-0YxfKrouWZAWaB7mGJg" data-name="watch-vrec">TheMustardTV</span></span>
-                    <span class="stat view-count">Recommended for you</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=x_XKWfEM1NQ" class="yt-uix-sessionlink  vve-check thumb-link spf-link        spf-link " data-sessionlink="itct=CCAQpDAYDCITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIKd2F0Y2gtdnJlY0jVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CCAQpDAYDCITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDUqbOIn8vy-scB" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="x_XKWfEM1NQ"><img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" width="168" style="top: 0px" aria-hidden="true" data-thumb="https://i.ytimg.com/vi/x_XKWfEM1NQ/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=NcfOtsOF5SF2KIu5Dmew4je_l8w" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    15:09
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=XhTqlYz9e-U" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CB8QpDAYDSITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIKd2F0Y2gtdnJlY0jVvIC134bm4EI" title="ULTIMATE WORLDSTAR COMPILATION OF OCTOBER 2016!" rel="spf-prefetch" data-visibility-tracking="CB8QpDAYDSITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDl9_Xn2NK6il4=">
-                    <span dir="ltr" class="title" aria-describedby="description-id-416338">
-                        ULTIMATE WORLDSTAR COMPILATION OF OCTOBER 2016!
-                    </span>
-                    <span class="accessible-description" id="description-id-416338">
-                        - Duration: 10:32.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UCCkJ9ZToTIET2XCunyUiSzg" data-name="watch-vrec">The Funniest Videos</span></span>
-                    <span class="stat view-count">Recommended for you<ul class="yt-badge-list "><li class="yt-badge-item"><span class="yt-badge ">New</span></li></ul></span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=XhTqlYz9e-U" class="yt-uix-sessionlink  vve-check thumb-link spf-link        spf-link " data-sessionlink="itct=CB8QpDAYDSITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIKd2F0Y2gtdnJlY0jVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CB8QpDAYDSITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDl9_Xn2NK6il4=" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="XhTqlYz9e-U"><img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" width="168" style="top: 0px" aria-hidden="true" data-thumb="https://i.ytimg.com/vi/XhTqlYz9e-U/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=1-xh34bzJPZAXJyvEe1QPJ7_hu0" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    10:32
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=hJG5zOvtYRw" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CB4QpDAYDiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" title="Baited! Ep #9 - Leafy is Here (featuring H3H3 Productions)" rel="spf-prefetch" data-visibility-tracking="CB4QpDAYDiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCcwrXfzrnuyIQB">
-                    <span dir="ltr" class="title" aria-describedby="description-id-505772">
-                        Baited! Ep #9 - Leafy is Here (featuring H3H3 Productions)
-                    </span>
-                    <span class="accessible-description" id="description-id-505772">
-                        - Duration: 1:21:29.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UCHCZlTMfz0pEKSVX_gqvX5A" data-name="related">Baited!</span></span>
-                    <span class="stat view-count">847,324 views</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=hJG5zOvtYRw" class="yt-uix-sessionlink  vve-check thumb-link spf-link        spf-link " data-sessionlink="itct=CB4QpDAYDiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CB4QpDAYDiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCcwrXfzrnuyIQB" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="hJG5zOvtYRw"><img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" width="168" style="top: 0px" aria-hidden="true" data-thumb="https://i.ytimg.com/vi/hJG5zOvtYRw/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=-zO4mc-toRoDSKO5TTkuLofd3go" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    1:21:29
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=AYM4weKaMpc" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CB0QpDAYDyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" title="RAPPING THE BEE MOVIE SCRIPT [FULL]" rel="spf-prefetch" data-visibility-tracking="CB0QpDAYDyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCX5eiUnpjOwQE=">
-                    <span dir="ltr" class="title" aria-describedby="description-id-953809">
-                        RAPPING THE BEE MOVIE SCRIPT [FULL]
-                    </span>
-                    <span class="accessible-description" id="description-id-953809">
-                        - Duration: 2:43.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UCtEoXqWsaASzsT48hG2eNog" data-name="related">AlyGrace</span></span>
-                    <span class="stat view-count">28,243 views</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=AYM4weKaMpc" class="yt-uix-sessionlink  vve-check thumb-link spf-link        spf-link " data-sessionlink="itct=CB0QpDAYDyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CB0QpDAYDyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCX5eiUnpjOwQE=" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="AYM4weKaMpc"><img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" width="168" style="top: 0px" aria-hidden="true" data-thumb="https://i.ytimg.com/vi/AYM4weKaMpc/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=SMIjSHsLd5nAlftu_v5Zx-lQkRg" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    2:43
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=rrqqQAfenUo" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CBwQpDAYECITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIKd2F0Y2gtdnJlY0jVvIC134bm4EI" title="The WORST Answer In Debate History" rel="spf-prefetch" data-visibility-tracking="CBwQpDAYECITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDKuvq-gMiq3a4B">
-                    <span dir="ltr" class="title" aria-describedby="description-id-153090">
-                        The WORST Answer In Debate History
-                    </span>
-                    <span class="accessible-description" id="description-id-153090">
-                        - Duration: 7:28.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UC1yBKRuGpC1tSM73A0ZjYjQ" data-name="watch-vrec">The Young Turks</span></span>
-                    <span class="stat view-count">Recommended for you</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=rrqqQAfenUo" class="yt-uix-sessionlink  vve-check thumb-link spf-link        spf-link " data-sessionlink="itct=CBwQpDAYECITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIKd2F0Y2gtdnJlY0jVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CBwQpDAYECITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDKuvq-gMiq3a4B" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="rrqqQAfenUo"><img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" width="168" style="top: 0px" aria-hidden="true" data-thumb="https://i.ytimg.com/vi/rrqqQAfenUo/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=OOZOwKgYhLAwrRgkyt5x7Ptikyg" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    7:28
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=a_j7-11IjcE" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CBsQpDAYESITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" title="Bee Movie (2007) Text-To-Speech (Infinity and beeyond)" rel="spf-prefetch" data-visibility-tracking="CBsQpDAYESITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDBm6Lqtf--_Gs=">
-                    <span dir="ltr" class="title" aria-describedby="description-id-736135">
-                        Bee Movie (2007) Text-To-Speech (Infinity and beeyond)
-                    </span>
-                    <span class="accessible-description" id="description-id-736135">
-                        - Duration: 1:22:23.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UClFyRrMBiiHNzVgDjcLgkfg" data-name="related">grunesgryphon</span></span>
-                    <span class="stat view-count">19,847 views</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=a_j7-11IjcE" class="yt-uix-sessionlink  vve-check thumb-link spf-link        spf-link " data-sessionlink="itct=CBsQpDAYESITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CBsQpDAYESITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUDBm6Lqtf--_Gs=" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="a_j7-11IjcE"><img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" width="168" style="top: 0px" aria-hidden="true" data-thumb="https://i.ytimg.com/vi/a_j7-11IjcE/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Wo_eUokzfq7AyI1gXoRvs0GdRhE" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    1:22:23
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=dgK_bxIjtCw" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CBoQpDAYEiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" title="Dipper Goes to Taco Bell" rel="spf-prefetch" data-visibility-tracking="CBoQpDAYEiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCs6I6R8e2vgXY=">
-                    <span dir="ltr" class="title" aria-describedby="description-id-396864">
-                        Dipper Goes to Taco Bell
-                    </span>
-                    <span class="accessible-description" id="description-id-396864">
-                        - Duration: 29:38.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UC7EpM9PXIn3bTIlJYiP1xWg" data-name="related">Brendaniel</span></span>
-                    <span class="stat view-count">358,321 views</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=dgK_bxIjtCw" class="yt-uix-sessionlink  vve-check thumb-link spf-link        spf-link " data-sessionlink="itct=CBoQpDAYEiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CBoQpDAYEiITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCs6I6R8e2vgXY=" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="dgK_bxIjtCw"><img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" width="168" style="top: 0px" aria-hidden="true" data-thumb="https://i.ytimg.com/vi/dgK_bxIjtCw/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=s6huEPeZHN1X4ZR_5hD4QnXJjmI" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    29:38
-                </span>
-
-            </div>
-
-        </li>
-        <li class="video-list-item related-list-item  show-video-time related-list-item-compact-video">
-
-            <div class="content-wrapper">
-                <a href="/watch?v=CVJpzQ2KT5s" class="yt-uix-sessionlink  content-link spf-link        spf-link " data-sessionlink="itct=CBkQpDAYEyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" title="Bee Movie - Best Vanessa Scenes" rel="spf-prefetch" data-visibility-tracking="CBkQpDAYEyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCbn6ns0LmaqQk=">
-                    <span dir="ltr" class="title" aria-describedby="description-id-476253">
-                        Bee Movie - Best Vanessa Scenes
-                    </span>
-                    <span class="accessible-description" id="description-id-476253">
-                        - Duration: 8:11.
-                    </span>
-                    <span class="stat attribution"><span class="g-hovercard" data-ytid="UC_3_Siw9XMXJAccm86CEJ4w" data-name="related">TallMallRemake</span></span>
-                    <span class="stat view-count">546,847 views</span>
-                </a>
-            </div>
-            <div class="thumb-wrapper">
-
-                <a href="/watch?v=CVJpzQ2KT5s" class="yt-uix-sessionlink  vve-check thumb-link spf-link        spf-link " data-sessionlink="itct=CBkQpDAYEyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HTIHcmVsYXRlZEjVvIC134bm4EI" tabindex="-1" rel="spf-prefetch" data-visibility-tracking="CBkQpDAYEyITCMqWzr2B6s8CFQi-vgodlEQPpyj4HUCbn6ns0LmaqQk=" aria-hidden="true"><span class="yt-uix-simple-thumb-wrap yt-uix-simple-thumb-related" tabindex="0" data-vid="CVJpzQ2KT5s"><img src="https://s.ytimg.com/yts/img/pixel-vfl3z5WfW.gif" width="168" style="top: 0px" aria-hidden="true" data-thumb="https://i.ytimg.com/vi/CVJpzQ2KT5s/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=O_BYBhVIRGDDJ4PrNouetJQVonU" alt="" height="94"></span></a>
-
-                <span class="video-time">
-                    8:11
-                </span>
-
-            </div>
-
-        </li>
-        <div id="watch-more-related" class="hid">
+        <div id="watch-more-related" class="hiddendiv">
             <li id="watch-more-related-loading">
                 Loading more suggestions...
             </li>
         </div>
-        <button class="yt-uix-button yt-uix-button-size-default yt-uix-button-expander" type="button" onclick=";return false;" id="watch-more-related-button" data-continuation="CBQSFhILUXNHWU5mYWdIbFXAAQDIAQDgAQEYACrQAQiWvrKn0c3ws0cI4POagNK-rOefAQi8zMKZ3u38xa0BCN_hksHNsMv1ugEIjM2cgYKhqvjHAQia-Myr6IvA_RYI7JWcx56J7KlOCOuvlIGk7bm8bQishbeJ1NqUxxwIraus95GiyOw6CJTm_6OordSSmgEIvY-Dw6ufvtQICNSps4ify_L6xwEI5ff159jSuopeCJzCtd_Oue7IhAEIl-XolJ6YzsEBCMq6-r6AyKrdrgEIwZui6rX_vvxrCKzojpHx7a-Bdgibn6ns0LmaqQk%3D" data-button-action="yt.www.watch.related.loadMore"><span class="yt-uix-button-content">Show more</span></button>
-
+        <div style="border-top: 1px solid rgba(0, 0, 0, 0.125); margin-top: 10px;"></div>
+        <button type="button" class="btn grey lighten-5 btn-lg btn-block waves-effect"><span class="text-muted">Show more</span></button>
     </ul>
 </div>
