@@ -1,14 +1,29 @@
-﻿<!--Panel-->
+﻿<div class="card">
+    <div class="card-block ">
+        <h2 class="h2-responsive d-inline">
+            <span>Play-List: </span>
+            <span class="text-info font-weight-normal ng-binding">Rap and Hip-Hop</span>
+        </h2>
+        <button class="btn-flat waves-effect pull-right d-inline"><i class="fa fa-arrow-circle-left YTColor fa-2x" aria-hidden="true"></i></button>
+        <h5 class="h5-responsive">
+            <span>Created on </span>
+            <span class="text-muted ng-binding"> Oct 20, 2016</span>
+        </h5>
+
+    </div>
+</div>
+
+<!--Panel-->
 <div class="card">
     <div class="card-block ">
         <div class="pull-right">
             <div class="d-inline">
                 <a class="m-r-1">
-                    <i class="fa fa-random" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Shuffle"></i>
+                    <i class="fa fa-random fa-lg YTColor" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Shuffle"></i>
                 </a>
 
                 <a class="m-r-1">
-                    <i class="fa fa-repeat" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Repeat playlist"></i>
+                    <i class="fa fa-repeat fa-lg YTColor" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Repeat playlist"></i>
                 </a>
             </div>
             <!-- Switch -->
@@ -90,16 +105,16 @@
 <div class="card">
     <div class="card-block">
         <h4 class="h4-responsive">
-            <i class="fa fa-search" aria-hidden="true"></i> Search
+            <i class="fa fa-search" aria-hidden="true"></i> Search YouTube Videos
         </h4>
 
-                <!--Right-->
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search youtube for...">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary btn-lg" type="button">Search</button>
-                    </span>
-                </div>
+        <!--Right-->
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search youtube for...">
+            <span class="input-group-btn">
+                <button class="btn btn-primary btn-lg" type="button">Search</button>
+            </span>
+        </div>
 
     </div>
 </div>
@@ -107,26 +122,30 @@
 <div class="card">
     <div class="card-block ">
         <h4 class="h4-responsive">
-            <i class="fa fa-youtube-play" aria-hidden="true"></i> YouTube Videos
+            <i class="fa fa-youtube-play fa-lg YTColor" aria-hidden="true"></i> YouTube Videos
         </h4>
+        <button class="btn-flat waves-effect YTButtonTR"><i class="fa fa-times-circle fa-lg YTColor" aria-hidden="true"></i></button>
     </div>
     <ul class="z-depth-1">
         <!-- YouTube Video -->
         <li class="YTHover">
             <div class="view overlay hm-white-slight YTShawdowNone">
-                <div class="YTButton" aria-label="Basic example">
-                    <button type="button" class="btn-flat waves-effect"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                    <button type="button" class="btn-flat waves-effect"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                <div class="YTButtonTR">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-flat waves-effect"><i class="fa fa-minus text-danger" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-flat waves-effect"><i class="fa fa-plus text-success" aria-hidden="true"></i></button>
+                    </div>
                 </div>
                 <div class="mask waves-effect waves-effect"></div>
                 <div class="card-block">
-
-                    <div class="content-wrapper">
-                        <a href="/watch?v=R2fCbRTsnxY" title="YTP-Bee Movie: Barry Beetrays the Nazi Party">
-                            <h4 class="h4-responsive">
-                                YTP-Bee Movie: Barry Beetrays the Nazi Party
-                            </h4>
-                        </a>
+                    <div class="row">
+                        <div class="col-xs-8 col-sm-8 col-md-6 col-lg-8 col-xl-9">
+                            <a href="/watch?v=R2fCbRTsnxY" title="YTP-Bee Movie: Barry Beetrays the Nazi Party">
+                                <h4 class="h4-responsive">
+                                    YTP-Bee Movie: Barry Beetrays the Nazi Party A A A A AAAA AAAAA AA AAA
+                                </h4>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="row">
@@ -170,71 +189,68 @@
             </div>
         </li>
         <!--/. YouTube Video -->
-        <!-- YouTube Video -->
-        <li class="YTHover">
-            <div class="view overlay hm-white-slight YTShawdowNone">
-                <div class="mask waves-effect waves-effect"></div>
-                <div class="card-block">
-
-                    <div class="content-wrapper">
-                        <a href="/watch?v=R2fCbRTsnxY" title="YTP-Bee Movie: Barry Beetrays the Nazi Party">
-                            <h4 class="h4-responsive">
-                                YTP-Bee Movie: Barry Beetrays the Nazi Party
-                            </h4>
-                        </a>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-4 col-md-5 col-lg-4">
-                            <div style="position: relative; display: inline-block;">
-                                <a href="/watch?v=R2fCbRTsnxY">
-                                    <img class="img-fluid" src="https://i.ytimg.com/vi/R2fCbRTsnxY/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Gq40B9GJWILJuQlmKohtqRqfKZ4">
-                                    <span class="tag elegant-color" style="position: absolute; bottom: 0; right: 0">
-                                        4:51
-                                    </span>
-                                </a>
-                            </div>
-
-                            <div class="m-t-1">
-                                <ul class="inline-ul">
-                                    <li><i class="fa fa-star amber-text"></i></li>
-                                    <li><i class="fa fa-star amber-text"></i></li>
-                                    <li><i class="fa fa-star amber-text"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-8 col-md-7 col-lg-8">
-                            <div class="h5-responsive">
-                                <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
-                            </div>
-                            <br />
-                            <div class="row">
-                                <div class="col-xl-7 col-lg-6 h5-responsive">
-                                    <i class="fa fa-youtube-square" aria-hidden="true"></i> Channel: <span class="text-muted">EliteChannels</span>
-                                </div>
-                                <br class="hidden-lg-up" />
-                                <div class="col-xl-5 col-lg-6 h5-responsive">
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Views: <span class="text-muted">1,223,446</span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </li>
-        <!--/. YouTube Video -->
-
         <div id="watch-more-related" class="hiddendiv">
             <li id="watch-more-related-loading">
                 Loading more suggestions...
             </li>
         </div>
-        <div style="border-top: 1px solid rgba(0, 0, 0, 0.125); margin-top: 10px;"></div>
         <button type="button" class="btn grey lighten-5 btn-lg btn-block waves-effect"><span class="text-muted">Show more</span></button>
+    </ul>
+</div>
+
+
+
+<div class="card">
+    <div class="card-block ">
+        <h4 class="h4-responsive">
+            <i class="fa fa-play" aria-hidden="true"></i> Play-List Videos
+        </h4>
+        <button class="btn-flat waves-effect YTButtonTR"><i class="fa fa-times-circle fa-lg YTColor" aria-hidden="true"></i></button>
+    </div>
+    <ul class="z-depth-1">
+        <!-- YouTube Video -->
+        <li class="YTHover">
+            <div class="view overlay hm-white-slight YTShawdowNone">
+                <div class="mask waves-effect waves-effect"></div>
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-sm-2 col-md-3 col-lg-2">
+                            <button class="btn-flat waves-effect pull-right"><i class="fa fa-arrow-up YTColor YTInverseColor" aria-hidden="true"></i></button>
+                            <button class="btn-flat waves-effect YTInverseColor pull-right"><i class="fa fa-arrow-down YTColor YTInverseColor" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="col-sm-7 col-md-7 col-lg-5">
+                            <h4 class="h4-responsive">
+                                YTP-Bee Movie: Barry Beetrays the Nazi Party
+                            </h4>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 h5-responsive">
+                                    <i class="fa fa-sort" aria-hidden="true"></i> Order: <br /> <span class="text-muted">1</span>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 h5-responsive">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Personal Views: <br /> <span class="text-muted">1,223,446</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3 col-md-2 col-lg-5">
+                            <div class="pull-right" style="position: relative; display: inline-block;">
+                                <a href="/watch?v=R2fCbRTsnxY">
+                                    <img class="img-fluid" src="https://i.ytimg.com/vi/R2fCbRTsnxY/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Gq40B9GJWILJuQlmKohtqRqfKZ4">
+                                    <span class="tag elegant-color" style="position: absolute; bottom: 0; right: 0">
+                                        4:51
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="pull-right">
+                                <button class="btn-flat waves-effect pull-right"><i class="fa fa-trash text-danger" aria-hidden="true"></i></button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!--/. YouTube Video -->
     </ul>
 </div>

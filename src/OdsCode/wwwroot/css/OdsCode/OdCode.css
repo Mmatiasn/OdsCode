@@ -38,23 +38,37 @@
 }
 
 .YTHover:hover {
-    background-color: #ececec;
+    background-color: #f4f4f4;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.YTInverseColor:hover {
+    color: #0275d8;
+}
+
+YTInverseBackground:hover {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
 }
 
 .YTShawdowNone {
     box-shadow: 0 0 0 0 !important;
 }
 
-.YTButton {
+.YTButtonTR {
     position: absolute;
-    bottom: 5px;
-    left: 5px;
+    top: 0;
+    right: 0;
     z-index: 2;
 }
 
-.vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
+.YTButtonBR {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.YTColor {
+    color: #373a3c;
 }
