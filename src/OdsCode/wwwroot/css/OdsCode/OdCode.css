@@ -51,6 +51,13 @@ YTInverseBackground:hover {
     background: #ffffff !important;
 }
 
+.timetag {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 200;
+}
+
 .YTShawdowNone {
     box-shadow: 0 0 0 0 !important;
 }
@@ -59,16 +66,48 @@ YTInverseBackground:hover {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 2;
+    z-index: 50;
 }
 
 .YTButtonBR {
     position: absolute;
     bottom: 0;
     right: 0;
-    z-index: 2;
+    z-index: 50;
 }
 
 .YTColor {
     color: #373a3c;
+}
+
+.YTZIndex {
+    z-index: 101 !important;
+}
+
+.text-white-hover:hover {
+    color: #ffffff !important;
+}
+
+.ods-danger {
+  background: #d9534f;
+}
+
+.ods-danger:hover, .btn-danger:focus {
+  background-color: #e8534f !important;
+}
+
+.ods-danger.active {
+  background-color: maroon !important;
+}
+
+.ods-success {
+  background: #5cb85c;
+}
+
+.ods-success:hover, .btn-success:focus {
+  background-color: #5cc75c;
+}
+
+.ods-success.active {
+  background-color: #006228 !important;
 }
