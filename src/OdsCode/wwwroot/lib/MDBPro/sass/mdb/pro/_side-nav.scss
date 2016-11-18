@@ -36,6 +36,10 @@
             a {
                 margin-bottom: 5px;
                 color: #fff;
+                font-weight: 300;
+                font-size: 0.9rem;
+                height: 45px;
+                line-height: 45px;
                 &.active {
                     @include border-radius (2px);
                 }
@@ -50,8 +54,8 @@
         }
         .collapsible-body a {
             padding-left: 30px;
-            height: 46px;
-            line-height: 46px;
+            height: 45px;
+            line-height: 45px;
         }
         a {
             display: block;
@@ -182,7 +186,7 @@
             &.rotate-icon {
                 position: absolute;
                 right: 0;
-                top: 17px;
+                top: 13px;
             }
         }
     }

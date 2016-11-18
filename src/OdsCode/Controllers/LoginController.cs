@@ -12,6 +12,7 @@ using System.Net;
 
 namespace OdsCode.Controllers
 {
+    [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
     public class LoginController : Controller
     {
         private SignInManager<WorldUser> _signInManager;

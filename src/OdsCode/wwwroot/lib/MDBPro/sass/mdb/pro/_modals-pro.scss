@@ -57,12 +57,12 @@
 }
 
 // Container that the modal scrolls within
-.modal-bf {
+.side-modal {
     position: fixed;
     width: 400px;
     height: 100%;
     width: 100%;
-    z-index: 0;
+    z-index: 9999;
     // Shell div to position the modal with bottom padding
     .modal-dialog {
         position: absolute;
@@ -89,7 +89,12 @@
     // Modal background
 }
 
-.modal-bf.fade:not(.in) .modal-dialog {
+.side-modal.fade:not(.in) .modal-dialog {
     -webkit-transform: translate3d(25%, 0, 0);
     transform: translate3d(25%, 0, 0);
+}
+
+// Transparent backdrop
+.transparent-bd {
+    opacity: 0!important;
 }

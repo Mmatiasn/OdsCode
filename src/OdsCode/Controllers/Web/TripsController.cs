@@ -8,6 +8,7 @@ using System;
 
 namespace OdsCode.Controllers.Web
 {
+    [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
     public class TripsController : Controller
     {
         private ILogger<TripsController> _logger;

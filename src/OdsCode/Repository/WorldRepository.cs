@@ -73,23 +73,6 @@ namespace OdsCode.Repository
             }
         }
 
-        public PlayList GetUserPlayListWithVideos(int playListsId, string userName)
-        {
-            try
-            {
-                return _context.PlayLists
-                    .Include(t => t.Videos)
-                    .OrderBy(t => t.Name)
-                    .Where(t => t.UserName == userName && t.Id == playListsId)
-                    .FirstOrDefault();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Could not get trips with stops from database", ex);
-                return null;
-            }
-        }
-
         public Trip DeleteUserTripWithStops(int tripId, string userName)
         {
             try
@@ -134,10 +117,10 @@ namespace OdsCode.Repository
         {
             try
             {
-                 var trip = _context.Trips
-                    .Include(t => t.Stops)
-                    .Where(t => t.Id == tripId && t.UserName == userName)
-                    .First();
+                var trip = _context.Trips
+                   .Include(t => t.Stops)
+                   .Where(t => t.Id == tripId && t.UserName == userName)
+                   .First();
 
                 var stop = trip.Stops
                     .Where(s => s.Id == stopId)
@@ -214,6 +197,42 @@ namespace OdsCode.Repository
         public async Task<bool> SaveChangesAsync()
         {
             return (await _context.SaveChangesAsync()) > 0;
+        }
+
+        public void AddVideo(int playListId, string userName, Video newVideo)
+        {
+            var playList = GetPlayListById(playListId, userName);
+
+            if (playList != null)
+            {
+                playList.Videos.Add(newVideo);
+                _context.Videos.Add(newVideo);
+            }
+        }
+
+        public IEnumerable<PlayList> GetUserPlayListWithVideos(string userName)
+        {
+            try
+            {
+                return _context.PlayLists
+                    .Include(t => t.Videos)
+                    .OrderBy(t => t.Name)
+                    .Where(t => t.UserName == userName)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Could not get trips with stops from database", ex);
+                return null;
+            }
+        }
+
+        public PlayList GetPlayListById(int playListId, string userName)
+        {
+            return _context.PlayLists
+                .Include(t => t.Videos)
+                .Where(t => t.Id == playListId && t.UserName == userName)
+                .FirstOrDefault();
         }
     }
 }

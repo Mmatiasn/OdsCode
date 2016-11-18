@@ -3,6 +3,9 @@ $blue-skin-color: #062A64;
 $green-skin-color: #003830;
 $purple-skin-color: #650696;
 $deep-orange-skin-color: #8A1A00;
+$pink-skin-color: #c2185b;
+$light-grey-skin-color: #757575; 
+
 // Blue skin
 .blue-skin {
     .primary-color {
@@ -15,7 +18,7 @@ $deep-orange-skin-color: #8A1A00;
     .side-nav {
         @extend .blue-gradient;
         .logo-wrapper {
-            background: url("http://mdbootstrap.com/images/regular/nature/img%20(62).jpg") no-repeat center center;
+            background: url("http://mdbootstrap.com/images/sidenavs/blue.jpg") no-repeat center center;
             background-size: cover;
         }
         .sn-avatar-wrapper img {
@@ -77,6 +80,45 @@ $deep-orange-skin-color: #8A1A00;
             background-color: darken( $primary-color-dark, 20%)!important;
         }
     }
+    .btn-primary-outline {
+        border: 2px solid $primary-color;
+        color: $primary-color!important;
+    }
+    .btn-secondary-outline {
+        border: 2px solid #5C4AF5;
+        color: #5C4AF5!important;
+    }
+    .btn-default-outline {
+        border: 2px solid $primary-color-dark;
+        color: $primary-color-dark!important;
+    }
+
+    input[type=checkbox].filled-in:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+            }
+
+            &:after {
+                background-color: $primary-color-dark;
+                border-color: $primary-color-dark;
+            }
+        }
+    }
+
+    .top-nav-collapse {
+        background-color: lighten( $blue-skin-color, 2%);
+    }
+
+    .carousel-multi-item {
+        .controls-top > a, .carousel-indicators li, .carousel-indicators li.active {
+            background-color: lighten( $blue-skin-color, 2%);
+        }
+    }
+    .tag, .form-header, .card-header {
+        background-color: lighten( $blue-skin-color, 2%);
+    }
 }
 
 // Red skin
@@ -93,7 +135,7 @@ $deep-orange-skin-color: #8A1A00;
     .side-nav {
         @extend .red-gradient;
         .logo-wrapper {
-            background: url("http://mdbootstrap.com/images/regular/people/img%20(9).jpg") no-repeat center center;
+            background: url("http://mdbootstrap.com/images/sidenavs/red.jpg") no-repeat center center;
             background-size: cover;
         }
         .sn-avatar-wrapper img {
@@ -155,6 +197,80 @@ $deep-orange-skin-color: #8A1A00;
             background-color: darken( #79000C, 20%)!important;
         }
     }
+    .btn-primary-outline {
+        border: 2px solid $danger-color-dark;
+        color: $danger-color-dark!important;
+    }
+    .btn-secondary-outline {
+        border: 2px solid #7D2900;
+        color: #7D2900!important;
+    }
+    .btn-default-outline {
+        border: 2px solid #79000C;
+        color: #79000C!important;
+    }
+
+    // Custom inputs
+    input[type="email"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) {
+        border-color:$danger-color-dark;
+        box-shadow:0 1px 0 0 $danger-color-dark;
+        &+label {
+            color:$danger-color-dark;
+        }
+    }
+
+    input[type=checkbox]:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid $danger-color-dark;
+                border-bottom: 2px solid $danger-color-dark;
+            }
+        }
+    }
+
+    input[type=checkbox].filled-in:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+            }
+
+            &:after {
+                background-color: $danger-color-dark;
+                border-color: $danger-color-dark;
+            }
+        }
+    }
+
+    .md-form {
+        .prefix {
+            &.active {
+                color: $danger-color-dark;
+            }
+        }
+    }
+
+    /* Select colors */
+    .dropdown-content {
+        li:not(.disabled) {
+            span {
+                color: $danger-color-dark;
+            }
+        }
+    }
+
+    .top-nav-collapse {
+        background-color: darken( $danger-color-dark, 10%);
+    }
+
+    .carousel-multi-item {
+        .controls-top > a, .carousel-indicators li, .carousel-indicators li.active {
+            background-color: darken( $danger-color-dark, 10%);
+        }
+    }
+    .tag, .form-header, .card-header {
+        background-color: darken( $danger-color-dark, 10%);
+    }
 }
 
 // Green skin
@@ -171,7 +287,7 @@ $deep-orange-skin-color: #8A1A00;
     .side-nav {
         @extend .green-gradient;
         .logo-wrapper {
-            background: url("http://mdbootstrap.com/images/regular/nature/img%20(60).jpg") no-repeat center center;
+            background: url("http://mdbootstrap.com/images/sidenavs/green.jpg") no-repeat center center;
             background-size: cover;
         }
         .sn-avatar-wrapper img {
@@ -233,6 +349,80 @@ $deep-orange-skin-color: #8A1A00;
             background-color: darken( #226568, 20%)!important;
         }
     }
+    .btn-primary-outline {
+        border: 2px solid $green-skin-color;
+        color: $green-skin-color!important;
+    }
+    .btn-secondary-outline {
+        border: 2px solid #294F6F;
+        color: #294F6F!important;
+    }
+    .btn-default-outline {
+        border: 2px solid #226568;
+        color: #226568!important;
+    }
+
+    // Custom inputs
+    input[type="email"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) {
+        border-color:$green-skin-color;
+        box-shadow:0 1px 0 0 $green-skin-color;
+        &+label {
+            color:$green-skin-color;
+        }
+    }
+
+    input[type=checkbox]:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid $green-skin-color;
+                border-bottom: 2px solid $green-skin-color;
+            }
+        }
+    }
+
+    input[type=checkbox].filled-in:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+            }
+
+            &:after {
+                background-color: $green-skin-color;
+                border-color: $green-skin-color;
+            }
+        }
+    }
+
+    .md-form {
+        .prefix {
+            &.active {
+                color: $green-skin-color;
+            }
+        }
+    }
+
+    /* Select colors */
+    .dropdown-content {
+        li:not(.disabled) {
+            span {
+                color: $green-skin-color;
+            }
+        }
+    }
+
+    .top-nav-collapse {
+        background-color: darken( $green-skin-color, 0%);
+    }
+
+    .carousel-multi-item {
+        .controls-top > a, .carousel-indicators li, .carousel-indicators li.active {
+            background-color: darken( $green-skin-color, 0%);
+        }
+    }
+    .tag, .form-header, .card-header {
+        background-color: darken( $green-skin-color, 0%);
+    }
 }
 
 // Purple skin
@@ -249,7 +439,7 @@ $deep-orange-skin-color: #8A1A00;
     .side-nav {
         @extend .purple-gradient;
         .logo-wrapper {
-            background: url("http://mdbootstrap.com/images/regular/nature/img%20(73).jpg") no-repeat center center;
+            background: url("http://mdbootstrap.com/images/sidenavs/purple.jpg") no-repeat center center;
             background-size: cover;
         }
         .sn-avatar-wrapper img {
@@ -311,6 +501,80 @@ $deep-orange-skin-color: #8A1A00;
             background-color: darken( #21109C, 20%)!important;
         }
     }
+    .btn-primary-outline {
+        border: 2px solid $purple-skin-color;
+        color: $purple-skin-color!important;
+    }
+    .btn-secondary-outline {
+        border: 2px solid #A6007D;
+        color: #A6007D!important;
+    }
+    .btn-default-outline {
+        border: 2px solid #21109C;
+        color: #21109C!important;
+    }
+
+    // Custom inputs
+    input[type="email"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) {
+        border-color:$purple-skin-color;
+        box-shadow:0 1px 0 0 $purple-skin-color;
+        &+label {
+            color:$purple-skin-color;
+        }
+    }
+
+    input[type=checkbox]:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid $purple-skin-color;
+                border-bottom: 2px solid $purple-skin-color;
+            }
+        }
+    }
+
+    input[type=checkbox].filled-in:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+            }
+
+            &:after {
+                background-color: $purple-skin-color;
+                border-color: $purple-skin-color;
+            }
+        }
+    }
+
+    .md-form {
+        .prefix {
+            &.active {
+                color: $purple-skin-color;
+            }
+        }
+    }
+
+    /* Select colors */
+    .dropdown-content {
+        li:not(.disabled) {
+            span {
+                color: $purple-skin-color;
+            }
+        }
+    }
+
+    .top-nav-collapse {
+        background-color: darken( $purple-skin-color, 5%);
+    }
+
+    .carousel-multi-item {
+        .controls-top > a, .carousel-indicators li, .carousel-indicators li.active {
+            background-color: darken( $purple-skin-color, 5%);
+        }
+    }
+    .tag, .form-header, .card-header {
+        background-color: darken( $purple-skin-color, 5%);
+    }
 }
 
 // Dark skin
@@ -327,7 +591,7 @@ $deep-orange-skin-color: #8A1A00;
     .side-nav {
         @extend .dark-gradient;
         .logo-wrapper {
-            background: url("http://mdbootstrap.com/images/regular/nature/img%20(68).jpg") no-repeat center center;
+            background: url("http://mdbootstrap.com/images/sidenavs/dark.jpg") no-repeat center center;
             background-size: cover;
         }
         .sn-avatar-wrapper img {
@@ -389,6 +653,80 @@ $deep-orange-skin-color: #8A1A00;
             background-color: darken( #676767, 20%)!important;
         }
     }
+    .btn-primary-outline {
+        border: 2px solid $elegant-color;
+        color: $elegant-color!important;
+    }
+    .btn-secondary-outline {
+        border: 2px solid #3F729B;
+        color: #3F729B!important;
+    }
+    .btn-default-outline {
+        border: 2px solid #676767;
+        color: #676767!important;
+    }
+
+    // Custom inputs
+    input[type="email"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) {
+        border-color:$elegant-color;
+        box-shadow:0 1px 0 0 $elegant-color;
+        &+label {
+            color:$elegant-color;
+        }
+    }
+
+    input[type=checkbox]:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid $elegant-color;
+                border-bottom: 2px solid $elegant-color;
+            }
+        }
+    }
+
+    input[type=checkbox].filled-in:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+            }
+
+            &:after {
+                background-color: $elegant-color;
+                border-color: $elegant-color;
+            }
+        }
+    }
+
+    .md-form {
+        .prefix {
+            &.active {
+                color:$elegant-color;
+            }
+        }
+    }
+
+    /* Select colors */
+    .dropdown-content {
+        li:not(.disabled) {
+            span {
+                color: $elegant-color;
+            }
+        }
+    }
+
+    .top-nav-collapse {
+        background-color: lighten( $elegant-color, 5%);
+    }
+
+    .carousel-multi-item {
+        .controls-top > a, .carousel-indicators li, .carousel-indicators li.active {
+            background-color: lighten( $elegant-color, 5%);
+        }
+    }
+    .tag, .form-header, .card-header {
+        background-color: lighten( $elegant-color, 5%);
+    }
 }
 
 // Grey skin
@@ -405,7 +743,7 @@ $deep-orange-skin-color: #8A1A00;
     .side-nav {
         @extend .grey-gradient;
         .logo-wrapper {
-            background: url("http://mdbootstrap.com/images/regular/city/img%20(22).jpg") no-repeat center center;
+            background: url("http://mdbootstrap.com/images/sidenavs/grey.jpg") no-repeat center center;
             background-size: cover;
         }
         .sn-avatar-wrapper img {
@@ -467,6 +805,80 @@ $deep-orange-skin-color: #8A1A00;
             background-color: darken( #17202F, 20%)!important;
         }
     }
+    .btn-primary-outline {
+        border: 2px solid $stylish-color;
+        color: $stylish-color!important;
+    }
+    .btn-secondary-outline {
+        border: 2px solid #3F729B;
+        color: #3F729B!important;
+    }
+    .btn-default-outline {
+        border: 2px solid #17202F;
+        color: #17202F!important;
+    }
+
+    // Custom inputs
+    input[type="email"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) {
+        border-color:$stylish-color;
+        box-shadow:0 1px 0 0 $stylish-color;
+        &+label {
+            color:$stylish-color;
+        }
+    }
+
+    input[type=checkbox]:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid $stylish-color;
+                border-bottom: 2px solid $stylish-color;
+            }
+        }
+    }
+
+    input[type=checkbox].filled-in:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+            }
+
+            &:after {
+                background-color: $stylish-color;
+                border-color: $stylish-color;
+            }
+        }
+    }
+
+    .md-form {
+        .prefix {
+            &.active {
+                color:$stylish-color;
+            }
+        }
+    }
+
+    /* Select colors */
+    .dropdown-content {
+        li:not(.disabled) {
+            span {
+                color: $stylish-color;
+            }
+        }
+    }
+
+    .top-nav-collapse {
+        background-color: lighten( $stylish-color, 5%);
+    }
+    
+    .carousel-multi-item {
+        .controls-top > a, .carousel-indicators li, .carousel-indicators li.active {
+            background-color: lighten( $stylish-color, 5%);
+        }
+    }
+    .tag, .form-header, .card-header {
+        background-color: lighten( $stylish-color, 5%);
+    }
 }
 
 // MDB skin
@@ -483,7 +895,7 @@ $deep-orange-skin-color: #8A1A00;
     .side-nav {
         @extend .mdb-gradient;
         .logo-wrapper {
-            background: url("http://mdbootstrap.com/images/regular/nature/img%20(55).jpg") no-repeat center center;
+            background: url("http://mdbootstrap.com/images/sidenavs/mdb.jpg") no-repeat center center;
             background-size: cover;
         }
         .sn-avatar-wrapper img {
@@ -533,7 +945,7 @@ $deep-orange-skin-color: #8A1A00;
         &.active {
             background-color: darken( $unique-color-dark, 20%)!important;
         }
-    }
+    }  
     .btn-default,
     .card .btn-action {
         background: #154771;
@@ -544,6 +956,80 @@ $deep-orange-skin-color: #8A1A00;
         &.active {
             background-color: darken( #154771, 20%)!important;
         }
+    }
+    .btn-primary-outline {
+        border: 2px solid $unique-color;
+        color: $unique-color!important;
+    }
+    .btn-secondary-outline {
+        border: 2px solid $unique-color-dark;
+        color: $unique-color-dark!important;
+    }
+    .btn-default-outline {
+        border: 2px solid #154771;
+        color: #154771!important;
+    }
+
+    // Custom inputs
+    input[type="email"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) {
+        border-color:$unique-color;
+        box-shadow:0 1px 0 0 $unique-color;
+        &+label {
+            color:$unique-color;
+        }
+    }
+
+    input[type=checkbox]:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid $unique-color;
+                border-bottom: 2px solid $unique-color;
+            }
+        }
+    }
+
+    input[type=checkbox].filled-in:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+            }
+
+            &:after {
+                background-color: $unique-color;
+                border-color: $unique-color;
+            }
+        }
+    }
+
+    .md-form {
+        .prefix {
+            &.active {
+                color:$unique-color;
+            }
+        }
+    }
+
+    /* Select colors */
+    .dropdown-content {
+        li:not(.disabled) {
+            span {
+                color: $unique-color;
+            }
+        }
+    }
+
+    .top-nav-collapse {
+        background-color: lighten( $unique-color, 0%);
+    }
+
+    .carousel-multi-item {
+        .controls-top > a, .carousel-indicators li, .carousel-indicators li.active {
+            background-color: lighten( $unique-color, 0%);
+        }
+    }
+    .tag, .form-header, .card-header {
+        background-color: lighten( $unique-color, 0%);
     }
 }
 
@@ -564,7 +1050,7 @@ $deep-orange-skin-color: #8A1A00;
     .side-nav {
         @extend .deep-orange-gradient;
         .logo-wrapper {
-            background: url("http://mdbootstrap.com/images/regular/nature/img%20(51).jpg") no-repeat center center;
+            background: url("http://mdbootstrap.com/images/sidenavs/deep-orange.jpg") no-repeat center center;
             background-size: cover;
         }
         .sn-avatar-wrapper img {
@@ -623,6 +1109,80 @@ $deep-orange-skin-color: #8A1A00;
             background-color: darken( #830012, 20%)!important;
         }
     }
+    .btn-primary-outline {
+        border: 2px solid $deep-orange-skin-color;
+        color: $deep-orange-skin-color!important;
+    }
+    .btn-secondary-outline {
+        border: 2px solid #DD6000;
+        color: #DD6000!important;
+    }
+    .btn-default-outline {
+        border: 2px solid #830012;
+        color: #830012!important;
+    }
+
+    // Custom inputs
+    input[type="email"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) {
+        border-color:$deep-orange-skin-color;
+        box-shadow:0 1px 0 0 $deep-orange-skin-color;
+        &+label {
+            color:$deep-orange-skin-color;
+        }
+    }
+
+    input[type=checkbox]:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid $deep-orange-skin-color;
+                border-bottom: 2px solid $deep-orange-skin-color;
+            }
+        }
+    }
+
+    input[type=checkbox].filled-in:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+            }
+
+            &:after {
+                background-color: $deep-orange-skin-color;
+                border-color: $deep-orange-skin-color;
+            }
+        }
+    }
+
+    .md-form {
+        .prefix {
+            &.active {
+                color:$deep-orange-skin-color;
+            }
+        }
+    }
+
+    /* Select colors */
+    .dropdown-content {
+        li:not(.disabled) {
+            span {
+                color: $deep-orange-skin-color;
+            }
+        }
+    }
+
+    .top-nav-collapse {
+        background-color: lighten( $deep-orange-skin-color, 0%);
+    }
+
+    .carousel-multi-item {
+        .controls-top > a, .carousel-indicators li, .carousel-indicators li.active {
+            background-color: lighten( $deep-orange-skin-color, 0%);
+        }
+    }
+    .tag, .form-header, .card-header {
+        background-color: lighten( $deep-orange-skin-color, 0%);
+    }
 }
 
 // Graphite skin
@@ -642,7 +1202,7 @@ $deep-orange-skin-color: #8A1A00;
     .side-nav {
         @extend .graphite-gradient;
         .logo-wrapper {
-            background: url("http://mdbootstrap.com/images/regular/nature/img%20(67).jpg") no-repeat center center;
+            background: url("http://mdbootstrap.com/images/sidenavs/graphite.jpg") no-repeat center center;
             background-size: cover;
         }
         .sn-avatar-wrapper img {
@@ -700,5 +1260,365 @@ $deep-orange-skin-color: #8A1A00;
         &.active {
             background-color: darken( #154771, 20%)!important;
         }
+    }
+    .btn-primary-outline {
+        border: 2px solid $special-color;
+        color: $special-color!important;
+    }
+    .btn-secondary-outline {
+        border: 2px solid #453D55;
+        color: #453D55!important;
+    }
+    .btn-default-outline {
+        border: 2px solid #154771;
+        color: #154771!important;
+    }
+
+    // Custom inputs
+    input[type="email"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) {
+        border-color:$special-color;
+        box-shadow:0 1px 0 0 $special-color;
+        &+label {
+            color:$special-color;
+        }
+    }
+
+    input[type=checkbox]:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid $special-color;
+                border-bottom: 2px solid $special-color;
+            }
+        }
+    }
+
+    input[type=checkbox].filled-in:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+            }
+
+            &:after {
+                background-color: $special-color;
+                border-color: $special-color;
+            }
+        }
+    }
+
+    .md-form {
+        .prefix {
+            &.active {
+                color:$special-color;
+            }
+        }
+    }
+
+    /* Select colors */
+    .dropdown-content {
+        li:not(.disabled) {
+            span {
+                color: $special-color;
+            }
+        }
+    }
+
+    .top-nav-collapse {
+        background-color: lighten( $special-color, 0%);
+    }
+
+    .carousel-multi-item {
+        .controls-top > a, .carousel-indicators li, .carousel-indicators li.active {
+            background-color: lighten( $special-color, 0%);
+        }
+    }
+    .tag, .form-header, .card-header {
+        background-color: lighten( $special-color, 2%);
+    }
+}
+
+// Pink skin
+.pink-skin {
+    .primary-color {
+        background-color: #880e4f!important;
+    }
+    .navbar {
+        background-color: darken( $pink-skin-color, 5%);
+    }
+    .page-footer {
+        background-color: darken( $pink-skin-color, 15%);
+    }
+    .side-nav {
+        @extend .pink-gradient;
+        .logo-wrapper {
+            background: url("http://mdbootstrap.com/images/regular/nature/img%20(73).jpg") no-repeat center center;
+            background-size: cover;
+        }
+        .sn-avatar-wrapper img {
+            border: 3px solid darken( $pink-skin-color, 15%);
+        }
+        .social a {
+            &:hover {
+                background-color: darken( $pink-skin-color, 10%);
+                @include transition (all 0.3s linear);
+            }
+        }
+        .collapsible li {
+            background-color: transparent;
+            a {
+                &.active {
+                    background-color: darken( $pink-skin-color, 5%);
+                }
+                &:hover {
+                    background-color: darken( $pink-skin-color, 5%);
+                    @include transition (all 0.3s linear);
+                }
+            }
+        }
+        .fa {
+            color: rgba(227, 242, 253, 0.64);
+        }
+    }
+    .navbar .navbar-nav .dropdown .dropdown-primary .dropdown-item:hover {
+        background-color: darken( $pink-skin-color, 5%);
+    }
+    .btn-primary {
+        background: $pink-skin-color;
+        &:hover,
+        &:focus {
+            background-color: lighten( $pink-skin-color, 5%)!important;
+        }
+        &.active {
+            background-color: darken( $pink-skin-color, 20%)!important;
+        }
+    }
+    .btn-secondary {
+        background: #303f9f;
+        &:hover,
+        &:focus {
+            background-color: lighten( #303f9f, 5%)!important;
+        }
+        &.active {
+            background-color: darken( #303f9f, 20%)!important;
+        }
+    }
+    .btn-default,
+    .card .btn-action {
+        background: #21109C;
+        &:hover,
+        &:focus {
+            background-color: lighten( #21109C, 5%)!important;
+        }
+        &.active {
+            background-color: darken( #21109C, 20%)!important;
+        }
+    }
+
+    // Custom inputs
+    input[type="email"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) {
+        border-color:$pink-skin-color;
+        box-shadow:0 1px 0 0 $pink-skin-color;
+        &+label {
+            color:$pink-skin-color;
+        }
+    }
+
+    input[type=checkbox]:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid $pink-skin-color;
+                border-bottom: 2px solid $pink-skin-color;
+            }
+        }
+    }
+
+    input[type=checkbox].filled-in:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+            }
+
+            &:after {
+                background-color: $pink-skin-color;
+                border-color: $pink-skin-color;
+            }
+        }
+    }
+
+    .md-form {
+        .prefix {
+            &.active {
+                color:$pink-skin-color;
+            }
+        }
+    }
+
+    /* Select colors */
+    .dropdown-content {
+        li:not(.disabled) {
+            span {
+                color: $pink-skin-color;
+            }
+        }
+    }
+
+    .top-nav-collapse {
+        background-color: $pink-skin-color;
+    }
+
+    // Carousel
+    .carousel-multi-item {
+        .controls-top > a, .carousel-indicators li, .carousel-indicators li.active {
+            background-color: $pink-skin-color;
+        }
+    }
+
+    // Tags, form-header, card-header
+    .tag, .form-header, .card-header {
+        background-color: lighten( $pink-skin-color, 2%);
+    }
+
+}
+
+// Light grey skin
+.light-grey-skin {
+    .primary-color {
+        background-color: #353535!important;
+    }
+    .navbar {
+        background-color: darken( $light-grey-skin-color, 5%);
+    }
+    .page-footer {
+        background-color: darken( $light-grey-skin-color, 15%);
+    }
+    .side-nav {
+        background-color: darken( $light-grey-skin-color, 5%);
+        .logo-wrapper {
+            background: url("http://mdbootstrap.com/images/regular/nature/img%20(32).jpg") no-repeat center center;
+            @include background-size(cover);
+        }
+        .sn-avatar-wrapper img {
+            border: 3px solid darken( $light-grey-skin-color, 15%);
+        }
+        .social a {
+            &:hover {
+                background-color: darken( $light-grey-skin-color, 10%);
+                @include transition (all 0.3s linear);
+            }
+        }
+        .collapsible li {
+            background-color: transparent;
+            a {
+                &.active {
+                    background-color: darken( $light-grey-skin-color, 15%);
+                }
+                &:hover {
+                    background-color: darken( $light-grey-skin-color, 20%);
+                    @include transition (all 0.3s linear);
+                }
+            }
+        }
+        .fa {
+            color: rgba(227, 242, 253, 0.64);
+        }
+    }
+    .navbar .navbar-nav .dropdown .dropdown-primary .dropdown-item:hover {
+        background-color: darken( $light-grey-skin-color, 5%);
+    }
+    .btn-primary {
+        background: #353535;
+        &:hover,
+        &:focus {
+            background-color: lighten( #353535, 5%)!important;
+        }
+        &.active {
+            background-color: darken( #353535, 20%)!important;
+        }
+    }
+    .btn-secondary {
+        background: #3F729B;
+        &:hover,
+        &:focus {
+            background-color: lighten( #3F729B, 5%)!important;
+        }
+        &.active {
+            background-color: darken( #3F729B, 20%)!important;
+        }
+    }
+    .btn-default,
+    .card .btn-action {
+        background: #0F0F0F;
+        &:hover,
+        &:focus {
+            background-color: lighten( #0F0F0F, 5%)!important;
+        }
+        &.active {
+            background-color: darken( #0F0F0F, 20%)!important;
+        }
+    }
+
+    // Custom inputs
+    input[type="email"]:focus:not([readonly]), input[type="text"]:focus:not([readonly]), input[type="password"]:focus:not([readonly]), textarea.md-textarea:focus:not([readonly]) {
+        border-color:$light-grey-skin-color;
+        box-shadow:0 1px 0 0 $light-grey-skin-color;
+        &+label {
+            color:$light-grey-skin-color;
+        }
+    }
+
+    input[type=checkbox]:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid $light-grey-skin-color;
+                border-bottom: 2px solid $light-grey-skin-color;
+            }
+        }
+    }
+
+    input[type=checkbox].filled-in:checked {
+        &+label {
+            &:before {
+                border-right: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+            }
+
+            &:after {
+                background-color: $light-grey-skin-color;
+                border-color: $light-grey-skin-color;
+            }
+        }
+    }
+
+    .md-form {
+        .prefix {
+            &.active {
+                color:$light-grey-skin-color;
+            }
+        }
+    }
+
+    /* Select colors */
+    .dropdown-content {
+        li:not(.disabled) {
+            span {
+                color: $light-grey-skin-color;
+            }
+        }
+    }
+
+    .top-nav-collapse {
+        background-color: $light-grey-skin-color;
+    }
+
+    .carousel-multi-item {
+        .controls-top > a, .carousel-indicators li, .carousel-indicators li.active {
+            background-color: $light-grey-skin-color;
+        }
+    }
+
+    // Tags, form-header, card-header
+    .tag, .form-header, .card-header {
+        background-color: lighten( $light-grey-skin-color, 2%);
     }
 }

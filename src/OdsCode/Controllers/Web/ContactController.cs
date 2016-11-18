@@ -6,6 +6,7 @@ using System;
 
 namespace OdsCode.Controllers.Web
 {
+    [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
     public class ContactController : Controller
     {
         private IConfigurationRoot _config;

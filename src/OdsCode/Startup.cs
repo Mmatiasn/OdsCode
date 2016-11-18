@@ -66,6 +66,9 @@ namespace OdsCode
             // YouTube Service is registered.
             services.AddTransient<YouTubeSearchService>();
 
+            // YouTube Service is registered.
+            services.AddTransient<YouTubeVideoSearchService>();
+
             // Is used to create data in the database.
             services.AddTransient<WorldContextSeedData>();
 

@@ -133,6 +133,13 @@
     }
 }
 
+.btn-so {
+    background-color: $so-color;
+    &:hover,
+    &:focus {
+        background-color: lighten($so-color, 5%);
+    }
+}
 
 /* Icons */
 
@@ -246,6 +253,13 @@
     } 
 }
 
+.so-ic {
+   color: $so-color!important;
+    &:hover,
+    &:focus {
+        color: $so-color;
+    } 
+}
 
 /* Social list */
 

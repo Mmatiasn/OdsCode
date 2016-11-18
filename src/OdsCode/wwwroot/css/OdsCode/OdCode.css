@@ -22,6 +22,13 @@
     height: 800px;
 }
 
+.yt-sticky-position {
+    min-width: 200px;
+    width: 100%;
+    min-height: 200px;
+    height: 800px;
+}
+
 #map {
     min-width: 200px;
     width: 100%;
@@ -40,6 +47,17 @@
 .YTHover:hover {
     background-color: #f4f4f4;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.drag-enter {
+    background-color: #65aed6;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.drag-over {
+    background-color: #fff;
+    box-shadow: 20px 8px 20px 8px rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    opacity: 0.25;
 }
 
 .YTInverseColor:hover {
@@ -84,6 +102,10 @@ YTInverseBackground:hover {
     z-index: 101 !important;
 }
 
+.YTZIndexNone {
+    z-index: 0;
+}
+
 .text-white-hover:hover {
     color: #ffffff !important;
 }
@@ -111,3 +133,13 @@ YTInverseBackground:hover {
 .ods-success.active {
   background-color: #006228 !important;
 }
+
+.div-center {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+}
+

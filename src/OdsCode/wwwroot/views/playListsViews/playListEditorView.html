@@ -21,79 +21,79 @@
 
         <!--Right-->
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search youtube for...">
+            <input name="YTSearch" id="YTSearch" type="text" class="form-control" data-ng-model="YTSearchText" placeholder="Search youtube for...">
             <span class="input-group-btn">
-                <button class="btn btn-primary btn-lg" type="button">Search</button>
+                <button class="btn btn-primary btn-lg waves-effect" data-ng-click="getVideos(YTSearchText)" type="button">Search</button>
             </span>
         </div>
 
     </div>
 </div>
 
-<div class="card">
+<div class="card" data-ng-show="YTSearchActive">
     <div class="card-block ">
         <h4 class="h4-responsive">
             <i class="fa fa-youtube-play fa-lg YTColor" aria-hidden="true"></i> <span class="hidden-xs-down">YouTube Videos</span>
         </h4>
-        <button class="btn-flat waves-effect YTButtonTR"><i class="fa fa-times-circle fa-lg YTColor" aria-hidden="true"></i></button>
+        <button class="btn-flat waves-effect YTButtonTR" data-ng-click="closeYTVideos()"><i class="fa fa-times-circle fa-lg YTColor" aria-hidden="true"></i></button>
     </div>
     <ul class="z-depth-1">
         <!-- YouTube Video -->
-        <li class="YTHover">
+        <li data-ng-repeat="video in YTSearchResults" class="YTHover">
             <div class="view overlay hm-white-slight YTShawdowNone">
-                <div class="mask waves-effect waves-effect"></div>
+                <div class="mask waves-effect waves-effect" data-ng-click="playVideo(video.id)"></div>
                 <div class="card-block">
                     <div class="row">
                         <div class="YTButtonTR YTZIndex">
                             <!-- Remove From Play-List Will Be Worked On Later-->
                             <!--
-                                <a class="btn ods-danger waves-effect"><i class="fa fa-minus text-white" aria-hidden="true"></i></a>
+                            <a class="btn ods-danger waves-effect"><i class="fa fa-minus text-white" aria-hidden="true"></i></a>
                             -->
                             <!-- Remove From Play-List Will Be Worked On Later -->
-                            <a class="btn ods-success waves-effect"><i class="fa fa-plus text-white" aria-hidden="true"></i></a>
+                            <a class="btn ods-success waves-effect" data-ng-click="addVideoToPlayList(video)"><i class="fa fa-plus text-white" aria-hidden="true"></i></a>
                         </div>
                         <div class="col-xs-8 col-sm-8 col-md-6 col-lg-8 col-xl-9">
-                            <a href="/watch?v=R2fCbRTsnxY" title="YTP-Bee Movie: Barry Beetrays the Nazi Party">
-                                <h4 class="h4-responsive">
-                                    YTP-Bee Movie: Barry Beetrays the Nazi Party A A A A AAAA AAAAA AA AAA
+                            <span title="YTP-Bee Movie: Barry Beetrays the Nazi Party">
+                                <h4 class="h4-responsive wrap">
+                                    {{ video.snippet.title }}
                                 </h4>
-                            </a>
+                            </span>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-sm-4 col-md-5 col-lg-4">
                             <div style="position: relative; display: inline-block;">
-                                <a href="/watch?v=R2fCbRTsnxY">
-                                    <img class="img-fluid YTZIndex" src="https://i.ytimg.com/vi/R2fCbRTsnxY/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Gq40B9GJWILJuQlmKohtqRqfKZ4">
+                                <a target="_blank" data-ng-href="https://www.youtube.com/watch?v={{video.id}}">
+                                    <img class="img-fluid YTZIndex" style="max-width: 200px" data-ng-src="{{ video.snippet.thumbnails.standard.url }}">
                                     <span class="tag elegant-color timetag">
-                                        4:51
+                                        {{ video.contentDetails.duration | YTTimeFilter }}
                                     </span>
                                 </a>
                             </div>
 
                             <div class="m-t-1">
                                 <ul class="inline-ul">
-                                    <li><i class="fa fa-star amber-text"></i></li>
-                                    <li><i class="fa fa-star amber-text"></i></li>
-                                    <li><i class="fa fa-star amber-text"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
-                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa amber-text" data-ng-class="{ 'fa-star-half-o': rating(10, video.statistics.dislikeCount, video.statistics.likeCount, 1), 'fa-star': rating(20, video.statistics.dislikeCount, video.statistics.likeCount, 0) }"></i></li>
+                                    <li><i class="fa amber-text" data-ng-class="{ 'fa-star-half-o': rating(30, video.statistics.dislikeCount, video.statistics.likeCount, 1), 'fa-star': rating(40, video.statistics.dislikeCount, video.statistics.likeCount, 0) }"></i></li>
+                                    <li><i class="fa amber-text" data-ng-class="{ 'fa-star-half-o': rating(50, video.statistics.dislikeCount, video.statistics.likeCount, 1), 'fa-star': rating(60, video.statistics.dislikeCount, video.statistics.likeCount, 0) }"></i></li>
+                                    <li><i class="fa amber-text" data-ng-class="{ 'fa-star-half-o': rating(70, video.statistics.dislikeCount, video.statistics.likeCount, 1), 'fa-star': rating(80, video.statistics.dislikeCount, video.statistics.likeCount, 0) }"></i></li>
+                                    <li><i class="fa amber-text" data-ng-class="{ 'fa-star-half-o': rating(90, video.statistics.dislikeCount, video.statistics.likeCount, 1), 'fa-star': rating(100, video.statistics.dislikeCount, video.statistics.likeCount, 0) }"></i></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-sm-8 col-md-7 col-lg-8">
-                            <div class="h5-responsive">
-                                <span class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+                            <div class="h5-responsive wrap">
+                                <span class="text-muted">{{ video.snippet.description | limitTo:200 }}</span>
                             </div>
                             <br />
                             <div class="row">
-                                <div class="col-xl-7 col-lg-6 h5-responsive">
-                                    <i class="fa fa-youtube-square" aria-hidden="true"></i> Channel: <span class="text-muted">EliteChannels</span>
+                                <div class="col-xl-7 col-lg-6 h5-responsive wrap">
+                                    <i class="fa fa-youtube-square" aria-hidden="true"></i> Channel: <br /><span class="text-muted">{{ video.snippet.channelTitle }}</span>
                                 </div>
                                 <br class="hidden-lg-up" />
-                                <div class="col-xl-5 col-lg-6 h5-responsive">
-                                    <i class="fa fa-eye" aria-hidden="true"></i> Views: <span class="text-muted">1,223,446</span>
+                                <div class="col-xl-5 col-lg-6 h5-responsive wrap">
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Views: <br /><span class="text-muted">{{ video.statistics.viewCount | number }}</span>
                                 </div>
                             </div>
                         </div>
@@ -101,13 +101,63 @@
                 </div>
             </div>
         </li>
-        <!--/. YouTube Video -->
-        <div id="watch-more-related" class="hiddendiv">
-            <li id="watch-more-related-loading">
-                Loading more suggestions...
-            </li>
-        </div>
-        <button type="button" class="btn grey lighten-5 btn-lg btn-block waves-effect"><span class="text-muted">Show more</span></button>
+        <li data-ng-show="YTShowMoreLoading">
+            <div class="view overlay hm-white-slight YTShawdowNone">
+                <div class="mask waves-effect waves-effect"></div>
+                <div class="card-block">
+                    <div class="div-center">
+                        <div class="preloader-wrapper small active">
+                            <div class="spinner-layer spinner-blue">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div><div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div><div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+
+                            <div class="spinner-layer spinner-red">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div><div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div><div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+
+                            <div class="spinner-layer spinner-yellow">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div><div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div><div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+
+                            <div class="spinner-layer spinner-green">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div><div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div><div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <!--/. YouTube Video YTShowMoreLoading -->
+        <!-- Loading Button -->
+        <button data-ng-show="YTShowMoreLoading" type="button" disabled="disabled" class="btn grey lighten-5 btn-lg btn-block waves-effect">
+            <span class="text-muted">Loading more results...</span>
+        </button>
+        <!-- Show More Button -->
+        <button data-ng-hide="YTShowMoreLoading" type="button" data-ng-click="getMoreVideos()" class="btn grey lighten-5 btn-lg btn-block waves-effect"><span class="text-muted">Show more</span></button>
     </ul>
 </div>
 
@@ -137,7 +187,7 @@
         </div>
         <h4 class="h4-responsive">
             <i class="fa fa-arrow-right" aria-hidden="true"></i> <span class="hidden-xs-down">Up next</span>
-</h4>
+        </h4>
     </div>
     <ul class="z-depth-1">
         <li class="YTHover">
@@ -202,53 +252,64 @@
     <div class="card-block ">
         <h4 class="h4-responsive">
             <i class="fa fa-play" aria-hidden="true"></i> <span class="hidden-xs-down">Play-List Videos</span>
-</h4>
+        </h4>
     </div>
     <ul class="z-depth-1">
-        <!-- YouTube Video -->
-        <li class="YTHover">
-            <div class="view overlay hm-white-slight YTShawdowNone">
-                <div class="mask waves-effect waves-effect"></div>
+        <!-- YouTube Video PlayList -->
+        <li class="YTHover" data-ng-repeat="video in YTPlayList track by $index" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
+            <div class="view overlay hm-white-slight YTShawdowNone" ng-drag="true" ng-drag-data="video" ng-drag-success="onDragComplete($index,$data,$event)">
+                <div class="mask waves-effect waves-effect" data-ng-click="playVideo(video.id)"></div>
                 <div class="card-block">
                     <div class="row">
                         <div class="col-sm-2 col-md-3 col-lg-2">
-                            <button class="btn-flat waves-effect pull-right"><i class="fa fa-arrow-up YTColor YTInverseColor" aria-hidden="true"></i></button>
-                            <button class="btn-flat waves-effect YTInverseColor pull-right"><i class="fa fa-arrow-down YTColor YTInverseColor" aria-hidden="true"></i></button>
+                            <button class="btn-flat waves-effect" ng-drag-handle><i class="fa fa-arrows-v fa-2x YTColor YTInverseColor YTZIndex" aria-hidden="true"></i></button>
                         </div>
                         <div class="col-sm-7 col-md-7 col-lg-6">
                             <h4 class="h4-responsive">
-                                YTP-Bee Movie: Barry Beetrays the Nazi Party
+                                {{ video.snippet.title }}
                             </h4>
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 h5-responsive">
-                                    <i class="fa fa-sort" aria-hidden="true"></i> Order: <br /> <span class="text-muted">1</span>
+                                    <i class="fa fa-sort" aria-hidden="true"></i> Order: <br /> <span class="text-muted">{{ $index + 1 }}</span>
                                 </div>
                                 <div class="col-xl-8 col-lg-8 h5-responsive">
-                                    <i class="fa fa-eye" aria-hidden="true"></i> My Views: <br /> <span class="text-muted">1,223,446</span>
+                                    <i class="fa fa-eye" aria-hidden="true"></i> Views: <br /> <span class="text-muted">{{ video.statistics.viewCount | number }}</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-sm-3 col-md-2 col-lg-4">
                             <div class="pull-right" style="position: relative; display: inline-block;">
-                                <a href="/watch?v=R2fCbRTsnxY">
-                                    <img class="img-fluid YTZIndex" src="https://i.ytimg.com/vi/R2fCbRTsnxY/hqdefault.jpg?custom=true&amp;w=168&amp;h=94&amp;stc=true&amp;jpg444=true&amp;jpgq=90&amp;sp=68&amp;sigh=Gq40B9GJWILJuQlmKohtqRqfKZ4">
+                                <a target="_blank" data-ng-href="https://www.youtube.com/watch?v={{video.id}}">
+                                    <img class="img-fluid YTZIndex" style="max-width: 125px" data-ng-src="{{ video.snippet.thumbnails.standard.url }}">
                                     <span class="tag elegant-color timetag">
-                                        4:51
+                                        {{ video.contentDetails.duration | YTTimeFilter }}
                                     </span>
                                 </a>
                             </div>
+
+                            <button class="pull-right btn-flat waves-effect" data-ng-click="removeVideoFromPlayList($index)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></button>
                         </div>
 
                     </div>
-
-                    <div class="YTButtonBR">
-                        <button class="btn-flat waves-effect"><i class="fa fa-trash text-danger" aria-hidden="true"></i></button>
-                    </div>
-
                 </div>
             </div>
         </li>
-        <!--/. YouTube Video -->
+        <!--/. YouTube Video PlayList -->
+        <!-- Empty PlayList -->
+        <li class="YTHover" data-ng-hide="YTPlayList.length">
+            <div class="view overlay hm-white-slight YTShawdowNone">
+                <div class="mask waves-effect waves-effect"></div>
+                <div class="card-block">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <h3 class="h3-responsive flex-center">Empty Play List &emsp; <i class="fa fa-meh-o" aria-hidden="true"></i></h3>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </li>
     </ul>
 </div>

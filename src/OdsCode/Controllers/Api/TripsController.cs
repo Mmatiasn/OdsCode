@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace OdsCode.Controllers.Api
 {
+    [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
     [Route("api/trips")]
     [Authorize]
     public class TripsController : Controller

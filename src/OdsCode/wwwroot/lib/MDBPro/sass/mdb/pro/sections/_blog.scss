@@ -58,7 +58,7 @@
 // Full width blog section
 .section-blog-fw {
     .view {
-        @extend .z-depth-2;
+        @extend .z-depth-1;
     }
     .jumbotron {
         @extend .m-1;

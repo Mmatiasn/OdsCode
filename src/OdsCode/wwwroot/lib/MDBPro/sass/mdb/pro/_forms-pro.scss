@@ -391,6 +391,20 @@
         margin: 0 0 15px 0;
         padding: 0;
         display: block;
+
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        -o-user-select:none;
+        user-select:none;
+
+    }
+    .select-dropdown {
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        -o-user-select:none;
+        user-select:none;
     }
     span.caret {
         color: initial;

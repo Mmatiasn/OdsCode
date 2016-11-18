@@ -3,8 +3,8 @@
     "use strict";
 
     // Creating the Module
-    angular.module("app-youtube", ['ngRoute', 'autocomplete'])
-        .config(function($routeProvider) {
+    angular.module("app-youtube", ['ngRoute', 'ngDraggable'])
+        .config(function ($routeProvider) {
 
             $routeProvider.when("/",
             {
@@ -37,7 +37,7 @@
             $routeProvider.otherwise({ redirectTo: "/" });
         })
         .filter('escape',
-            function() {
+            function () {
                 return window.encodeURIComponent;
             })
         .constant('YT_event',
@@ -46,5 +46,11 @@
             PLAY: 1,
             PAUSE: 2,
             STATUS_CHANGE: 3
-        });
+        })
+        .filter('YTTimeFilter',
+            function () {
+                return function (ytTime) {
+                    return ytTime.replace("PT", "").replace("H", ":").replace("M", ":").replace("S", "");
+                }
+            });
 })();

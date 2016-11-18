@@ -7,6 +7,7 @@ using OdsCode.Models;
 
 namespace OdsCode.Controllers
 {
+    [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
     public class LogoutController : Controller
     {
         private SignInManager<WorldUser> _signInManager;

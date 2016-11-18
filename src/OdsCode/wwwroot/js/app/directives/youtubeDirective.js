@@ -75,6 +75,7 @@
                             return;
                         }
                         player.cueVideoById(scope.videoid);
+                        player.playVideo();
                     });
 
                     // Height + Width Watch

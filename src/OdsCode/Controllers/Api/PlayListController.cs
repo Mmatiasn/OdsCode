@@ -12,7 +12,8 @@ using OdsCode.ViewModels;
 
 namespace OdsCode.Controllers.Api
 {
-    [Route("api/playlists")]
+    [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
+    [Route("api/playlists/")]
     public class PlayListController : Controller
     {
         private ILogger<PlayListController> _logger;
@@ -56,7 +57,7 @@ namespace OdsCode.Controllers.Api
         {
             try
             {
-                var playlist = _repository.GetUserPlayListWithVideos(playListsId, User.Identity.Name);
+                var playlist = _repository.GetUserPlayListWithVideos(User.Identity.Name);
                 var results = Mapper.Map<PlayListViewModel>(playlist);
 
                 if (playlist != null)

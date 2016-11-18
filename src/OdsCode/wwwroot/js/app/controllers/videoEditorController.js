@@ -8,7 +8,5 @@
 
     function videoEditorController(/* $http ← Is needed to get and post */) {
 
-
-
     }
 })();

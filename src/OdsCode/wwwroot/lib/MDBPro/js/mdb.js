@@ -1,6 +1,6 @@
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB PRO 4.1.1
+ * Version: MDB PRO 4.2.0
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -5992,7 +5992,7 @@ var dropdownSelectors = $('.dropdown, .dropup');
             var parentUl = dropdown.parents('ul.nav');
 
             // If parent is ul.nav allow global effect settings
-            if (parentUl.size() > 0) {
+            if (parentUl.height > 0) {
                 effectInDefault = parentUl.data('dropdown-in') || null;
                 effectOutDefault = parentUl.data('dropdown-out') || null;
             }
@@ -10188,7 +10188,7 @@ $(function () {
             activateOption(options, selectedOption)
           }
         },
-        'click': function (e) {
+        'touchend click': function (e) {
           e.stopPropagation()
         }
       })

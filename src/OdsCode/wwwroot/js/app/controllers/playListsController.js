@@ -6,7 +6,7 @@
     angular.module("app-youtube")
         .controller("playListsController", playListsController);
 
-    function playListsController($scope, $http, youTubeSearchFactory) {
+    function playListsController($scope, $http) {
 
         $scope.playlists = [];
 
@@ -14,7 +14,7 @@
 
         $scope.newPlayList = {};
 
-        $scope.modalData= {};
+        $scope.modalData = {};
 
         $scope.errorMessage = "";
 

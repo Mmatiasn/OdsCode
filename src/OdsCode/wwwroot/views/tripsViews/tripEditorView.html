@@ -101,21 +101,16 @@
             <td>{{ stop.name }}</td>
             <td>{{ stop.stopDate | date }}</td>
             <td>
-                
-                <!-- Split button -->
-                <div class="btn-group">
-                    <a class="btn btn-sm btn-primary" data-ng-href="#/editor/{{ getId }}/stops/{{ stop.id }}" title="Edit {{ stop.name }}"><i class="fa fa-edit"></i></a>
-                    <a class="btn btn-sm btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-chevron-down" title="Click to Expand"></i>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </a>
-                    <div class="dropdown-menu">
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-dark">
                         <a class="dropdown-item" data-ng-href="#/editor/{{ getId }}/stops/{{ stop.id }}" title="Edit {{ stop.name }}">Edit <i class="fa fa-edit pull-right text-primary"></i></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" data-ng-click="modal(getId, stop.id, stop.name)" title="Delete {{ stop.name }}?">Delete <i class="fa fa-trash pull-right text-danger"></i></a>
                     </div>
                 </div>
-                <!--/. Split button -->
 
             </td>
         </tr>
