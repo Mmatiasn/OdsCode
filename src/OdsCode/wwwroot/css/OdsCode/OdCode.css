@@ -44,6 +44,15 @@
     height: 3px;
 }
 
+.background-color-fa-fa-black {
+    background-color: #373a3c;
+}
+
+.btn-flat-small {
+    padding: 2px 10px;
+    margin: 0px;
+}
+
 .YTHover:hover {
     background-color: #f4f4f4;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -58,10 +67,6 @@
     background-color: #fff;
     box-shadow: 20px 8px 20px 8px rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     opacity: 0.25;
-}
-
-.YTInverseColor:hover {
-    color: #0275d8;
 }
 
 YTInverseBackground:hover {
@@ -96,6 +101,18 @@ YTInverseBackground:hover {
 
 .YTColor {
     color: #373a3c;
+}
+
+.YTColor-Active {
+    color: #aa66cc;
+}
+
+.YTColor-Active:hover {
+    color: #373a3c;
+}
+
+.YTColor:hover {
+    color: #aa66cc;
 }
 
 .YTZIndex {

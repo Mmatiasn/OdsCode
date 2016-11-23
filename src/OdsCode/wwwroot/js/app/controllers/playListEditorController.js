@@ -15,22 +15,27 @@
         $scope.YTSearchResults = [];
         $scope.YTPlayList = [];
         $scope.Settings = {
-            Replay: false,
-            Shuffle: $scope.Settings.Shuffle,
-            Autoplay: $scope.Settings.Autoplay
+            Replay: null,
+            Shuffle: null,
+            Autoplay: null
         }
         $scope.YTShowMoreLoading = false;
         $scope.YTPlayListLoading = false;
         $scope.YTSearchActive = false;
         $scope.paramspName = $routeParams.playListId;
 
-
         $http.get(OdsRoot + "/api/playlists/" + $scope.paramspName)
             .then(function (response) {
                 // Success
                 angular.copy(response.data, $scope.PlayListEditorInfo);
-                console.log($scope.PlayListEditorInfo);
-                angular.copy(response.data.videos.ytPlayListInfo, $scope.YTPlayList);
+                if (response.data.videos) {
+                    $scope.Settings.Autoplay = typeof (response.data.videos.autoplay) === "boolean" ? response.data.videos.autoplay : false;
+                    $scope.Settings.Shuffle = typeof (response.data.videos.shuffle) === "boolean" ? response.data.videos.shuffle : false;
+                    $scope.Settings.Replay = typeof (response.data.videos.replay) === "boolean" ? response.data.videos.replay : false;
+                    if (response.data.videos.ytPlayListInfo) {
+                        angular.copy(response.data.videos.ytPlayListInfo, $scope.YTPlayList);
+                    }
+                }
             },
                 function (error) {
                     // Failure
@@ -69,6 +74,22 @@
             suggest: get_yt_autocomplete,
             on_error: console.log
         };
+
+        $scope.toggleSettings = function (settingName) {
+            switch (settingName) {
+                case "Repeat":
+                    console.log("Repeat");
+                    return true;
+                case "Shuffle":
+                    console.log("Shuffle");
+                    return true;
+                case "Autoplay":
+                    console.log("Autoplay");
+                    return true;
+                default:
+                    toastr["error"]("Unable To Change " + settingName + " Setting");
+            }
+        }
 
         $scope.playVideo = function (videoId) {
 

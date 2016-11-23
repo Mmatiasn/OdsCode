@@ -175,6 +175,10 @@ namespace OdsCode.Repository
                    .Where(t => t.Id == playListId && t.UserName == userName)
                    .First();
 
+                if (playlist.Videos != null)
+                {
+                    _context.Videos.Remove(playlist.Videos);
+                }
                 _context.PlayLists.Remove(playlist);
 
                 return playlist;
@@ -193,6 +197,12 @@ namespace OdsCode.Repository
             if (playList.Videos != null)
             {
                 playList.Videos.YtVideoString = videoChanges.YtVideoString;
+                _context.Update(playList);
+                return videoChanges;
+            }
+            else
+            {
+                playList.Videos = videoChanges;
                 _context.Update(playList);
                 return videoChanges;
             }

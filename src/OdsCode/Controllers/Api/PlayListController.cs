@@ -95,7 +95,6 @@ namespace OdsCode.Controllers.Api
             try
             {
                 var playlist = _repository.DeleteAPlayList(User.Identity.Name, playListId);
-                var results = Mapper.Map<PlayListViewModel>(playlist);
 
                 if (playlist != null)
                 {
