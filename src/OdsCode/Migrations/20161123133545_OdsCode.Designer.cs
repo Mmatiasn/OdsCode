@@ -8,8 +8,8 @@ using OdsCode.Repository;
 namespace OdsCode.Migrations
 {
     [DbContext(typeof(WorldContext))]
-    [Migration("20161020124413_initial2")]
-    partial class initial2
+    [Migration("20161123133545_OdsCode")]
+    partial class OdsCode
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -135,7 +135,11 @@ namespace OdsCode.Migrations
 
                     b.Property<string>("UserName");
 
+                    b.Property<int?>("VideosPlayListId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("VideosPlayListId");
 
                     b.ToTable("PlayLists");
                 });
@@ -176,18 +180,17 @@ namespace OdsCode.Migrations
 
             modelBuilder.Entity("OdsCode.Models.Video", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("PlayListId");
 
-                    b.Property<string>("Name");
+                    b.Property<bool?>("Autoplay");
 
-                    b.Property<int?>("PlayListId");
+                    b.Property<bool?>("Replay");
 
-                    b.Property<int>("Position");
+                    b.Property<bool?>("Shuffle");
 
-                    b.HasKey("Id");
+                    b.Property<string>("YtVideoString");
 
-                    b.HasIndex("PlayListId");
+                    b.HasKey("PlayListId");
 
                     b.ToTable("Videos");
                 });
@@ -280,18 +283,18 @@ namespace OdsCode.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("OdsCode.Models.PlayList", b =>
+                {
+                    b.HasOne("OdsCode.Models.Video", "Videos")
+                        .WithMany()
+                        .HasForeignKey("VideosPlayListId");
+                });
+
             modelBuilder.Entity("OdsCode.Models.Stop", b =>
                 {
                     b.HasOne("OdsCode.Models.Trip")
                         .WithMany("Stops")
                         .HasForeignKey("TripId");
-                });
-
-            modelBuilder.Entity("OdsCode.Models.Video", b =>
-                {
-                    b.HasOne("OdsCode.Models.PlayList")
-                        .WithMany("Videos")
-                        .HasForeignKey("PlayListId");
                 });
         }
     }

@@ -13,7 +13,7 @@
                 templateUrl: OdsRoot + "/views/playListsViews/playListsView.html"
             });
 
-            $routeProvider.when("/editor/:playListName",
+            $routeProvider.when("/editor/:playListId",
             {
                 controller: "playListEditorController",
                 controllerAs: "vm",
@@ -40,6 +40,12 @@
             function () {
                 return window.encodeURIComponent;
             })
+        .filter('default',
+        [function() {
+            return function (input, def) {
+                return !!input ? input : def;
+            };
+        }])
         .constant('YT_event',
         {
             STOP: 0,

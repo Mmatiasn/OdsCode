@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using AutoMapper;
 using System.Net;
 using OdsCode.Models;
+using OdsCode.Services;
 using OdsCode.ViewModels;
 
 namespace OdsCode.Controllers.Api
@@ -18,12 +19,14 @@ namespace OdsCode.Controllers.Api
     {
         private ILogger<PlayListController> _logger;
         private IWorldRepository _repository;
+        private YouTubeVideoSearchService _youTubeVideoSearchService;
 
         public PlayListController(IWorldRepository repository,
-            ILogger<PlayListController> logger)
+            ILogger<PlayListController> logger, YouTubeVideoSearchService youTubeVideoSearchService)
         {
             _repository = repository;
             _logger = logger;
+            _youTubeVideoSearchService = youTubeVideoSearchService;
         }
 
         [HttpGet("")]
@@ -51,23 +54,31 @@ namespace OdsCode.Controllers.Api
 
 
         }
-
-        [HttpGet("{playListsId}")]
-        public JsonResult Get(int playListsId)
+        [HttpGet("{playListId}")]
+        public async Task<JsonResult> Get(int playListId)
         {
             try
             {
-                var playlist = _repository.GetUserPlayListWithVideos(User.Identity.Name);
-                var results = Mapper.Map<PlayListViewModel>(playlist);
+                PlayList playlist = _repository.GetAPlayList(User.Identity.Name, playListId);
+                var ytQuery = new Video();
+                ytQuery = playlist.Videos;
+
 
                 if (playlist != null)
                 {
+                    if (ytQuery != null)
+                    {
+                        var ytVideoSearch = _youTubeVideoSearchService;
+                        YouTubeVideoSearchResult ytVideoResult;
+                        ytVideoResult = await ytVideoSearch.GetYouTubeByIdsAsync(ytQuery.YtVideoString);
+                        playlist.Videos.YtPlayListInfo = ytVideoResult.SearchResults;
+                    }
                     Response.StatusCode = (int)HttpStatusCode.OK;
-                    return Json(results);
+                    return Json(playlist);
                 }
 
                 Response.StatusCode = (int)HttpStatusCode.NotFound;
-                return Json(results);
+                return Json(playlist);
             }
             catch (Exception ex)
             {
@@ -78,12 +89,12 @@ namespace OdsCode.Controllers.Api
             }
         }
 
-        [HttpDelete("{playListsId}")]
-        public async Task<JsonResult> Delete(int playListsId)
+        [HttpDelete("{playListId}")]
+        public async Task<JsonResult> Delete(int playListId)
         {
             try
             {
-                var playlist = _repository.DeleteUserPlayListWithVideos(playListsId, User.Identity.Name);
+                var playlist = _repository.DeleteAPlayList(User.Identity.Name, playListId);
                 var results = Mapper.Map<PlayListViewModel>(playlist);
 
                 if (playlist != null)
@@ -113,18 +124,18 @@ namespace OdsCode.Controllers.Api
             {
                 if (ModelState.IsValid)
                 {
-                    var newPlayLists = Mapper.Map<PlayList>(vm);
+                    var newPlayList = Mapper.Map<PlayList>(vm);
 
-                    newPlayLists.UserName = User.Identity.Name;
+                    newPlayList.UserName = User.Identity.Name;
 
                     // Save to the Database
                     _logger.LogInformation("Attempting to save a new play-list");
-                    _repository.AddPlayList(newPlayLists);
+                    _repository.AddAPlayList(User.Identity.Name, newPlayList);
 
                     if (await _repository.SaveAll())
                     {
                         Response.StatusCode = (int)HttpStatusCode.Created;
-                        return Json(Mapper.Map<PlayListViewModel>(newPlayLists));
+                        return Json(Mapper.Map<PlayListViewModel>(newPlayList));
                     }
                 }
             }

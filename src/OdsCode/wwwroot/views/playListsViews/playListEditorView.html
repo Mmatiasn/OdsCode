@@ -2,12 +2,12 @@
     <div class="card-block ">
         <h2 class="h2-responsive d-inline">
             <span>Play-List: </span>
-            <span class="text-info font-weight-normal ng-binding">Rap and Hip-Hop</span>
+            <span class="text-info font-weight-normal ng-binding">{{ PlayListEditorInfo.name || "Loading..." }}</span>
         </h2>
         <button class="btn-flat waves-effect pull-right d-inline"><i class="fa fa-arrow-circle-left YTColor fa-2x" aria-hidden="true"></i></button>
         <h5 class="h5-responsive">
             <span>Created on </span>
-            <span class="text-muted ng-binding"> Oct 20, 2016</span>
+            <span class="text-muted ng-binding">{{ (PlayListEditorInfo.dateCreated| date) || "Loading..." }}</span>
         </h5>
 
     </div>
@@ -21,7 +21,7 @@
 
         <!--Right-->
         <div class="input-group">
-            <input name="YTSearch" id="YTSearch" type="text" class="form-control" data-ng-model="YTSearchText" placeholder="Search youtube for...">
+            <input name="YTSearch" id="YTSearch" type="text" class="form-control" data-ng-model="YTSearchText" ng-keypress="onKeyPress($event, YTSearchText)" placeholder="Search youtube for...">
             <span class="input-group-btn">
                 <button class="btn btn-primary btn-lg waves-effect" data-ng-click="getVideos(YTSearchText)" type="button">Search</button>
             </span>
@@ -65,7 +65,7 @@
                         <div class="col-sm-4 col-md-5 col-lg-4">
                             <div style="position: relative; display: inline-block;">
                                 <a target="_blank" data-ng-href="https://www.youtube.com/watch?v={{video.id}}">
-                                    <img class="img-fluid YTZIndex" style="max-width: 200px" data-ng-src="{{ video.snippet.thumbnails.standard.url }}">
+                                    <img class="img-fluid YTZIndex" style="max-width: 200px" data-ng-src="{{ video.snippet.thumbnails.standard.url | default:'http://www.wi-fi.org/sites/all/themes/wfa/assets/images/video-thumbnail-overlay.png' }}">
                                     <span class="tag elegant-color timetag">
                                         {{ video.contentDetails.duration | YTTimeFilter }}
                                     </span>

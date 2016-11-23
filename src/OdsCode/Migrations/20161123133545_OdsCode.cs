@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace OdsCode.Migrations
 {
-    public partial class @default : Migration
+    public partial class OdsCode : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,6 +50,21 @@ namespace OdsCode.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Trips", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Videos",
+                columns: table => new
+                {
+                    PlayListId = table.Column<int>(nullable: false),
+                    Autoplay = table.Column<bool>(nullable: true),
+                    Replay = table.Column<bool>(nullable: true),
+                    Shuffle = table.Column<bool>(nullable: true),
+                    YtVideoString = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Videos", x => x.PlayListId);
                 });
 
             migrationBuilder.CreateTable(
@@ -117,6 +132,28 @@ namespace OdsCode.Migrations
                         column: x => x.TripId,
                         principalTable: "Trips",
                         principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PlayLists",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    UserName = table.Column<string>(nullable: true),
+                    VideosPlayListId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlayLists", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PlayLists_Videos_VideosPlayListId",
+                        column: x => x.VideosPlayListId,
+                        principalTable: "Videos",
+                        principalColumn: "PlayListId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -216,6 +253,11 @@ namespace OdsCode.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PlayLists_VideosPlayListId",
+                table: "PlayLists",
+                column: "VideosPlayListId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Stops_TripId",
                 table: "Stops",
                 column: "TripId");
@@ -250,6 +292,9 @@ namespace OdsCode.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "PlayLists");
+
+            migrationBuilder.DropTable(
                 name: "Stops");
 
             migrationBuilder.DropTable(
@@ -257,6 +302,9 @@ namespace OdsCode.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Videos");
 
             migrationBuilder.DropTable(
                 name: "Trips");

@@ -28,21 +28,21 @@ namespace OdsCode.Controllers.Api
             _logger = logger;
         }
 
-        [HttpPost("")]
-        public async Task<JsonResult> Post(int playListId, [FromBody]VideoViewModel vm)
+        [HttpPost("{playListId}")]
+        public async Task<JsonResult> Save(int playListId, [FromBody]VideoViewModel vm)
         {
             try
             {
-                if (ModelState.IsValid)
+                if (ModelState.IsValid && playListId == vm.PlayListId)
                 {
-                    var newVideo = Mapper.Map<Video>(vm);
+                    Video newVideo = Mapper.Map<Video>(vm);
 
-                    _repository.AddVideo(playListId, User.Identity.Name, newVideo);
+                    _repository.SaveVideoChanges(User.Identity.Name, playListId, newVideo);
 
                     if (await _repository.SaveChangesAsync())
                     {
                         Response.StatusCode = (int)HttpStatusCode.Created;
-                        return Json(Mapper.Map<Video>(newVideo));
+                        return Json(new { Message = "Changes Saved!" });
                     }
                 }
             }

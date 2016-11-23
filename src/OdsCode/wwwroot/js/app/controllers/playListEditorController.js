@@ -6,15 +6,37 @@
     angular.module("app-youtube")
         .controller("playListEditorController", playListEditorController);
 
-    function playListEditorController($scope, $rootScope, getObjectListFactory /* $http ← Is needed to get and post */) {
+    function playListEditorController($scope, $rootScope, $routeParams, $http, getObjectListFactory /* $http ← Is needed to get and post */) {
 
         $scope.YTCurrentSearchText = "";
+        $scope.PlayListEditorInfo = {};
+        $scope.messageClass = { info: "info", warning: "warning", success: "success", error: "error" }
         $scope.YTPageToken = "";
         $scope.YTSearchResults = [];
         $scope.YTPlayList = [];
+        $scope.Settings = {
+            Replay: false,
+            Shuffle: $scope.Settings.Shuffle,
+            Autoplay: $scope.Settings.Autoplay
+        }
         $scope.YTShowMoreLoading = false;
-        $scope.YTSearchActive = false;
         $scope.YTPlayListLoading = false;
+        $scope.YTSearchActive = false;
+        $scope.paramspName = $routeParams.playListId;
+
+
+        $http.get(OdsRoot + "/api/playlists/" + $scope.paramspName)
+            .then(function (response) {
+                // Success
+                angular.copy(response.data, $scope.PlayListEditorInfo);
+                console.log($scope.PlayListEditorInfo);
+                angular.copy(response.data.videos.ytPlayListInfo, $scope.YTPlayList);
+            },
+                function (error) {
+                    // Failure
+                    $scope.PlayListEditorInfo = { name: "Unavailable", dateCreated: "Unavailable" }
+                    console.log(error);
+                });
 
         function get_yt_autocomplete(query) {
             var deferred = $q.defer();
@@ -48,16 +70,21 @@
             on_error: console.log
         };
 
-
         $scope.playVideo = function (videoId) {
 
             $rootScope.$broadcast('YTPlayNewVideo', videoId);
         }
 
-        $scope.getVideos = function (YTSearchText) {
+        $scope.onKeyPress = function ($event, yTSearchText) {
+            if ($event.keyCode === 13) {
+                $scope.getVideos(yTSearchText);
+            }
+        };
+
+        $scope.getVideos = function (yTSearchText) {
             $scope.YTSearchActive = true;
             $scope.YTShowMoreLoading = true;
-            getObjectListFactory.getYoutubeList(YTSearchText)
+            getObjectListFactory.getYoutubeList(yTSearchText)
             .then(function (data) {
                 console.log(data);
                 // Set the results to an array
@@ -65,7 +92,7 @@
                 // Set the page token
                 $scope.YTPageToken = data.pageToken;
                 // Set the current search text
-                $scope.YTCurrentSearchText = YTSearchText;
+                $scope.YTCurrentSearchText = yTSearchText;
                 // Loading should be done now
                 $scope.YTShowMoreLoading = false;
             });
@@ -82,26 +109,6 @@
             $scope.YTPlayListLoading = false;
         }
 
-        $scope.moveVideoInPlayList = function (videoIndexA, down) {
-            var temp = $scope.YTPlayList[videoIndexA];
-            var videoIndexB;
-
-            if (down === true) {
-                videoIndexB = videoIndexA + 1;
-            } else {
-                videoIndexB = videoIndexA + -1;
-            }
-
-            if (videoIndexB < $scope.YTPlayList.length && videoIndexB >= 0) {
-                $scope.YTPlayList[videoIndexA] = $scope.YTPlayList[videoIndexB];
-                $scope.YTPlayList[videoIndexB] = temp;
-                $scope.YTPlayListSaveChange();
-            } else {
-                toastr["error"]("Unable To Reorder Video");
-            }
-
-        }
-
         $scope.onDropComplete = function (index, data, event) {
             // After a complete drop it will save changes
             // After dragging it will save local changes
@@ -110,24 +117,51 @@
             $scope.YTPlayList[index] = data;
             $scope.YTPlayList[draggedIndex] = droppedIndex;
             $scope.YTPlayListSaveChange();
-
-            console.log("YOLO!");
         }
 
         $scope.onDragComplete = function (index, data, event) {
-            console.log("YOLO!");
         }
 
         $scope.removeVideoFromPlayList = function (videoPosition) {
             if (videoPosition !== null) {
                 $scope.YTPlayList.splice(videoPosition, 1);
                 $scope.YTPlayListSaveChange();
+                toastr["error"]("Video Removed");
             } else {
                 toastr["error"]("Unable To Remove Video");
             }
         }
 
-        $scope.YTPlayListSaveChange = function () {
+        $scope.YtIdGetter = function () {
+            return $scope.YTPlayList.map(function (a) { return a.id }).join(",");
+        }
+
+        $scope.YTPlayListSaveChange = function (messageClass, message) {
+
+            $scope.YTPlayListLoading = true;
+
+            var videoPlayList = {
+                PlayListId: $scope.PlayListEditorInfo.id,
+                YtVideoString: $scope.YtIdGetter(),
+                Replay: $scope.Settings.Replay,
+                Shuffle: $scope.Settings.Shuffle,
+                Autoplay: $scope.Settings.Autoplay
+            }
+
+            $http.post(OdsRoot + "/api/videos/" + $scope.paramspName, videoPlayList)
+           .then(function (response) {
+               if (messageClass != null && message != null) {
+                   toastr[messageClass](message);
+               }
+           }, function (error) {
+               // Failure
+               toastr["error"]("Error Processing Request");
+               console.log(error);
+           })
+           .finally(function () {
+               $scope.YTPlayListLoading = false;
+           });
+
             //Save YTPlayList array loop and get a string id of the order
             console.log("Saving sh**!");
         }

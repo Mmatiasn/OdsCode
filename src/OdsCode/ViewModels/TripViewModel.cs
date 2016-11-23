@@ -10,7 +10,7 @@ namespace OdsCode.ViewModels
 {
     public class TripViewModel
     {
-        public string Id { get; private set; }
+        public string Id { get; set; }
         [Required]
         [StringLength(100, MinimumLength = 2)]
         public string Name { get; set; }

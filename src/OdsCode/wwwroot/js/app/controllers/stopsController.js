@@ -10,7 +10,7 @@
 
         var vm = this;
 
-        vm.paramspName = $routeParams.tripName;
+        vm.paramspName = $routeParams.tripId;
 
         vm.getTripName = "";
         vm.getTripDate = "";

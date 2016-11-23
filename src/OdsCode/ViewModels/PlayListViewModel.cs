@@ -7,11 +7,11 @@ namespace OdsCode.ViewModels
 {
     public class PlayListViewModel
     {
-        public string Id { get; private set; }
+        public int Id { get; set; }
         [Required]
         [StringLength(100, MinimumLength = 2)]
         public string Name { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
-        public IEnumerable<Video> Videos { get; set; }
+        public Video Videos { get; set; }
     }
 }

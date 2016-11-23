@@ -5,8 +5,11 @@ namespace OdsCode.ViewModels
 {
     public class VideoViewModel
     {
-        public string YtIds { get; set; }
         [Required]
-        public string PlayListId { get; set; }
+        public int PlayListId { get; set; }
+        public string YtVideoString { get; set; }
+        public bool? Replay { get; set; }
+        public bool? Shuffle { get; set; }
+        public bool? Autoplay { get; set; }
     }
 }
