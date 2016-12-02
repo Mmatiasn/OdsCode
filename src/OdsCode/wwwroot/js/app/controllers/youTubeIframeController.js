@@ -6,12 +6,40 @@
     angular.module("app-youtube")
         .controller("youTubeIframeController", youTubeIframeController);
 
-    function youTubeIframeController($scope, $window, YT_event) {
+    function youTubeIframeController($scope, $window, YT_event, $rootScope) {
 
         $scope.YT_event = YT_event;
-        $scope.playStatus = YT_event.PAUSE;
-        $scope.iconStatus = true;
+        $rootScope.youTubeIframe.ytEvent = YT_event.PAUSE;
         $scope.ytColSize = "col-md-12";
+
+
+
+        // In your controller (Slider)
+        $scope.slider = {
+            min: $rootScope.videoStartSlider,
+            max: $rootScope.videoEndSlider,
+            options: {
+                floor: 0,
+                ceil: $rootScope.totalVideoSecs
+            }
+        };
+
+        $scope.ytIframePlayer = {
+            lastVideo: {
+                
+            },
+            currentVideo: {
+            
+            },
+            nextVideo: {
+            
+            },
+            repeat: {
+                one: false,
+                all: false
+            },
+            shuffle: false,
+        }
 
         //Helps adjust video screen size
         $window.onscroll = function () {
@@ -31,21 +59,24 @@
         };
 
         $scope.playToggle = function() {
-            $scope.playStatus = $scope.playStatus === YT_event.PLAY ? YT_event.PAUSE : YT_event.PLAY;
+            $rootScope.playStatus = $rootScope.playStatus === YT_event.PLAY ? YT_event.PAUSE : YT_event.PLAY;
             $scope.iconStatus = $scope.iconStatus === true ? false : true;
-            return $scope.playStatus;
+            return $rootScope.playStatus;
         };
 
         $scope.$on('YTPlayNewVideo', function (event, videoId) {
             if ($scope.yt.videoid !== videoId) {
                 $scope.yt.videoid = videoId;
-                $scope.playStatus = YT_event.PAUSE;
+                $rootScope.playStatus = YT_event.PAUSE;
                 $scope.iconStatus = false;
+            } else {
+                
             }
         });
 
         $scope.$on(YT_event.STATUS_CHANGE, function (event, data) {
             $scope.yt.playerStatus = data;
+
         });
     }
 })();

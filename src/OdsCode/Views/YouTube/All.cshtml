@@ -13,6 +13,7 @@
     <script src="~/js/app/provider/autocompleteProvider.js"></script>
     <script src="~/js/app/factories/YouTubeSearchFactory.js"></script>
     <script src="~/js/app/factories/getObjectListFactory.js"></script>
+    <script src="~/js/app/directives/rzsliderDirective.js"></script>
     <script src="~/lib/ngDraggable/ngDraggable.js"></script>
 }
 
@@ -44,13 +45,22 @@
                             </div>
 
                             <div class="col-sm-4 col-md-4">
-                                <a class="btn btn-block btn-small waves-effect" data-toggle="tooltip" data-placement="bottom" title="Play / Pause" data-ng-click="sendControlEvent(playToggle())"><i class="text-primary fa" data-ng-class="{ 'fa-play': iconStatus, 'fa-pause': !iconStatus }"></i></a>
+                                <a class="btn btn-block btn-small waves-effect" data-toggle="tooltip" data-placement="bottom" title="Play / Pause" data-ng-click="sendControlEvent(playToggle())"><i class="text-primary fa" data-ng-class="{ 'fa-play':  !playStatus, 'fa-pause': playStatus }"></i></a>
                             </div>
 
                             <div class="col-sm-4 col-md-4">
                                 <a class="btn btn-block btn-small waves-effect" data-toggle="tooltip" data-placement="bottom" title="Next" data-ng-click="sendControlEvent(YT_event.STOP)"><i class="text-primary fa fa-step-forward"></i></a>
                             </div>
                         </div>
+                        
+                        <br>
+                        <div></div>
+                        <div>
+                            <rzslider rz-slider-model="slider.min"
+                                      rz-slider-high="slider.max"
+                                      rz-slider-options="slider.options"></rzslider>
+                        </div>
+
                     </div>
                 </div>
             </div>

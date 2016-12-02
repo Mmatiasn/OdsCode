@@ -107,7 +107,6 @@
             $scope.YTShowMoreLoading = true;
             getObjectListFactory.getYoutubeList(yTSearchText)
             .then(function (data) {
-                console.log(data);
                 // Set the results to an array
                 angular.copy(data.searchResults, $scope.YTSearchResults);
                 // Set the page token
@@ -191,7 +190,6 @@
             $scope.YTShowMoreLoading = true;
             getObjectListFactory.getNextYouTubeList($scope.YTCurrentSearchText, $scope.YTPageToken)
                 .then(function (data) {
-                    console.log(data);
                     // Set the results to an array
                     $scope.YTSearchResults = $scope.YTSearchResults.concat(data.searchResults);
                     // Set the page token

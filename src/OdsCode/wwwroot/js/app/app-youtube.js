@@ -41,11 +41,13 @@
                 return window.encodeURIComponent;
             })
         .filter('default',
-        [function() {
-            return function (input, def) {
-                return !!input ? input : def;
-            };
-        }])
+        [
+            function () {
+                return function (input, def) {
+                    return !!input ? input : def;
+                };
+            }
+        ])
         .constant('YT_event',
         {
             STOP: 0,
@@ -53,10 +55,72 @@
             PAUSE: 2,
             STATUS_CHANGE: 3
         })
-        .filter('YTTimeFilter',
+        .run(function ($rootScope) {
+            $rootScope.youTubeIframe = {
+                videoPlayList: {
+                    videos: [],
+                    previousVideo: [],
+                    currentVideo: {},
+                    nextVideo: {}
+                },
+
+                videoSearch: {
+                    videos: [],
+                    previousVideo: [],
+                    currentVideo: {},
+                    nextVideo: {}
+                },
+
+                playStatus: null,
+
+                focus: {
+                    search: false,
+                    playlist: false
+                },
+                settings: {
+                    repeat: false,
+                    shuffle: false,
+                    autoplay: false,
+                    restart: true,
+                    time: {
+                        min: null,
+                        max: null,
+                        userMin: null,
+                        userMax: null
+                    }
+                }
+            }
+        })
+        .false('YTToRegTime',
+            function ($filter) {
+                return function (ytSeconds) {
+                    var ytRegTime = function (ytSeconds) {
+                        if (ytSeconds < 3600) {
+                            return $filter('date')(new Date(0, 0, 0, 0, 0, 0, 0).setSeconds(ytSeconds), 'mm:ss');
+                        } if (ytSeconds < 86400) {
+                            return $filter('date')(new Date(0, 0, 0, 0, 0, 0, 0).setSeconds(ytSeconds), 'HH:mm:ss');
+                        } else {
+                            return $filter('date')(new Date(0, 0, 0, 0, 0, 0, 0).setSeconds(ytSeconds), 'dd:HH:mm:ss');
+                        }
+                    }
+                    return ytRegTime(ytSeconds);
+                }
+            })
+        .filter('YTToSeconds',
             function () {
                 return function (ytTime) {
-                    return ytTime.replace("PT", "").replace("H", ":").replace("M", ":").replace("S", "");
+
+                    var reptms = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
+                    var hours = 0, minutes = 0, seconds = 0, ytSeconds = 0;
+
+                    if (reptms.test(ytTime)) {
+                        var matches = reptms.exec(ytTime);
+                        if (matches[1]) hours = Number(matches[1]);
+                        if (matches[2]) minutes = Number(matches[2]);
+                        if (matches[3]) seconds = Number(matches[3]);
+                        ytSeconds = hours * 3600 + minutes * 60 + seconds;
+                    }
+                    return ytSeconds;
                 }
             });
 })();

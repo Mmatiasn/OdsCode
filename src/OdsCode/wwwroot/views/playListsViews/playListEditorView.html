@@ -67,7 +67,7 @@
                                 <a target="_blank" data-ng-href="https://www.youtube.com/watch?v={{video.id}}">
                                     <img class="img-fluid YTZIndex" style="max-width: 200px" data-ng-src="{{ video.snippet.thumbnails.standard.url | default:'http://www.wi-fi.org/sites/all/themes/wfa/assets/images/video-thumbnail-overlay.png' }}">
                                     <span class="tag elegant-color timetag">
-                                        {{ video.contentDetails.duration | YTTimeFilter }}
+                                        {{ video.contentDetails.duration | YTToSeconds | YTToRegTime }}
                                     </span>
                                 </a>
                             </div>
@@ -284,9 +284,9 @@
                         <div class="col-sm-3 col-md-2 col-lg-4">
                             <div class="pull-right" style="position: relative; display: inline-block;">
                                 <a target="_blank" data-ng-href="https://www.youtube.com/watch?v={{video.id}}">
-                                    <img class="img-fluid YTZIndex" style="max-width: 125px" data-ng-src="{{ video.snippet.thumbnails.standard.url }}">
+                                    <img class="img-fluid YTZIndex" style="max-width: 125px" data-ng-src="{{ video.snippet.thumbnails.standard.url | default:'http://www.wi-fi.org/sites/all/themes/wfa/assets/images/video-thumbnail-overlay.png' }}">
                                     <span class="tag elegant-color timetag">
-                                        {{ video.contentDetails.duration | YTTimeFilter }}
+                                        {{ video.contentDetails.duration | YTToSeconds | YTToRegTime }}
                                     </span>
                                 </a>
                             </div>
